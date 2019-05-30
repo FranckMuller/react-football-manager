@@ -1,0 +1,28 @@
+.item-details {
+  border: 1px solid #dddddd;
+  padding: 20px;
+  box-shadow: 3px 3px 11px -5px #828080;
+  height: 100%;
+  background-color: rgba(220, 220, 220, .8);
+  border-radius: 3px;
+  .photo {
+    margin-bottom: 10px;
+    height: 100px;
+  }
+
+  .description {
+    margin-bottom: 20px;
+    .name {
+      font-weight: 600;
+    }
+    .position {
+      font-size: 14px;
+    }
+  }
+
+  .btn-group {
+    button {
+      flex: 1;
+    }
+  }
+}

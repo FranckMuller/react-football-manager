@@ -1,0 +1,80 @@
+[
+    {
+      "id": "1",
+      "name": "Lionel Messi",
+      "image": "http://localhost:3000/images/lionel-messi.jpg",
+      "position": "attack"
+    },
+    {
+      "id": "2",
+      "name": "Cristiano Ronaldo",
+      "image": "http://localhost:3000/images/cristiano-ronaldo.png",
+      "position": "attack"
+    },
+    {
+      "id": "3",
+      "name": "Neymar",
+      "image": "http://localhost:3000/images/neymar.png",
+      "position": "attack"
+    },
+    {
+      "id": "4",
+      "name": "Kilian Mbappe",
+      "image": "http://localhost:3000/images/kilian-mbappe.png",
+      "position": "attack"
+    },
+    {
+      "id": "5",
+      "name": "Zlatan Ibrahimovic",
+      "image": "http://localhost:3000/images/zlatan-ibrahimovic.png",
+      "position": "attack"
+    },
+    {
+      "id": "6",
+      "name": "Aleksandr Golovin",
+      "image": "http://localhost:3000/images/aleksandr-golovin.jpg",
+      "position": "half-back"
+    },
+    {
+      "id": "7",
+      "name": "Igor Akinfeev",
+      "image": "http://localhost:3000/images/igor-akinfeev.jpg",
+      "position": "goalkeeper"
+    },
+    {
+      "id": "8",
+      "name": "Robert Lewandowski",
+      "image": "http://localhost:3000/images/robert-lewandowski.png",
+      "position": "attack"
+    },
+    {
+      "id": "9",
+      "name": "Mesut Ozil",
+      "image": "http://localhost:3000/images/mesut-ozil.jpg",
+      "position": "half-back"
+    },
+    {
+      "id": "10",
+      "name": "Henrikh Mkhitaryan",
+      "image": "http://localhost:3000/images/henrikh-mkhitaryan.png",
+      "position": "half-back"
+    },
+    {
+      "id": "11",
+      "name": "Mohammed Salah",
+      "image": "http://localhost:3000/images/mohammed-salah.png",
+      "position": "attack"
+    },
+    {
+      "id": "12",
+      "name": "Ronaldinho",
+      "image": "http://localhost:3000/images/ronaldinho.jpeg",
+      "position": "half-back"
+    },
+    {
+      "id": "13",
+      "name": "Eden Hazard",
+      "image": "http://localhost:3000/images/eden-hazard.png",
+      "position": "half-back"
+    }
+  ]

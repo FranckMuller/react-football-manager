@@ -1,0 +1,14 @@
+.item-list-container {
+  padding-top: 20px;
+  .title {
+    color: #ffffff;
+    font-size: 22px;
+  }
+  .item-list {
+    margin: 0 -10px 30px;
+    li {
+      padding: 10px;
+      flex: 0 0 20%;
+    }
+  }
+}
