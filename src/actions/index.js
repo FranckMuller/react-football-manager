@@ -1,7 +1,9 @@
 const fetchRequest = (dispatch, fmapiService) => {
   fmapiService.getAllPlayers()
     .then((res) => {
-      dispatch(playersRequest(res));
+      setTimeout(() => {
+        dispatch(playersRequest(res));
+      }, 2000);
     })
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './app-header.scss';
-import logo from './fm_logo.png'
+import logo from './fm_logo.gif'
 
-const AppHeader = () => {
+const AppHeader = ({ money }) => {
   return (
     <header className="header">
       <div className="container d-flex">
@@ -18,9 +19,18 @@ const AppHeader = () => {
             <Link to="/transfer-market">transfer market</Link>
           </li>
         </ul>
+        <div className="your-money d-flex justify-content-end align-items-center">
+          <i className="fa fa-money"></i> {money}
+        </div>
       </div>
   </header>
   );
 };
 
-export default AppHeader;
+const mapStateToProps = ({ transferMarket: { money } }) => {
+  return {
+    money: money
+  };
+};
+
+export default connect(mapStateToProps)(AppHeader);

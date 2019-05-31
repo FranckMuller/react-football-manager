@@ -1,7 +1,9 @@
 const initialState = {
   transferMarket: {
     players: [],
-    loading: true
+    money: 1000000000,
+    loading: true,
+    error: false
   }
 }
 
@@ -12,6 +14,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         transferMarket: {
           ...state.transferMarket,
+          loading: false,
           players: [
             ...state.transferMarket.players,
             ...action.payload

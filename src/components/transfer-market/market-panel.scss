@@ -1,0 +1,30 @@
+.market-panel {
+  flex: 0 0 50px;
+  background-color: rgba(45, 28, 136, .9);
+  ul {
+    height: 100%;
+    li {
+      border-right: 1px solid #ffffff;
+      border-radius: 0;
+      &:last-child {
+        border-right: 0;
+      }
+      &.active {
+        button {
+          color: #212529;
+          background-color: #e2e6ea;
+          border-color: #dae0e5;
+        }
+      }
+      button {
+        color: #ffffff;
+        font-size: 18px;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+      }
+    }
+  }
+}

@@ -3,78 +3,133 @@
       "id": "1",
       "name": "Lionel Messi",
       "image": "http://localhost:3000/images/lionel-messi.jpg",
-      "position": "attack"
+      "position": "attack",
+      "cost": "140000000"
     },
     {
       "id": "2",
       "name": "Cristiano Ronaldo",
       "image": "http://localhost:3000/images/cristiano-ronaldo.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "110000000"
     },
     {
       "id": "3",
       "name": "Neymar",
       "image": "http://localhost:3000/images/neymar.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "120000000"
     },
     {
       "id": "4",
       "name": "Kilian Mbappe",
       "image": "http://localhost:3000/images/kilian-mbappe.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "130000000"
     },
     {
       "id": "5",
       "name": "Zlatan Ibrahimovic",
       "image": "http://localhost:3000/images/zlatan-ibrahimovic.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "70000000"
     },
     {
       "id": "6",
       "name": "Aleksandr Golovin",
       "image": "http://localhost:3000/images/aleksandr-golovin.jpg",
-      "position": "half-back"
+      "position": "half-back",
+      "cost": "50000000"
     },
     {
       "id": "7",
       "name": "Igor Akinfeev",
       "image": "http://localhost:3000/images/igor-akinfeev.jpg",
-      "position": "goalkeeper"
+      "position": "goalkeeper",
+      "cost": "60000000"
     },
     {
       "id": "8",
       "name": "Robert Lewandowski",
       "image": "http://localhost:3000/images/robert-lewandowski.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "70000000"
     },
     {
       "id": "9",
       "name": "Mesut Ozil",
       "image": "http://localhost:3000/images/mesut-ozil.jpg",
-      "position": "half-back"
+      "position": "half-back",
+      "cost": "40000000"
     },
     {
       "id": "10",
       "name": "Henrikh Mkhitaryan",
       "image": "http://localhost:3000/images/henrikh-mkhitaryan.png",
-      "position": "half-back"
+      "position": "half-back",
+      "cost": "45000000"
     },
     {
       "id": "11",
       "name": "Mohammed Salah",
       "image": "http://localhost:3000/images/mohammed-salah.png",
-      "position": "attack"
+      "position": "attack",
+      "cost": "100000000"
     },
     {
       "id": "12",
       "name": "Ronaldinho",
       "image": "http://localhost:3000/images/ronaldinho.jpeg",
-      "position": "half-back"
+      "position": "half-back",
+      "cost": "150000000"
     },
     {
       "id": "13",
       "name": "Eden Hazard",
       "image": "http://localhost:3000/images/eden-hazard.png",
-      "position": "half-back"
+      "position": "half-back",
+      "cost": "90000000"
+    },
+    {
+      "id": "14",
+      "name": "Antoine Griezmann",
+      "image": "http://localhost:3000/images/antoine-griezmann.png",
+      "position": "attack",
+      "cost": "80000000"
+    },
+    {
+      "id": "15",
+      "name": "Wayne Rooney",
+      "image": "http://localhost:3000/images/wayne-rooney.png",
+      "position": "attack",
+      "cost": "100000000"
+    },
+    {
+      "id": "16",
+      "name": "Artem Dzyuba",
+      "image": "http://localhost:3000/images/artem-dzyuba.png",
+      "position": "attack",
+      "cost": "60000000"
+    },
+    {
+      "id": "17",
+      "name": "Sergio Ramos",
+      "image": "http://localhost:3000/images/sergio-ramos.jpg",
+      "position": "defender",
+      "cost": "60000000"
+    },
+    {
+      "id": "18",
+      "name": "Andrey Arshavin",
+      "image": "http://localhost:3000/images/andrey-arshavin.jpeg",
+      "position": "half-back",
+      "cost": "70000000"
+    },
+    {
+      "id": "19",
+      "name": "Paul Pogba",
+      "image": "http://localhost:3000/images/paul-pogba.png",
+      "position": "half-back",
+      "cost": "70000000"
     }
   ]

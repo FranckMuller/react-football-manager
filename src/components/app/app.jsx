@@ -19,7 +19,7 @@ const App = () => {
     <Provider store={store}>
       <FmapiServiceProvider value={fmapiService}>
         <Router>
-          <div className="app">
+          <div className="app d-flex flex-column">
             <AppHeader />
             <Route path="/transfer-market" component={TransferMarket} />
           </div>

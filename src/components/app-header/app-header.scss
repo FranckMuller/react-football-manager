@@ -8,6 +8,10 @@
   z-index: 2;
   .logo {
     flex: 0 0 50px;
+    &:hover {
+      transition: .1s;
+      transform: rotate3d(1, 1, 1, 45deg);
+    }
   }
   ul {
     height: 70px;
@@ -20,5 +24,40 @@
         color: #ffffff;
       }
     }
+  }
+  .your-money {
+    color: #dddddd;
+    padding-left: 30px;
+    padding-right: 30px;
+    flex: 0 0 150px;
+    margin-left: 30px;;
+    background-color: rgba(0, 0, 0, .6);
+    i {
+      margin-right: 10px;
+      color: #ffffff;
+      font-size: 25px;
+    }
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: rotate3d(90deg, 20deg);
+    animation-timing-function: ease;
+  }
+  25% {
+    top: 50px;
+    animation-timing-function: ease;
+  }
+  50% {
+    top: 100px;
+    animation-timing-function: ease;
+  }
+  75% {
+    top: 75px;
+    animation-timing-function: ease;
+  }
+  to {
+    top: 100px;
   }
 }

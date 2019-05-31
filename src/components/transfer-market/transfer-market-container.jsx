@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchRequest } from '../../actions';
 
 import TransferMarket from './transfer-market';
+import Spinner from '../spinner';
 
 
 class TransferMarketContainer extends Component {
@@ -16,25 +17,30 @@ class TransferMarketContainer extends Component {
   };
 
   render() {
-    const { items } = this.props;
+    const { items, isLoading } = this.props;
+
+    if(isLoading) return <Spinner />
 
     return (
-      <TransferMarket items={items} />
+      <div className="container transfer-market-container">
+        <TransferMarket items={items} />
+      </div>
     );
   };
 
 };
 
-const mapStateToProps = ({ transferMarket: { players } }) => {
+const mapStateToProps = ({ transferMarket: { players, loading } }) => {
   return {
-    items: players
-  }
-}
+    items: players,
+    isLoading: loading
+  };
+};
 
 const mapDispatchToProps = (dispatch, { fmapiService }) => {
   return {
     getAllPlayers: () => fetchRequest(dispatch, fmapiService)
-  }
-}
+  };
+};
 
 export default withFmapiService(connect(mapStateToProps, mapDispatchToProps)(TransferMarketContainer));
