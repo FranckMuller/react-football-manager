@@ -131,5 +131,40 @@
       "image": "http://localhost:3000/images/paul-pogba.png",
       "position": "half-back",
       "cost": "70000000"
+    },
+    {
+      "id": "20",
+      "name": "Paulo Dybala",
+      "image": "http://localhost:3000/images/paulo-dybala.png",
+      "position": "attack",
+      "cost": "80000000"
+    },
+    {
+      "id": "21",
+      "name": "Denis Cheryshev",
+      "image": "http://localhost:3000/images/denis-cheryshev.jpg",
+      "position": "half-back",
+      "cost": "50000000"
+    },
+    {
+      "id": "22",
+      "name": "Gianluigi Buffon",
+      "image": "http://localhost:3000/images/gianluigi-buffon.png",
+      "position": "goalkeeper",
+      "cost": "120000000"
+    },
+    {
+      "id": "23",
+      "name": "Gareth Bale",
+      "image": "http://localhost:3000/images/gareth-bale.jpg",
+      "position": "half-back",
+      "cost": "90000000"
+    },
+    {
+      "id": "24",
+      "name": "Philippe Coutinho",
+      "image": "http://localhost:3000/images/philippe-coutinho.jpg",
+      "position": "half-back",
+      "cost": "70000000"
     }
   ]
