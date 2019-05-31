@@ -27,8 +27,8 @@ const ItemDetails = ({ name, image, position, cost, ...props }) => {
 const BtnGroup = ({ leftBtn, rightBtn, bought = false }) => {
   return (
     <div className="btn-group">
-      <button disabled={bought} className="btn btn-primary">{leftBtn}</button>
-      <button disabled={!bought} className="btn btn-success">{rightBtn}</button>
+      <button disabled={bought} className="btn btn-success">{leftBtn}</button>
+      <button disabled={!bought} className="btn btn-danger">{rightBtn}</button>
     </div>
   );
 };
