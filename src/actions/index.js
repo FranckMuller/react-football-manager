@@ -3,7 +3,7 @@ const fetchRequest = (dispatch, fmapiService) => {
     .then((res) => {
       setTimeout(() => {
         dispatch(playersRequest(res));
-      }, 2000);
+      }, 1);
     })
 };
 
@@ -11,9 +11,17 @@ const playersRequest = (items) => {
   return {
     type: 'FETCH_PLAYERS_REQUEST',
     payload: items
+  };
+};
+
+const sortPlayers = (value) => {
+  return {
+    type: 'SORT_PLAYERS',
+    payload: value
   }
 }
 
 export {
-  fetchRequest
+  fetchRequest,
+  sortPlayers
 };

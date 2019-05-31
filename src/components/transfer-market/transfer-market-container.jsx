@@ -30,9 +30,9 @@ class TransferMarketContainer extends Component {
 
 };
 
-const mapStateToProps = ({ transferMarket: { players, loading } }) => {
+const mapStateToProps = ({ transferMarket: { displayedPlayers, loading } }) => {
   return {
-    items: players,
+    items: displayedPlayers,
     isLoading: loading
   };
 };

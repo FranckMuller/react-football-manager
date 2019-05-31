@@ -10,5 +10,8 @@
     overflow-y: hidden;
     overflow-x: visible;
     border-radius: 4px;
+    button {
+      box-shadow: none;
+    }
   }
 }

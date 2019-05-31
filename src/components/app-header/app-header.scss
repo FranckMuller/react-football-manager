@@ -8,10 +8,6 @@
   z-index: 2;
   .logo {
     flex: 0 0 50px;
-    &:hover {
-      transition: .1s;
-      transform: rotate3d(1, 1, 1, 45deg);
-    }
   }
   ul {
     height: 70px;
