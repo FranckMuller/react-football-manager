@@ -6,5 +6,9 @@
     padding: 10px;
     flex: 0 0 16.6666666667%;
     max-width: 16.6666666667%;
+    @media screen and (max-width: 768px) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
   }
 }

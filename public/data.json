@@ -2,7 +2,7 @@
     {
       "id": "1",
       "name": "Lionel Messi",
-      "image": "http://localhost:3000/images/lionel-messi.jpg",
+      "image": "lionel-messi.jpg",
       "position": "attack",
       "cost": "140000000",
       "rating": "98"
@@ -10,7 +10,7 @@
     {
       "id": "2",
       "name": "Cristiano Ronaldo",
-      "image": "http://localhost:3000/images/cristiano-ronaldo.png",
+      "image": "cristiano-ronaldo.png",
       "position": "attack",
       "cost": "110000000",
       "rating": "94"
@@ -18,7 +18,7 @@
     {
       "id": "3",
       "name": "Neymar",
-      "image": "http://localhost:3000/images/neymar.png",
+      "image": "neymar.png",
       "position": "attack",
       "cost": "120000000",
       "rating": "95"
@@ -26,7 +26,7 @@
     {
       "id": "4",
       "name": "Kilian Mbappe",
-      "image": "http://localhost:3000/images/kilian-mbappe.png",
+      "image": "kilian-mbappe.png",
       "position": "attack",
       "cost": "130000000",
       "rating": "95"
@@ -34,7 +34,7 @@
     {
       "id": "5",
       "name": "Zlatan Ibrahimovic",
-      "image": "http://localhost:3000/images/zlatan-ibrahimovic.png",
+      "image": "zlatan-ibrahimovic.png",
       "position": "attack",
       "cost": "70000000",
       "rating": "92"
@@ -42,7 +42,7 @@
     {
       "id": "6",
       "name": "Aleksandr Golovin",
-      "image": "http://localhost:3000/images/aleksandr-golovin.jpg",
+      "image": "aleksandr-golovin.jpg",
       "position": "half-back",
       "cost": "50000000",
       "rating": "89"
@@ -50,7 +50,7 @@
     {
       "id": "7",
       "name": "Igor Akinfeev",
-      "image": "http://localhost:3000/images/igor-akinfeev.jpg",
+      "image": "igor-akinfeev.jpg",
       "position": "goalkeeper",
       "cost": "60000000",
       "rating": "91"
@@ -58,7 +58,7 @@
     {
       "id": "8",
       "name": "Robert Lewandowski",
-      "image": "http://localhost:3000/images/robert-lewandowski.png",
+      "image": "robert-lewandowski.png",
       "position": "attack",
       "cost": "70000000",
       "rating": "87"
@@ -66,7 +66,7 @@
     {
       "id": "9",
       "name": "Mesut Ozil",
-      "image": "http://localhost:3000/images/mesut-ozil.jpg",
+      "image": "mesut-ozil.jpg",
       "position": "half-back",
       "cost": "40000000",
       "rating": "86"
@@ -74,7 +74,7 @@
     {
       "id": "10",
       "name": "Henrikh Mkhitaryan",
-      "image": "http://localhost:3000/images/henrikh-mkhitaryan.png",
+      "image": "henrikh-mkhitaryan.png",
       "position": "half-back",
       "cost": "45000000",
       "rating": "84"
@@ -82,7 +82,7 @@
     {
       "id": "11",
       "name": "Mohammed Salah",
-      "image": "http://localhost:3000/images/mohammed-salah.png",
+      "image": "mohammed-salah.png",
       "position": "attack",
       "cost": "100000000",
       "rating": "92"
@@ -90,7 +90,7 @@
     {
       "id": "12",
       "name": "Ronaldinho",
-      "image": "http://localhost:3000/images/ronaldinho.jpeg",
+      "image": "ronaldinho.jpeg",
       "position": "half-back",
       "cost": "150000000",
       "rating": "98"
@@ -98,7 +98,7 @@
     {
       "id": "13",
       "name": "Eden Hazard",
-      "image": "http://localhost:3000/images/eden-hazard.png",
+      "image": "eden-hazard.png",
       "position": "half-back",
       "cost": "90000000",
       "rating": "90"
@@ -106,7 +106,7 @@
     {
       "id": "14",
       "name": "Antoine Griezmann",
-      "image": "http://localhost:3000/images/antoine-griezmann.png",
+      "image": "antoine-griezmann.png",
       "position": "attack",
       "cost": "80000000",
       "rating": "94"
@@ -114,7 +114,7 @@
     {
       "id": "15",
       "name": "Wayne Rooney",
-      "image": "http://localhost:3000/images/wayne-rooney.png",
+      "image": "wayne-rooney.png",
       "position": "attack",
       "cost": "100000000",
       "rating": "95"
@@ -122,7 +122,7 @@
     {
       "id": "16",
       "name": "Artem Dzyuba",
-      "image": "http://localhost:3000/images/artem-dzyuba.png",
+      "image": "artem-dzyuba.png",
       "position": "attack",
       "cost": "60000000",
       "rating": "89"
@@ -130,7 +130,7 @@
     {
       "id": "17",
       "name": "Sergio Ramos",
-      "image": "http://localhost:3000/images/sergio-ramos.jpg",
+      "image": "sergio-ramos.jpg",
       "position": "defender",
       "cost": "60000000",
       "rating": "92"
@@ -138,7 +138,7 @@
     {
       "id": "18",
       "name": "Andrey Arshavin",
-      "image": "http://localhost:3000/images/andrey-arshavin.jpeg",
+      "image": "andrey-arshavin.jpeg",
       "position": "half-back",
       "cost": "70000000",
       "rating": "96"
@@ -146,7 +146,7 @@
     {
       "id": "19",
       "name": "Paul Pogba",
-      "image": "http://localhost:3000/images/paul-pogba.png",
+      "image": "paul-pogba.png",
       "position": "half-back",
       "cost": "70000000",
       "rating": "94"
@@ -154,7 +154,7 @@
     {
       "id": "20",
       "name": "Paulo Dybala",
-      "image": "http://localhost:3000/images/paulo-dybala.png",
+      "image": "paulo-dybala.png",
       "position": "attack",
       "cost": "80000000",
       "rating": "93"
@@ -162,7 +162,7 @@
     {
       "id": "21",
       "name": "Denis Cheryshev",
-      "image": "http://localhost:3000/images/denis-cheryshev.jpg",
+      "image": "denis-cheryshev.jpg",
       "position": "half-back",
       "cost": "50000000",
       "rating": "88"
@@ -170,7 +170,7 @@
     {
       "id": "22",
       "name": "Gianluigi Buffon",
-      "image": "http://localhost:3000/images/gianluigi-buffon.png",
+      "image": "gianluigi-buffon.png",
       "position": "goalkeeper",
       "cost": "120000000",
       "rating": "95"
@@ -178,7 +178,7 @@
     {
       "id": "23",
       "name": "Gareth Bale",
-      "image": "http://localhost:3000/images/gareth-bale.jpg",
+      "image": "gareth-bale.jpg",
       "position": "half-back",
       "cost": "90000000",
       "rating": "89"
@@ -186,7 +186,7 @@
     {
       "id": "24",
       "name": "Philippe Coutinho",
-      "image": "http://localhost:3000/images/philippe-coutinho.jpg",
+      "image": "philippe-coutinho.jpg",
       "position": "half-back",
       "cost": "70000000",
       "rating": "78"
