@@ -1,4 +1,4 @@
-const isPodaction = true; 
+const isPodaction = false; 
 let url = null;
 if(isPodaction) {
   url = 'https://react-football-manager.herokuapp.com'

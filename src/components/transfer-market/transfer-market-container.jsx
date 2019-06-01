@@ -26,7 +26,7 @@ class TransferMarketContainer extends Component {
     if(isLoading) return <Spinner />
 
     return (
-      <div className="container transfer-market-container">
+      <div className="container-fluid transfer-market-container">
         <TransferMarket items={items} />
       </div>
     );
