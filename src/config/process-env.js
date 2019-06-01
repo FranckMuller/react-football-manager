@@ -1,6 +1,6 @@
-const isPodaction = false; 
+const isProdaction = true; 
 let url = null;
-if(isPodaction) {
+if(isProdaction) {
   url = 'https://react-football-manager.herokuapp.com'
 } else {
   url = 'http://localhost:3000'
