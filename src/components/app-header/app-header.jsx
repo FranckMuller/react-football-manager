@@ -8,7 +8,7 @@ import logo from './fm_logo.gif'
 const AppHeader = ({ money }) => {
   return (
     <header className="header">
-      <div className="container d-flex">
+      <div className="container-fluid d-flex">
         <div className="logo d-flex align-items-center">
           <Link to="/">
             <img src={logo} alt="logo"/>

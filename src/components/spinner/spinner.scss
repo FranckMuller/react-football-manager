@@ -59,17 +59,15 @@
   border-radius    : 50%;
   background-image : url('../app-header/fm_logo.gif');
   background-repeat: no-repeat;
-  background-size  : cover;
-  left             : 74px;
-  top              : 20px;
+  background-size  : cover; 
   -webkit-animation: lds-ball 1s linear infinite;
   animation        : lds-ball 1s linear infinite;
 }
 
 .lds-ball {
-  width            : 200px;
-  height           : 200px;
-  position: absolute;
-  margin-left: -100px;
-  margin-top: -100px;
+  position: fixed;
+  width: 52px;
+  height: 52px;
+  margin-left: -25px;
+  margin-top: -25px;
 }
