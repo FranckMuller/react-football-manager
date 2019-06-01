@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './spinner.scss';
 
-const Spinner = () => {
-  return (
-    <div className="lds-css ng-scope spinner d-flex align-items-center justify-content-center">
-      <div className="lds-ball"><div>
+class Spinner extends Component {
+
+  state = {
+    left: '50%',
+    top: '70%',
+  };
+
+  onUpdateCord = (e) => {
+    const x = e.screenX;
+    const y = e.screenY;
+    this.setState({
+      left: `${x}px`,
+      top: `${y}px`
+    })
+  }
+
+  render() {
+
+    return (
+      <div 
+        className="lds-css ng-scope flex-grow-1 flex-shrink-1 spinner d-flex align-items-center justify-content-center"
+        onMouseMove={(e) => this.onUpdateCord(e)}
+        >
+        <div style={this.state} className="lds-ball"><div>
+        </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default Spinner;

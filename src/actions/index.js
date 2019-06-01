@@ -14,14 +14,26 @@ const playersRequest = (items) => {
   };
 };
 
-const sortPlayers = (value) => {
+const sortPlayers = (criterion, sortValue) => {
   return {
     type: 'SORT_PLAYERS',
-    payload: value
-  }
-}
+    payload: {
+      criterion: criterion,
+      sortValue: sortValue
+    }
+  };
+};
+
+
+const clearList = () => {
+  console.log(1)
+  return {
+    type: 'CLEAR_LIST'
+  };
+};
 
 export {
   fetchRequest,
-  sortPlayers
+  sortPlayers,
+  clearList
 };

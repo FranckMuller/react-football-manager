@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withFmapiService from '../hoc/with-fmapi-service';
 import { connect } from 'react-redux';
-import { fetchRequest } from '../../actions';
+import { fetchRequest, clearList } from '../../actions';
 
 import TransferMarket from './transfer-market';
 import Spinner from '../spinner';
@@ -14,6 +14,10 @@ class TransferMarketContainer extends Component {
     if(!items.length) {
       getAllPlayers(fmapiService);
     }; 
+  };
+
+  componentWillUnmount() {
+    this.props.onClearedList();
   };
 
   render() {
@@ -39,7 +43,8 @@ const mapStateToProps = ({ transferMarket: { displayedPlayers, loading } }) => {
 
 const mapDispatchToProps = (dispatch, { fmapiService }) => {
   return {
-    getAllPlayers: () => fetchRequest(dispatch, fmapiService)
+    getAllPlayers: () => fetchRequest(dispatch, fmapiService),
+    onClearedList: () => dispatch(clearList())
   };
 };
 

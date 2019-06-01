@@ -1,73 +1,85 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { sortPlayers } from '../../actions';
 
 import './market-panel.scss';
 
-class MarketPanel extends Component {
+const TopMarketPanel = ({ items, onSorted, sortingValue }) => {
 
-  state = {
-    buttons: [
+  return (
+    <ul className="nav justify-content-between top-panel">
       {
-        label: 'All players',
-        sort: 'all'
-      },
-      {
-        label: 'Attack',
-        sort: 'attack'
-      },
-      {
-        label: 'Half Back',
-        sort: 'half-back'
-      },
-      {
-        label: 'Goalkepeer',
-        sort: 'goalkeeper'
-      },
-    ]
-  }
+        items.map(({ label, sort, criterion }) => {
 
-  renderButtons(arr) {
-    const { onSorted, sortingValue } = this.props;
+          let classes = "flex-shrink-1 flex-grow-1";
+          if(sort === sortingValue) classes = classes + ' active';
 
-    return arr.map(({ label, sort }) => {
-      let classes = "flex-shrink-1 flex-grow-1";
-      if(sort === sortingValue) classes = classes + ' active';
-      
-      return (
-        <li key={sort} className={classes}>
-          <button 
-            className="btn btn-light"
-            onClick={() => onSorted(sort)} >
-            {label}
-          </button>
-        </li>
-      )
-    });
-  }
-
-  render() {
-    const { buttons } = this.state;
-    const items = this.renderButtons(buttons)
-    return (
-      <div className="market-panel">
-        <ul className="nav justify-content-between">
-          {items}
-        </ul>
-      </div>
-    );
-  };
+          return (
+            <li key={sort} className={classes}>
+              <button 
+                className="btn btn-light"
+                onClick={() => onSorted(criterion, sort)} >
+                {label}              
+              </button>
+            </li>
+          );
+        })
+      }
+    </ul>
+  );
 };
 
-const mapStateToProps = ({ transferMarket: { sortingValue } }) => {
+const LeftMarketPanel = ({ items, onSorted }) => {
+
+  return (
+    <ul className="nav flex-column left-panel">
+      {
+        items.map(({ criterion, sort }) => {
+          
+          let classes = "flex-shrink-1 flex-grow-1";
+          let icon = '';
+          
+          if(sort === 'rating') icon = 'fa fa-star-o'
+          if(sort === 'cost') icon = 'fa fa-money'
+
+          return (
+            <li key={sort} className={classes}>
+              <button 
+                className="btn btn-light"
+                onClick={() => onSorted(criterion, sort)} >
+                <i className={icon}></i>            
+              </button>
+            </li>
+          );
+        })
+      }
+    </ul>
+  );
+};
+
+
+
+const MarketPanel = ({ sortingValue, onSorted, sortingBtns }) => {
+  const positionBtns = sortingBtns.filter(({ criterion }) => criterion === 'position');
+  const otherBtns = sortingBtns.filter(({ criterion }) => criterion !== 'position' );
+  return (
+    <div className="market-panel">
+      <TopMarketPanel items={positionBtns} sortingValue={sortingValue} onSorted={onSorted} />
+      <LeftMarketPanel items={otherBtns} sortingValue={sortingValue} onSorted={onSorted} />
+    </div>
+  );
+};
+
+const mapStateToProps = ({ transferMarket: { sortingBtns, sortingValue } }) => {
   return {
+    sortingBtns: sortingBtns,
     sortingValue: sortingValue
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSorted: (value) => dispatch(sortPlayers(value))
+    onSorted: (value, id) => dispatch(sortPlayers(value, id))
   }
 }
 

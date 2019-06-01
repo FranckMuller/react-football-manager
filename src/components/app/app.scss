@@ -1,3 +1,7 @@
+#root {
+  height: 100vh;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -8,7 +12,7 @@ img {
 .app {
   padding-top: 70px;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-image: url('../../assets/images/app-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;

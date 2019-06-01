@@ -1,0 +1,59 @@
+.home-page {
+  height: 100%;
+  .welcome-message {
+    font-size: 52px;
+    margin-top: 80px;
+    padding: 0 50px;
+    font-weight: 600;
+    position: relative;
+    z-index: 10;
+    color: #ffffff;
+    position: relative;
+  }
+  &:before {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 100%;
+    left: 0;
+    background-image: url('../../assets/images/messi-test.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+    transition: 1s ease-out;
+  }
+  &:after {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: -100%;
+    right: 0;
+    background-image: url('../../assets/images/ronaldo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+    transition: 1s ease-out;
+  }
+  &.animate {
+    &:before {
+      top: 0;
+    }
+    &:after {
+      top: 0;
+    }
+  }
+
+  .spinner {
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+  }
+}

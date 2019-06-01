@@ -7,6 +7,7 @@ import store from '../../store';
 
 import TransferMarket from '../transfer-market'
 import AppHeader from '../app-header';
+import HomePage from '../home-page';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './app.scss'
@@ -21,7 +22,8 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route path="/transfer-market" component={TransferMarket} />
+            <Route exact path="/transfer-market" component={TransferMarket} />
+            <Route exact path="/" component={HomePage} />
           </div>
         </Router>
       </FmapiServiceProvider>

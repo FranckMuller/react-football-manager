@@ -8,6 +8,10 @@
   z-index: 2;
   .logo {
     flex: 0 0 50px;
+    a {
+      border-radius: 50%;
+      box-shadow: 0px 0px 43px 4px rgba(240,240,240,1);
+    }
   }
   ul {
     height: 70px;

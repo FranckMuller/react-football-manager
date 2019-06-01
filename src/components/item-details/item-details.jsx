@@ -2,10 +2,13 @@ import React from 'react';
 
 import './item-details.scss';
 
-const ItemDetails = ({ name, image, position, cost, ...props }) => {
+const ItemDetails = ({ name, image, position, cost, rating, ...props }) => {
   return (
     <div className="item-details d-flex flex-column justify-content-between">
       <div className="name text-center">{name}</div>
+      <div className="rating text-center">
+        <i className="fa fa-star" /> {rating}
+      </div>
       <div className="photo">
         <img src={image} alt={name} />
       </div>
