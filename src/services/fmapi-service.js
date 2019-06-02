@@ -11,9 +11,10 @@ class FmpaiService {
   transformData(item) {
     return {
       ...item,
-      image: `${url}/images/${item.image}`
-    }
-  }
+      image: `${url}/images/${item.image}`,
+      bought: false
+    };
+  };
 
 };
 

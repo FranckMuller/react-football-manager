@@ -1,5 +1,6 @@
-const isProdaction = true; 
-let url = null;
+const isProdaction = false; 
+let url;
+
 if(isProdaction) {
   url = 'https://react-football-manager.herokuapp.com'
 } else {

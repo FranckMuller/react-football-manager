@@ -1,16 +1,17 @@
 import React from 'react';
 
 import ItemList from '../item-list';
-import MarketPanel from './market-panel';
+import SortingPanel from './sorting-panel-container';
+import ModalWindow from '../modal-window';
 
 import './transfer-market.scss';
 
-const TransferMarket = ({ items }) => {
-
+const TransferMarket = ({ isShowModal, selectedPlayer, ...props }) => {
   return (
     <div className="transfer-market d-flex flex-column">
-      <MarketPanel />
-      <ItemList leftBtn='Buy' rightBtn='Sell' items={items} />
+      <SortingPanel />
+      <ItemList leftBtnLabel='Buy' rightBtnLabel='Sell' {...props} />
+      <ModalWindow selectedPlayer={selectedPlayer} />
     </div>
   );
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withFmapiService from '../hoc/with-fmapi-service';
 import { connect } from 'react-redux';
-import { fetchRequest, clearList } from '../../actions';
+import { fetchRequest, clearList, toggleModal } from '../../actions';
 
 import TransferMarket from './transfer-market';
 import Spinner from '../spinner';
@@ -21,30 +21,32 @@ class TransferMarketContainer extends Component {
   };
 
   render() {
-    const { items, isLoading } = this.props;
+    const { isLoading, ...marketProps } = this.props;
 
     if(isLoading) return <Spinner />
 
     return (
       <div className="container-fluid transfer-market-container">
-        <TransferMarket items={items} />
+        <TransferMarket {...marketProps} />
       </div>
     );
   };
 
 };
 
-const mapStateToProps = ({ transferMarket: { displayedPlayers, loading } }) => {
+const mapStateToProps = ({ transferMarket: { displayedPlayers, loading, selectedPlayer } }) => {
   return {
     items: displayedPlayers,
-    isLoading: loading
+    isLoading: loading,
+    selectedPlayer: selectedPlayer
   };
 };
 
 const mapDispatchToProps = (dispatch, { fmapiService }) => {
   return {
     getAllPlayers: () => fetchRequest(dispatch, fmapiService),
-    onClearedList: () => dispatch(clearList())
+    onClearedList: () => dispatch(clearList()),
+    onToggleModal: (value, id) => dispatch(toggleModal(value, id))
   };
 };
 

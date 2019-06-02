@@ -9,10 +9,9 @@ const ItemList = ({ items, ...props }) => {
     <ul className="item-list d-flex flex-wrap">
       {
         items.map((item) => {
-          const { id, ...itemProps } = item;
           return (
-            <li key={id}>
-              <ItemDetails {...props} {...itemProps} />
+            <li key={item.id}>
+              <ItemDetails item={item} {...props} />
             </li>
             );
           })

@@ -24,16 +24,34 @@ const sortPlayers = (criterion, sortValue) => {
   };
 };
 
-
 const clearList = () => {
-  console.log(1)
   return {
     type: 'CLEAR_LIST'
+  };
+};
+
+const buyPlayer = (id) => {
+  return {
+    type: 'BUY_PLAYER',
+    payload: id
+  }
+}
+
+const toggleModal = (value, id) => {
+  console.log(value, id)
+  return {
+    type: 'TOGGLE_MODAL',
+    payload: {
+      isShowModal: value,
+      id: id
+    }
   };
 };
 
 export {
   fetchRequest,
   sortPlayers,
-  clearList
+  clearList,
+  buyPlayer,
+  toggleModal
 };

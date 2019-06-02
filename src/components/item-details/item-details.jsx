@@ -2,7 +2,27 @@ import React from 'react';
 
 import './item-details.scss';
 
-const ItemDetails = ({ name, image, position, cost, rating, ...props }) => {
+const BtnGroup = ({ leftBtnLabel, rightBtnLabel, id, disabled = false, onToggleModal }) => {
+
+  if(!leftBtnLabel && !rightBtnLabel) return null;
+
+  return (
+    <div className="btn-group">
+      <button
+        onClick={() => onToggleModal(true, id)} 
+        disabled={disabled} 
+        className="btn btn-success">{leftBtnLabel}</button>
+      <button 
+        onClick={() => onToggleModal(true, id)} 
+        disabled={!disabled} className="btn btn-danger">{rightBtnLabel}</button>
+    </div>
+  );
+
+};
+
+const ItemDetails = (props) => {
+  const { item: { name, image, position, cost, rating, bought, id}, ...btnProps } = props;
+
   return (
     <div className="item-details d-flex flex-column justify-content-between">
       <div className="name text-center">{name}</div>
@@ -22,16 +42,7 @@ const ItemDetails = ({ name, image, position, cost, rating, ...props }) => {
           <span className="font-weight-bold">{cost}$</span>
         </div>
       </div>
-      <BtnGroup {...props } />
-    </div>
-  );
-};
-
-const BtnGroup = ({ leftBtn, rightBtn, bought = false }) => {
-  return (
-    <div className="btn-group">
-      <button disabled={bought} className="btn btn-success">{leftBtn}</button>
-      <button disabled={!bought} className="btn btn-danger">{rightBtn}</button>
+      <BtnGroup disabled={bought} id={id} {...btnProps } />
     </div>
   );
 };
