@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withFmapiService from '../hoc/with-fmapi-service';
 import { connect } from 'react-redux';
-import { fetchRequest, clearList, toggleModal } from '../../actions';
+import { fetchRequest, clearList, preOrderPlayer } from '../../actions';
 
 import TransferMarket from './transfer-market';
 import Spinner from '../spinner';
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, { fmapiService }) => {
   return {
     getAllPlayers: () => fetchRequest(dispatch, fmapiService),
     onClearedList: () => dispatch(clearList()),
-    onToggleModal: (value, id) => dispatch(toggleModal(value, id))
+    preOrderPlayer: (id) => dispatch(preOrderPlayer(dispatch, id))
   };
 };
 

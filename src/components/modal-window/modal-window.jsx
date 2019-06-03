@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleModal } from '../../actions';
 import ItemDetails from '../item-details';
+
 
 import './modal-window.scss';
 
-const ModalWindow = ({ isShowModal, onToggleModal, selectedPlayer }) => {
+const DescriptionRecord = ({label, field}) => {
+  return (
+    <div className="position d-flex justify-content-between">
+      <span>{label}</span>
+      <span className="font-weight-bold">{field}</span>
+    </div>
+  )
+};
 
+const ModalWindow = ({ isShowModal, selectedPlayer }) => {
   let classes = "modal-window d-flex justify-content-center align-items-center"
   if(isShowModal) classes = classes + ' show'
 
@@ -14,12 +22,13 @@ const ModalWindow = ({ isShowModal, onToggleModal, selectedPlayer }) => {
     <div className={classes}>
       <div className="modal-window-content">
         <div className="title">You are sure that are you want to buy {selectedPlayer.name}?</div>
-        <ItemDetails item={selectedPlayer} />
+        <ItemDetails item={selectedPlayer}>
+          <DescriptionRecord label={'Passes'} field={23} />
+        </ItemDetails>
         <div className="btn-group d-flex">
           <button className="btn btn-success flex-grow-1 flex-shrink-1">Buy</button>
           <button 
-            className="btn btn-danger flex-grow-1 flex-shrink-1"
-            onClick={() => onToggleModal(false)}>
+            className="btn btn-danger flex-grow-1 flex-shrink-1">
               Cancel
             </button>
         </div>
@@ -34,10 +43,4 @@ const mapStateToProps = ({ isShowModal }) => {
   };
 };
 
-const dispatchToProps = (dispatch) => {
-  return {
-    onToggleModal: (value) => dispatch(toggleModal(value))
-  }
-}
-
-export default connect(mapStateToProps, dispatchToProps)(ModalWindow);
+export default connect(mapStateToProps, null)(ModalWindow);

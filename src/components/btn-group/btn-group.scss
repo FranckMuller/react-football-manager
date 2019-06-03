@@ -1,0 +1,11 @@
+.btn-group {
+  button {
+    flex: 1;
+    height: 35px;
+    padding: 0;
+    font-size: 14px;
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

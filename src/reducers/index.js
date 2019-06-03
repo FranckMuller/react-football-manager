@@ -169,24 +169,21 @@ const reducer = (state = initialState, action) => {
     //     }
     //   }
 
-    case 'TOGGLE_MODAL':
-
-      if(!action.payload.id) {
-        return {
-          ...state,
-          isShowModal: action.payload.isShowModal
-        }
-      }
-
-      const selectedPlayer = state.transferMarket.displayedPlayers.find(({ id }) => id === action.payload.id);
+    case 'SHOW_MODAL':
       return {
         ...state,
-        isShowModal: action.payload.isShowModal,
+        isShowModal: true
+      }
+
+    case 'PRE_ORDER_PLAYER':
+      const selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);
+      return {
+        ...state,
         transferMarket: {
           ...state.transferMarket,
           selectedPlayer: selectedPlayer
         }
-      }
+      }  
 
     default:
       return state
