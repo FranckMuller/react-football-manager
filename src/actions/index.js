@@ -37,24 +37,27 @@ const buyPlayer = (id) => {
   }
 }
 
-const showModal = () => {
+const toggleModal = (value) => {
   return {
-    type: 'SHOW_MODAL'
+    type: 'TOGGLE_MODAL',
+    payload: value
   };
 };
 
-const preOrderPlayer = (dispatch, id) => {
-  dispatch(showModal());
+const preOrderPlayer = (dispatch, id, value) => {
+  dispatch(toggleModal(value));
   return {
     type: 'PRE_ORDER_PLAYER',
     payload: id
-  }
-}
+  };
+};
+
 
 export {
   fetchRequest,
   sortPlayers,
   clearList,
   buyPlayer,
-  preOrderPlayer
+  preOrderPlayer,
+  toggleModal
 };

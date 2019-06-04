@@ -14,8 +14,7 @@ const TransferMarket = ({ selectedPlayer, items, preOrderPlayer }) => {
       <BtnGroup 
         leftBtnLabel='Buy'
         rightBtnLabel='Sell' 
-        leftBtnAction={preOrderPlayer}
-        leftBtnProps={item.id} />
+        leftBtnAction={() => preOrderPlayer(item.id)}/>
     );
   };
 

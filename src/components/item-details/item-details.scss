@@ -23,11 +23,21 @@
 
   .description {
     margin-bottom: 5px;
-    .position {
+    padding-bottom: 5px;
+    .description-item {
+      & + .description-item {
+        margin-top: 5px;
+      }
+    }
+    .field-label {
       font-size: 14px;
     }
-    .cost {
-      font-size: 13px;
+    .gold-balls {
+      .icon {
+        span {
+          height: 20px;
+        }
+      }
     }
   }
 }

@@ -6,10 +6,8 @@ const BtnGroup = (props) => {
 
   const { leftBtnLabel,
           rightBtnLabel,
-          leftBtnAction = null,
-          rightBtnAction = null,
-          rightBtnProps = null,
-          leftBtnProps = null,
+          leftBtnAction = () => {console.log('leftBtnAction')},
+          rightBtnAction = () => {console.log('rightBtnAction')},
           disabled = false } = props;
 
   if(!leftBtnLabel && !rightBtnLabel) return null;
@@ -17,12 +15,12 @@ const BtnGroup = (props) => {
   return (
     <div className="btn-group">
       <button
-        onClick={() => leftBtnAction(leftBtnProps)} 
+        onClick={leftBtnAction} 
         disabled={disabled} 
         className="btn btn-success">{leftBtnLabel}</button>
       <button 
-        onClick={() => rightBtnAction(rightBtnProps)} 
-        disabled={!disabled} className="btn btn-danger">{rightBtnLabel}</button>
+        onClick={rightBtnAction} 
+        disabled={disabled} className="btn btn-danger">{rightBtnLabel}</button>
     </div>
   );
 

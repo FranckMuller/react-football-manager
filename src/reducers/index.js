@@ -120,6 +120,7 @@ const reducer = (state = initialState, action) => {
       }
 
     case 'FETCH_PLAYERS_REQUEST':
+      console.log(action.payload);
       return {
         ...state,
         transferMarket: {
@@ -139,41 +140,11 @@ const reducer = (state = initialState, action) => {
     case 'SORT_PLAYERS':
       return updateItems(state, action.payload.criterion, action.payload.sortValue);
 
-    // case 'BUY_PLAYER':
-    //   const playerIdx = state.transferMarket.allPlayers.findIndex(({ id }) => id === action.payload);
-    //   const displayedPlayerIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === action.payload);
-    //   let newItem = state.transferMarket.allPlayers[playerIdx];
-    //   let displayedNewItem = state.transferMarket.displayedPlayers[displayedPlayerIdx];
-    //   newItem = {
-    //     ...newItem,
-    //     bought: true
-    //   }
-    //   displayedNewItem = {
-    //     ...displayedNewItem,
-    //     bought: true
-    //   }
-    //   return {
-    //     ...state,
-    //     transferMarket: {
-    //       ...state.transferMarket,
-    //       allPlayers: [
-    //         ...state.transferMarket.allPlayers.slice(0, playerIdx),
-    //         newItem,
-    //         ...state.transferMarket.allPlayers.slice(playerIdx + 1),
-    //       ],
-    //       displayedPlayers: [
-    //         ...state.transferMarket.displayedPlayers.slice(0, displayedPlayerIdx),
-    //         displayedNewItem,
-    //         ...state.transferMarket.displayedPlayers.slice(displayedPlayerIdx + 1),
-    //       ]
-    //     }
-    //   }
-
-    case 'SHOW_MODAL':
+    case 'TOGGLE_MODAL':
       return {
         ...state,
-        isShowModal: true
-      }
+        isShowModal: action.payload
+      } 
 
     case 'PRE_ORDER_PLAYER':
       const selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);

@@ -13,21 +13,50 @@
     transform: scale(1);
     border-radius: 0;
   }
-  .modal-window-content {
+  .modal-box {
     background-color: #ffffff;
-    overflow: hidden;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    max-width: 250px;
-    margin-top: -200px;
+    max-width: 300px;
+    margin-top: -100px;
+    position: relative;
     .title {
       background-color: rgba(45, 28, 136, 0.9);
       color: #fff;
       font-size: 16px;
-      padding: 10px;
+      padding: 10px 35px 10px 10px;
+    }
+    .modal-box-content {
+      padding: 10px 15px;
+      .item-details {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+      }
     }
     .btn-group {
-      padding: 10px;
+      position: static;
+      padding: 0 10px 10px;
+      width: 100%;
+      .btn {
+        &.btn-success {
+          border-radius: 3px;
+          font-size: 13px;
+        }
+        &.btn-danger {
+          position: absolute;
+          right: 5px;
+          top: 3px;
+          width: 30px;
+          height: 30px;
+          border-radius: 0;
+          background-image: url('../../assets/images/close-modal-icon.svg');
+          background-size:  25px 25px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-color: transparent;
+          border: none;
+        }
+      }
     }
   }
 }

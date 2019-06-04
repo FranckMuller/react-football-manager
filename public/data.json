@@ -5,7 +5,9 @@
       "image": "lionel-messi.jpg",
       "position": "attack",
       "cost": "140000000",
-      "rating": "98"
+      "rating": "98",
+      "gold-balls": "5",
+      "accurate-passes": "92"
     },
     {
       "id": "2",
@@ -13,7 +15,9 @@
       "image": "cristiano-ronaldo.png",
       "position": "attack",
       "cost": "110000000",
-      "rating": "94"
+      "rating": "94",
+      "gold-balls": "5",
+      "accurate-passes": "88"
     },
     {
       "id": "3",
@@ -21,7 +25,9 @@
       "image": "neymar.png",
       "position": "attack",
       "cost": "120000000",
-      "rating": "95"
+      "rating": "95",
+      "gold-balls": "0",
+      "accurate-passes": "90"
     },
     {
       "id": "4",
@@ -29,7 +35,9 @@
       "image": "kilian-mbappe.png",
       "position": "attack",
       "cost": "130000000",
-      "rating": "95"
+      "rating": "95",
+      "gold-balls": 0,
+      "accurate-passes": "86"
     },
     {
       "id": "5",
@@ -37,7 +45,9 @@
       "image": "zlatan-ibrahimovic.png",
       "position": "attack",
       "cost": "70000000",
-      "rating": "92"
+      "rating": "92",
+      "gold-balls": 0,
+      "accurate-passes": "85"
     },
     {
       "id": "6",
@@ -45,7 +55,9 @@
       "image": "aleksandr-golovin.jpg",
       "position": "half-back",
       "cost": "50000000",
-      "rating": "89"
+      "rating": "89",
+      "gold-balls": 0,
+      "accurate-passes": "84"
     },
     {
       "id": "7",
@@ -53,7 +65,9 @@
       "image": "igor-akinfeev.jpg",
       "position": "goalkeeper",
       "cost": "60000000",
-      "rating": "91"
+      "rating": "91",
+      "gold-balls": "0",
+      "accurate-passes": "90"
     },
     {
       "id": "8",
@@ -61,7 +75,9 @@
       "image": "robert-lewandowski.png",
       "position": "attack",
       "cost": "70000000",
-      "rating": "87"
+      "rating": "87",
+      "gold-balls": "0",
+      "accurate-passes": "89"
     },
     {
       "id": "9",
@@ -69,7 +85,9 @@
       "image": "mesut-ozil.jpg",
       "position": "half-back",
       "cost": "40000000",
-      "rating": "86"
+      "rating": "86",
+      "gold-balls": 0,
+      "accurate-passes": "91"
     },
     {
       "id": "10",
@@ -77,7 +95,9 @@
       "image": "henrikh-mkhitaryan.png",
       "position": "half-back",
       "cost": "45000000",
-      "rating": "84"
+      "rating": "84",
+      "gold-balls": "0",
+      "accurate-passes": "84"
     },
     {
       "id": "11",
@@ -85,7 +105,9 @@
       "image": "mohammed-salah.png",
       "position": "attack",
       "cost": "100000000",
-      "rating": "92"
+      "rating": "92",
+      "gold-balls": "0",
+      "accurate-passes": "92"
     },
     {
       "id": "12",
@@ -93,7 +115,9 @@
       "image": "ronaldinho.jpeg",
       "position": "half-back",
       "cost": "150000000",
-      "rating": "98"
+      "rating": "98",
+      "gold-balls": "1",
+      "accurate-passes": "97"
     },
     {
       "id": "13",
@@ -101,7 +125,9 @@
       "image": "eden-hazard.png",
       "position": "half-back",
       "cost": "90000000",
-      "rating": "90"
+      "rating": "90",
+      "gold-balls": "0",
+      "accurate-passes": "88"
     },
     {
       "id": "14",
@@ -109,7 +135,9 @@
       "image": "antoine-griezmann.png",
       "position": "attack",
       "cost": "80000000",
-      "rating": "94"
+      "rating": "94",
+      "gold-balls": "0",
+      "accurate-passes": "89"
     },
     {
       "id": "15",
@@ -117,7 +145,9 @@
       "image": "wayne-rooney.png",
       "position": "attack",
       "cost": "100000000",
-      "rating": "95"
+      "rating": "95",
+      "gold-balls": "0",
+      "accurate-passes": "93"
     },
     {
       "id": "16",
@@ -125,7 +155,9 @@
       "image": "artem-dzyuba.png",
       "position": "attack",
       "cost": "60000000",
-      "rating": "89"
+      "rating": "89",
+      "gold-balls": "0",
+      "accurate-passes": "89"
     },
     {
       "id": "17",
@@ -133,7 +165,9 @@
       "image": "sergio-ramos.jpg",
       "position": "defender",
       "cost": "60000000",
-      "rating": "92"
+      "rating": "92",
+      "gold-balls": "0",
+      "accurate-passes": "85"
     },
     {
       "id": "18",
@@ -141,7 +175,9 @@
       "image": "andrey-arshavin.jpeg",
       "position": "half-back",
       "cost": "70000000",
-      "rating": "96"
+      "rating": "96",
+      "gold-balls": "0",
+      "accurate-passes": "88"
     },
     {
       "id": "19",
@@ -149,7 +185,9 @@
       "image": "paul-pogba.png",
       "position": "half-back",
       "cost": "70000000",
-      "rating": "94"
+      "rating": "94",
+      "gold-balls": "0",
+      "accurate-passes": "85"
     },
     {
       "id": "20",
@@ -157,7 +195,9 @@
       "image": "paulo-dybala.png",
       "position": "attack",
       "cost": "80000000",
-      "rating": "93"
+      "rating": "93",
+      "gold-balls": "0",
+      "accurate-passes": "87"
     },
     {
       "id": "21",
@@ -165,7 +205,9 @@
       "image": "denis-cheryshev.jpg",
       "position": "half-back",
       "cost": "50000000",
-      "rating": "88"
+      "rating": "88",
+      "gold-balls": "0",
+      "accurate-passes": "89"
     },
     {
       "id": "22",
@@ -173,7 +215,9 @@
       "image": "gianluigi-buffon.png",
       "position": "goalkeeper",
       "cost": "120000000",
-      "rating": "95"
+      "rating": "95",
+      "gold-balls": "0",
+      "accurate-passes": "90"
     },
     {
       "id": "23",
@@ -181,7 +225,9 @@
       "image": "gareth-bale.jpg",
       "position": "half-back",
       "cost": "90000000",
-      "rating": "89"
+      "rating": "89",
+      "gold-balls": "0",
+      "accurate-passes": "82"
     },
     {
       "id": "24",
@@ -189,6 +235,8 @@
       "image": "philippe-coutinho.jpg",
       "position": "half-back",
       "cost": "70000000",
-      "rating": "78"
+      "rating": "78",
+      "gold-balls": "0",
+      "accurate-passes": "83"
     }
   ]
