@@ -5,53 +5,30 @@ const initialState = {
     money: 10000000000,
     loading: true,
     error: false,
-    selectedPlayer: {},
-    sortingValue: 'all',
-    sortingBtns: [
-      {
-        label: 'All players',
-        sort: 'all',
-        criterion: 'position'
-      },
-      {
-        label: 'Attack',
-        sort: 'attack',
-        criterion: 'position'
-      },
-      {
-        label: 'Half Back',
-        sort: 'half-back',
-        criterion: 'position'
-      },
-      {
-        label: 'Defender',
-        sort: 'defender',
-        criterion: 'position'
-      },
-      {
-        label: 'Goalkepeer',
-        sort: 'goalkeeper',
-        criterion: 'position'
-      },
-      {
-        label: 'Cost',
-        sort: 'cost',
-        criterion: 'cost'
-      },
-      {
-        label: 'Rating',
-        sort: 'rating',
-        criterion: 'rating'
-      }
-    ]
+    selectedPlayer: null,
+    sortingValue: 'all'
   },
-  isShowModal: false
+  modalWindow: {
+    isShowModal: false
+  }
 }
 
-const updateItems = (state, criterion, sortValue) => {
+const updateModalWindow = (state, action) => {
+  switch(action.type) {
+    case 'TOGGLE_MODAL':
+      return {
+        isShowModal: action.payload
+      }
+    
+    default:  
+      return state.modalWindow
+  }
+}
+
+const sortingItems = (state, criterion, sortValue) => {
   let items = [];
 
-  if (state.transferMarket.sortingValue === sortValue) return state;
+  if (state.transferMarket.sortingValue === sortValue) return state.transferMarket;
 
   if (criterion === 'position') {
     items = state.transferMarket.allPlayers.filter(({ position }) => position === sortValue);
@@ -67,63 +44,37 @@ const updateItems = (state, criterion, sortValue) => {
 
   if (criterion !== 'position') {
     return {
-      ...state,
-      transferMarket: {
-        ...state.transferMarket,
+      ...state.transferMarket,
         sortingValue: sortValue,
         displayedPlayers: items
-      }
     };
   }
 
   if (sortValue === 'all') {
     return {
-      ...state,
-      transferMarket: {
-        ...state.transferMarket,
-        sortingValue: sortValue,
-        displayedPlayers: state.transferMarket.allPlayers
-      }
+      ...state.transferMarket,
+      sortingValue: sortValue,
+      displayedPlayers: state.transferMarket.allPlayers
     };
   }
 
   if (state.transferMarket.sortingValue === criterion) {
     return {
-      ...state
+      ...state.transferMarket
     }
   }
 
   return {
-    ...state,
-    transferMarket: {
-      ...state.transferMarket,
+    ...state.transferMarket,
       sortingValue: sortValue,
       displayedPlayers: items
-    }
   };
 };
 
-
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-
-    case 'CLEAR_LIST':
-      return {
-        ...state,
-        transferMarket: {
-          ...state.transferMarket,
-          allPlayers: [],
-          displayedPlayers: [],
-          loading: true
-        }
-      }
-
+const updateTransferMarket = (state, action) => {
+  switch(action.type) {
     case 'FETCH_PLAYERS_REQUEST':
-      console.log(action.payload);
       return {
-        ...state,
-        transferMarket: {
           ...state.transferMarket,
           loading: false,
           allPlayers: [
@@ -134,31 +85,30 @@ const reducer = (state = initialState, action) => {
             ...state.transferMarket.displayedPlayers,
             ...action.payload
           ]
-        }
-      }
+      };
 
     case 'SORT_PLAYERS':
-      return updateItems(state, action.payload.criterion, action.payload.sortValue);
-
-    case 'TOGGLE_MODAL':
-      return {
-        ...state,
-        isShowModal: action.payload
-      } 
+      return sortingItems(state, action.payload.criterion, action.payload.sortValue);
 
     case 'PRE_ORDER_PLAYER':
       const selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);
       return {
-        ...state,
-        transferMarket: {
-          ...state.transferMarket,
-          selectedPlayer: selectedPlayer
-        }
-      }  
-
-    default:
-      return state
+        ...state.transferMarket,
+        selectedPlayer: selectedPlayer
+      };
+    
+     default: 
+      return state.transferMarket 
   };
+};
+
+
+
+const reducer = (state = initialState, action) => {
+  return {
+    modalWindow: updateModalWindow(state, action),
+    transferMarket: updateTransferMarket(state, action)
+  }
 };
 
 export default reducer;

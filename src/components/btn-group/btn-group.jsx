@@ -8,19 +8,18 @@ const BtnGroup = (props) => {
           rightBtnLabel,
           leftBtnAction = () => {console.log('leftBtnAction')},
           rightBtnAction = () => {console.log('rightBtnAction')},
-          disabled = false } = props;
-
-  if(!leftBtnLabel && !rightBtnLabel) return null;
+          leftBtnDisabled = false,
+          rightBtnDisabled = false  } = props;
 
   return (
     <div className="btn-group">
       <button
         onClick={leftBtnAction} 
-        disabled={disabled} 
+        disabled={leftBtnDisabled} 
         className="btn btn-success">{leftBtnLabel}</button>
       <button 
         onClick={rightBtnAction} 
-        disabled={disabled} className="btn btn-danger">{rightBtnLabel}</button>
+        disabled={rightBtnDisabled} className="btn btn-danger">{rightBtnLabel}</button>
     </div>
   );
 

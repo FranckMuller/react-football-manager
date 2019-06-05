@@ -5,6 +5,9 @@ const fetchRequest = (dispatch, fmapiService) => {
         dispatch(playersRequest(res));
       }, 1);
     })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const playersRequest = (items) => {
@@ -21,12 +24,6 @@ const sortPlayers = (criterion, sortValue) => {
       criterion: criterion,
       sortValue: sortValue
     }
-  };
-};
-
-const clearList = () => {
-  return {
-    type: 'CLEAR_LIST'
   };
 };
 
@@ -56,7 +53,6 @@ const preOrderPlayer = (dispatch, id, value) => {
 export {
   fetchRequest,
   sortPlayers,
-  clearList,
   buyPlayer,
   preOrderPlayer,
   toggleModal
