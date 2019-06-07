@@ -8,16 +8,14 @@ import ItemDetails, { DescriptionRecord } from '../item-details';
 
 import './transfer-market.scss';
 
-const TransferMarket = ({ selectedPlayer, items, preOrderPlayer, onToggleModal, isShowModal }) => {
+const TransferMarket = ({ selectedPlayer, items, preOrderPlayer, isShowModal, onBuyPlayer, money }) => {
 
   const renderBtns = (item) => {
     return (
       <BtnGroup 
-        leftBtnLabel='Buy'
-        rightBtnLabel='Sell' 
-        leftBtnAction={() => preOrderPlayer(item.id)}
-        leftBtnDisabled={item.bought}
-        rightBtnDisabled={!item.bought} />
+        btnLabel={item.purchased ? 'Sell' : 'Buy'}
+        btnAction={item.purchased ? () => console.log('sell') : () => preOrderPlayer(item.id)}
+        classes={item.purchased ? 'btn-primary' : 'btn-success'} />
     );
   };
 
@@ -25,14 +23,18 @@ const TransferMarket = ({ selectedPlayer, items, preOrderPlayer, onToggleModal, 
 
   if(selectedPlayer) {
     modalWindow = 
-      <ModalWindow isShowModal={isShowModal} title={`You are sure that do you want to buy ${selectedPlayer.name}?`}>
+      <ModalWindow 
+        error={selectedPlayer.cost > money}
+        isShowModal={isShowModal}
+        title={`You are sure that do you want to buy ${selectedPlayer.name}? Sales value will be reduced by 20%`}>
         <ItemDetails item={selectedPlayer}>
           <DescriptionRecord label={'Accurate passes'} field={`${selectedPlayer.accuratePasses}%`} />
           <DescriptionRecord label={'Gold balls'} field={selectedPlayer.goldBalls} />
         </ItemDetails>
         <BtnGroup 
-          rightBtnAction={onToggleModal}
-          leftBtnLabel={`Yes, I want to buy ${selectedPlayer.name}`} />
+          btnAction={() => onBuyPlayer(selectedPlayer, money)}
+          btnLabel={`Yes, I want to buy ${selectedPlayer.name}`}
+          classes={'btn-outline-success'} />
       </ModalWindow>
   };
 

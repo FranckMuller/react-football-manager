@@ -50,10 +50,12 @@ class ItemDetails extends Component {
       child = this.props.children;
     }
 
-    const { item: { name, image, position, cost, rating }} = this.props;
+    const { item: { name, image, position, cost, rating, purchased }} = this.props;
+    let classes = "item-details d-flex flex-column justify-content-between";
+    if(purchased) classes += ' purchased';
 
     return (
-      <div className="item-details d-flex flex-column justify-content-between">
+      <div className={classes}>
         <div className="name text-center">{name}</div>
         <div className="rating text-center">
           <i className="fa fa-star" /> {rating}

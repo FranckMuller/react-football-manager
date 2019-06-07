@@ -27,13 +27,6 @@ const sortPlayers = (criterion, sortValue) => {
   };
 };
 
-const buyPlayer = (id) => {
-  return {
-    type: 'BUY_PLAYER',
-    payload: id
-  }
-}
-
 const toggleModal = (value) => {
   return {
     type: 'TOGGLE_MODAL',
@@ -46,6 +39,26 @@ const preOrderPlayer = (dispatch, id, value) => {
   return {
     type: 'PRE_ORDER_PLAYER',
     payload: id
+  };
+};
+
+const buyPlayer = (dispatch, player, money) => {
+  if(player.cost > money) {
+    return {
+      type: 'BUY_PLAYER',
+      payload: {
+        player: player,
+        purchaseError: player.cost > money
+      }
+    };
+  }
+  dispatch(toggleModal(false));
+  return {
+    type: 'BUY_PLAYER',
+    payload: {
+      player: player,
+      purchaseError: player.cost <= money
+    }
   };
 };
 

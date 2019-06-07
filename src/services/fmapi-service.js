@@ -10,7 +10,7 @@ class FmpaiService {
 
   transformData(item) {
     return {
-      bought: false,
+      purchased: false,
       cost: item.cost,
       goldBalls: item['gold-balls'],
       id: item.id,

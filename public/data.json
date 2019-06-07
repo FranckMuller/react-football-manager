@@ -7,6 +7,7 @@
       "cost": "140000000",
       "rating": "98",
       "gold-balls": "5",
+      "goals": "650",
       "accurate-passes": "92"
     },
     {
@@ -17,6 +18,7 @@
       "cost": "110000000",
       "rating": "94",
       "gold-balls": "5",
+      "goals": "611",
       "accurate-passes": "88"
     },
     {
@@ -27,6 +29,7 @@
       "cost": "120000000",
       "rating": "95",
       "gold-balls": "0",
+      "goals": "423",
       "accurate-passes": "90"
     },
     {
@@ -36,7 +39,8 @@
       "position": "attack",
       "cost": "130000000",
       "rating": "95",
-      "gold-balls": 0,
+      "gold-balls": "0",
+      "goals": "250",
       "accurate-passes": "86"
     },
     {
@@ -46,7 +50,8 @@
       "position": "attack",
       "cost": "70000000",
       "rating": "92",
-      "gold-balls": 0,
+      "gold-balls": "0",
+      "goals": "355",
       "accurate-passes": "85"
     },
     {
@@ -56,7 +61,8 @@
       "position": "half-back",
       "cost": "50000000",
       "rating": "89",
-      "gold-balls": 0,
+      "gold-balls": "0",
+      "goals": "121",
       "accurate-passes": "84"
     },
     {
@@ -67,6 +73,7 @@
       "cost": "60000000",
       "rating": "91",
       "gold-balls": "0",
+      "goals": "10",
       "accurate-passes": "90"
     },
     {
@@ -77,6 +84,7 @@
       "cost": "70000000",
       "rating": "87",
       "gold-balls": "0",
+      "goals": "227",
       "accurate-passes": "89"
     },
     {
@@ -86,7 +94,8 @@
       "position": "half-back",
       "cost": "40000000",
       "rating": "86",
-      "gold-balls": 0,
+      "gold-balls": "0",
+      "goals": "230",
       "accurate-passes": "91"
     },
     {
@@ -97,6 +106,7 @@
       "cost": "45000000",
       "rating": "84",
       "gold-balls": "0",
+      "goals": "355",
       "accurate-passes": "84"
     },
     {
@@ -107,6 +117,7 @@
       "cost": "100000000",
       "rating": "92",
       "gold-balls": "0",
+      "goals": "342",
       "accurate-passes": "92"
     },
     {
@@ -117,6 +128,7 @@
       "cost": "150000000",
       "rating": "98",
       "gold-balls": "1",
+      "goals": "450",
       "accurate-passes": "97"
     },
     {
@@ -127,6 +139,7 @@
       "cost": "90000000",
       "rating": "90",
       "gold-balls": "0",
+      "goals": "390",
       "accurate-passes": "88"
     },
     {
@@ -137,6 +150,7 @@
       "cost": "80000000",
       "rating": "94",
       "gold-balls": "0",
+      "goals": "410",
       "accurate-passes": "89"
     },
     {
@@ -147,6 +161,7 @@
       "cost": "100000000",
       "rating": "95",
       "gold-balls": "0",
+      "goals": "502",
       "accurate-passes": "93"
     },
     {
@@ -157,6 +172,7 @@
       "cost": "60000000",
       "rating": "89",
       "gold-balls": "0",
+      "goals": "450",
       "accurate-passes": "89"
     },
     {
@@ -167,6 +183,7 @@
       "cost": "60000000",
       "rating": "92",
       "gold-balls": "0",
+      "goals": "120",
       "accurate-passes": "85"
     },
     {
@@ -177,6 +194,7 @@
       "cost": "70000000",
       "rating": "96",
       "gold-balls": "0",
+      "goals": "432",
       "accurate-passes": "88"
     },
     {
@@ -187,6 +205,7 @@
       "cost": "70000000",
       "rating": "94",
       "gold-balls": "0",
+      "goals": "329",
       "accurate-passes": "85"
     },
     {
@@ -197,6 +216,7 @@
       "cost": "80000000",
       "rating": "93",
       "gold-balls": "0",
+      "goals": "490",
       "accurate-passes": "87"
     },
     {
@@ -207,6 +227,7 @@
       "cost": "50000000",
       "rating": "88",
       "gold-balls": "0",
+      "goals": "290",
       "accurate-passes": "89"
     },
     {
@@ -217,6 +238,7 @@
       "cost": "120000000",
       "rating": "95",
       "gold-balls": "0",
+      "goals": "15",
       "accurate-passes": "90"
     },
     {
@@ -227,6 +249,7 @@
       "cost": "90000000",
       "rating": "89",
       "gold-balls": "0",
+      "goals": "280",
       "accurate-passes": "82"
     },
     {
@@ -237,6 +260,194 @@
       "cost": "70000000",
       "rating": "78",
       "gold-balls": "0",
+      "goals": "305",
       "accurate-passes": "83"
+    },
+    {
+      "id": "25",
+      "name": "Marco Reus",
+      "image": "marco-reus.jpeg",
+      "position": "half-back",
+      "cost": "40000000",
+      "rating": "75",
+      "gold-balls": "0",
+      "goals": "295",
+      "accurate-passes": "78"
+    },
+    {
+      "id": "26",
+      "name": "Luka Modric",
+      "image": "luka-modric.jpg",
+      "position": "half-back",
+      "cost": "120000000",
+      "rating": "82",
+      "gold-balls": "1",
+      "goals": "279",
+      "accurate-passes": "90"
+    },
+    {
+      "id": "27",
+      "name": "Fyodor Smolov",
+      "image": "fyodor-smolov.jpg",
+      "position": "attack",
+      "cost": "30000000",
+      "rating": "65",
+      "gold-balls": "0",
+      "goals": "120",
+      "accurate-passes": "76"
+    },
+    {
+      "id": "28",
+      "name": "David De Gea",
+      "image": "david-de-gea.png",
+      "position": "goalkeeper",
+      "cost": "100000000",
+      "rating": "93",
+      "gold-balls": "0",
+      "goals": "12",
+      "accurate-passes": "90"
+    },
+    {
+      "id": "29",
+      "name": "Marcelo",
+      "image": "marcelo.jpeg",
+      "position": "defender",
+      "cost": "90000000",
+      "rating": "88",
+      "gold-balls": "0",
+      "goals": "220",
+      "accurate-passes": "92"
+    },
+    {
+      "id": "30",
+      "name": "Andres Iniesta",
+      "image": "andres-iniesta.jpg",
+      "position": "half-back",
+      "cost": "130000000",
+      "rating": "89",
+      "gold-balls": "0",
+      "goals": "390",
+      "accurate-passes": "93"
+    },
+    {
+      "id": "31",
+      "name": "Kevin De Bruyne",
+      "image": "kevin-de-bruyne.jpeg",
+      "position": "half-back",
+      "cost": "110000000",
+      "rating": "88",
+      "gold-balls": "0",
+      "goals": "210",
+      "accurate-passes": "91"
+    },
+    {
+      "id": "32",
+      "name": "Isco",
+      "image": "isco.png",
+      "position": "half-back",
+      "cost": "90000000",
+      "rating": "85",
+      "gold-balls": "0",
+      "goals": "301",
+      "accurate-passes": "86"
+    },
+    {
+      "id": "33",
+      "name": "Sergio Aguero",
+      "image": "sergio-aguero.png",
+      "position": "attack",
+      "cost": "92000000",
+      "rating": "88",
+      "gold-balls": "0",
+      "goals": "331",
+      "accurate-passes": "88"
+    },
+    {
+      "id": "34",
+      "name": "David Beckham",
+      "image": "david-beckham.jpg",
+      "position": "half-back",
+      "cost": "120000000",
+      "rating": "91",
+      "gold-balls": "0",
+      "goals": "400",
+      "accurate-passes": "93"
+    },
+    {
+      "id": "35",
+      "name": "Marco Asensio",
+      "image": "marco-asensio.png",
+      "position": "half-back",
+      "cost": "90000000",
+      "rating": "83",
+      "gold-balls": "0",
+      "goals": "210",
+      "accurate-passes": "90"
+    },
+    {
+      "id": "36",
+      "name": "Iker Casillas",
+      "image": "iker-casillas.png",
+      "position": "goalkeeper",
+      "cost": "90000000",
+      "rating": "95",
+      "gold-balls": "0",
+      "goals": "15",
+      "accurate-passes": "93"
+    },
+    {
+      "id": "37",
+      "name": "Quincy Promes",
+      "image": "quincy-promes.jpg",
+      "position": "half-back",
+      "cost": "70000000",
+      "rating": "82",
+      "gold-balls": "0",
+      "goals": "120",
+      "accurate-passes": "81"
+    },
+    {
+      "id": "38",
+      "name": "Aleksandr Kokorin",
+      "image": "aleksandr-kokorin.png",
+      "position": "attack",
+      "cost": "50000000",
+      "rating": "78",
+      "gold-balls": "0",
+      "goals": "320",
+      "accurate-passes": "83"
+    },
+    {
+      "id": "39",
+      "name": "Harry Kane",
+      "image": "harry-kane.png",
+      "position": "attack",
+      "cost": "90000000",
+      "rating": "85",
+      "gold-balls": "0",
+      "goals": "450",
+      "accurate-passes": "91"
+    },
+    {
+      "id": "40",
+      "name": "Fernando Torres",
+      "image": "fernando-torres.png",
+      "position": "attack",
+      "cost": "80000000",
+      "rating": "86",
+      "gold-balls": "0",
+      "goals": "340",
+      "accurate-passes": "89"
+    },
+    {
+      "id": "41",
+      "name": "Luis Suarez",
+      "image": "luis-suarez.png",
+      "position": "attack",
+      "cost": "92000000",
+      "rating": "91",
+      "gold-balls": "0",
+      "goals": "420",
+      "accurate-passes": "86"
     }
   ]

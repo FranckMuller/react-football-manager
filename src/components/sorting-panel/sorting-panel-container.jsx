@@ -4,7 +4,7 @@ import { sortPlayers } from '../../actions';
 
 import { TopSortingPanel, LeftSortingPanel } from './sorting-panel';
 
-const SortingPanelContainer = ({ sortingValue, onSorted }) => {
+const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
 
   const sortingBtns = [
     {
@@ -41,12 +41,17 @@ const SortingPanelContainer = ({ sortingValue, onSorted }) => {
       label: 'Rating',
       sort: 'rating',
       criterion: 'rating'
+    },
+    {
+      label: `My Command (${count})`,
+      sort: 'my-command',
+      criterion: 'my-command'
     }
   ];
     
 
-  const positionBtns = sortingBtns.filter(({ criterion }) => criterion === 'position');
-  const otherBtns = sortingBtns.filter(({ criterion }) => criterion !== 'position' );
+  const positionBtns = sortingBtns.filter(({ criterion }) => criterion === 'position' || criterion === 'my-command');
+  const otherBtns = sortingBtns.filter(({ criterion }) => criterion !== 'position' && criterion !== 'my-command');
   
   return (
     <div className="market-panel">
@@ -56,9 +61,10 @@ const SortingPanelContainer = ({ sortingValue, onSorted }) => {
   );
 };
 
-const mapStateToProps = ({ transferMarket: { sortingBtns, sortingValue } }) => {
+const mapStateToProps = ({ transferMarket: { sortingValue, allPlayers } }) => {
   return {
-    sortingValue: sortingValue
+    sortingValue: sortingValue,
+    count: 10
   }
 }
 

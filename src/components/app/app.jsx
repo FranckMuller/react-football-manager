@@ -22,7 +22,7 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route exact path="/transfer-market" component={TransferMarket} />
+            <Route path="/transfer-market/:id?" component={TransferMarket} />
             <Route exact path="/" component={HomePage} />
           </div>
         </Router>

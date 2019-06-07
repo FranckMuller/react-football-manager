@@ -1,4 +1,19 @@
 .item-details {
+  &.purchased {
+    position: relative;
+    &:before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-image: url('./../../assets/images/check-mark.svg');
+      background-repeat: no-repeat;
+      background-size: 25px 25px;
+      background-position: center center;
+      position: absolute;
+      right: -10px;
+      top: -10px;
+    }
+  }
   .rating {
     margin-bottom: 5px;
     font-size: 13px;
@@ -10,6 +25,7 @@
 
   .photo {
     height: 80px;
+    margin-bottom: 10px;
     img {
       border-radius: 50%;
     }
