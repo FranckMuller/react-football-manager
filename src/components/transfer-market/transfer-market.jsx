@@ -8,13 +8,13 @@ import ItemDetails, { DescriptionRecord } from '../item-details';
 
 import './transfer-market.scss';
 
-const TransferMarket = ({ selectedPlayer, items, preOrderPlayer, isShowModal, onBuyPlayer, money }) => {
+const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShowModal, onPlayerSaleOrPurchase, money, purchaseError }) => {
 
   const renderBtns = (item) => {
     return (
       <BtnGroup 
         btnLabel={item.purchased ? 'Sell' : 'Buy'}
-        btnAction={item.purchased ? () => console.log('sell') : () => preOrderPlayer(item.id)}
+        btnAction={() => onShowConfirmationModal(item.id)}
         classes={item.purchased ? 'btn-primary' : 'btn-success'} />
     );
   };
@@ -22,19 +22,24 @@ const TransferMarket = ({ selectedPlayer, items, preOrderPlayer, isShowModal, on
   let modalWindow = <ModalWindow />;
 
   if(selectedPlayer) {
+
+    const btnLabel = selectedPlayer.purchased ? `Yes, I want to sell ${selectedPlayer.name}` : `Yes, I want to buy ${selectedPlayer.name}`;
+
     modalWindow = 
       <ModalWindow 
-        error={selectedPlayer.cost > money}
+        error={purchaseError}
         isShowModal={isShowModal}
+        warningMessage={`You do not have enough money to buy ${selectedPlayer.name}`}
         title={`You are sure that do you want to buy ${selectedPlayer.name}? Sales value will be reduced by 20%`}>
         <ItemDetails item={selectedPlayer}>
           <DescriptionRecord label={'Accurate passes'} field={`${selectedPlayer.accuratePasses}%`} />
           <DescriptionRecord label={'Gold balls'} field={selectedPlayer.goldBalls} />
         </ItemDetails>
-        <BtnGroup 
-          btnAction={() => onBuyPlayer(selectedPlayer, money)}
-          btnLabel={`Yes, I want to buy ${selectedPlayer.name}`}
-          classes={'btn-outline-success'} />
+        <BtnGroup
+          disable={purchaseError} 
+          btnAction={() => onPlayerSaleOrPurchase(selectedPlayer, money)}
+          btnLabel={btnLabel}
+          classes={selectedPlayer.purchased ? 'btn-outline-primary' : 'btn-outline-success'} />
       </ModalWindow>
   };
 

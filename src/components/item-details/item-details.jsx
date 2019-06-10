@@ -52,6 +52,7 @@ class ItemDetails extends Component {
 
     const { item: { name, image, position, cost, rating, purchased }} = this.props;
     let classes = "item-details d-flex flex-column justify-content-between";
+    const costPlayer = purchased ? cost - cost / 5 : cost;
     if(purchased) classes += ' purchased';
 
     return (
@@ -70,7 +71,7 @@ class ItemDetails extends Component {
           </div>
           <div className="cost d-flex justify-content-between description-item">
             <span className="field-label">Cost:</span>
-            <span>{cost}$</span>
+            <span>{costPlayer}$</span>
           </div>
           {child}
         </div>

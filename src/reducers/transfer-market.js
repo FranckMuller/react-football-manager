@@ -72,44 +72,58 @@ const updateTransferMarket = (state, action) => {
     case 'SORT_PLAYERS':
       return sortingItems(state, action.payload.criterion, action.payload.sortValue);
 
-    case 'PRE_ORDER_PLAYER':
-      const selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);
+    case 'SHOW_CONFIRMATION_MODAL':
+      let selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);
       return {
         ...state.transferMarket,
         selectedPlayer: selectedPlayer
       };
 
-    case 'BUY_PLAYER':
-      let purchasedPlayer = action.payload.player;
+    case 'PLAYER_SALE_OR_PURCHASE':
+      let plyer = action.payload.player;
       let isPurchaseError = action.payload.purchaseError;
-      const oldDisplayedItemIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === purchasedPlayer.id);
-      const oldItemIdx = state.transferMarket.allPlayers.findIndex(({ id }) => id === purchasedPlayer.id);
-      if(purchasedPlayer.cost > state.transferMarket.money) {
-        return {
-          ...state.transferMarket,
-          purchaseError: isPurchaseError
+      const oldDisplayedItemIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === plyer.id);
+      const oldItemIdx = state.transferMarket.allPlayers.findIndex(({ id }) => id === plyer.id);
+
+      if(!plyer.purchased) {
+        if(plyer.cost > state.transferMarket.money) {
+          return {
+            ...state.transferMarket,
+            purchaseError: isPurchaseError
+          }
+        }
+        plyer = {
+          ...plyer,
+          purchased: true,
+        }
+      } else {
+        plyer = {
+          ...plyer,
+          purchased: false,
         }
       }
-      purchasedPlayer = {
-        ...purchasedPlayer,
-        purchased: true,
-        cost: purchasedPlayer.cost - (purchasedPlayer.cost / 5)
-      }
+
       return {
         ...state.transferMarket,
         selectedPlayer: null,
-        money: state.transferMarket.money - purchasedPlayer.cost,
+        money: plyer.purchased ? state.transferMarket.money - plyer.cost : state.transferMarket.money + (+plyer.cost - +plyer.cost / 5),
         purchaseError: isPurchaseError,
         allPlayers: [
           ...state.transferMarket.allPlayers.slice(0, oldItemIdx),
           ...state.transferMarket.allPlayers.slice(oldItemIdx + 1),
-          purchasedPlayer
+          plyer
         ],
         displayedPlayers: [
           ...state.transferMarket.displayedPlayers.slice(0, oldDisplayedItemIdx),
           ...state.transferMarket.displayedPlayers.slice(oldDisplayedItemIdx + 1),
-          purchasedPlayer
+          plyer
         ]
+      };
+
+    case 'CLEAR_ERROR': 
+      return {
+        ...state.transferMarket,
+        purchaseError: false
       }
     
      default: 

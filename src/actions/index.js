@@ -34,30 +34,39 @@ const toggleModal = (value) => {
   };
 };
 
-const preOrderPlayer = (dispatch, id, value) => {
-  dispatch(toggleModal(value));
+const showConfirmationModal = (dispatch, id) => {
+  dispatch(toggleModal(true));
   return {
-    type: 'PRE_ORDER_PLAYER',
+    type: 'SHOW_CONFIRMATION_MODAL',
     payload: id
   };
 };
 
-const buyPlayer = (dispatch, player, money) => {
-  if(player.cost > money) {
+const clearError = () => {
+  return {
+    type: 'CLEAR_ERROR'
+  }
+}
+
+const playerSaleOrPurchase = (dispatch, player, money) => {
+  if(!player.purchased && player.cost > money) {
+    setTimeout(() => {
+      dispatch(clearError());
+    }, 2000)
     return {
-      type: 'BUY_PLAYER',
+      type: 'PLAYER_SALE_OR_PURCHASE',
       payload: {
         player: player,
-        purchaseError: player.cost > money
+        purchaseError: true
       }
     };
-  }
+  };
+
   dispatch(toggleModal(false));
   return {
-    type: 'BUY_PLAYER',
+    type: 'PLAYER_SALE_OR_PURCHASE',
     payload: {
       player: player,
-      purchaseError: player.cost <= money
     }
   };
 };
@@ -66,7 +75,7 @@ const buyPlayer = (dispatch, player, money) => {
 export {
   fetchRequest,
   sortPlayers,
-  buyPlayer,
-  preOrderPlayer,
+  playerSaleOrPurchase,
+  showConfirmationModal,
   toggleModal
 };

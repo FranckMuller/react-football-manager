@@ -5,7 +5,7 @@ const initialState = {
   transferMarket: {
     allPlayers: [],
     displayedPlayers: [],
-    money: 10,
+    money: 100000000,
     loading: true,
     selectedPlayer: null,
     sortingValue: 'all',
@@ -14,7 +14,7 @@ const initialState = {
   modalWindow: {
     isShowModal: false, 
   }
-}
+};
 
 const reducer = (state = initialState, action) => {
   return {

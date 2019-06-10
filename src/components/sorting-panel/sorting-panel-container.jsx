@@ -64,7 +64,7 @@ const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
 const mapStateToProps = ({ transferMarket: { sortingValue, allPlayers } }) => {
   return {
     sortingValue: sortingValue,
-    count: 10
+    count: allPlayers.filter(({ purchased }) => purchased === true).length
   }
 }
 

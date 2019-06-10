@@ -6,22 +6,20 @@ import './modal-window.scss';
 
 class ModalWindow extends Component {
 
-  state = {
-    isError: false
-  }
-
   render() {
-    const { isShowModal, title, onToggleModal} = this.props;
-    const { isError } = this.state;
+    const { isShowModal, title, onToggleModal, error = false, warningMessage = null } = this.props;
 
-    let classes = "modal-window d-flex justify-content-center align-items-center";
+    let classes = "modal-window d-flex flex-column justify-content-center align-items-center";
     if(isShowModal) classes = classes + ' show';
-    if(isError) {
+    if(error) {
       classes = classes + ' error';
     }
 
     return (
       <div className={classes}>
+        <div className="notice text-center">
+          {warningMessage}
+        </div>
         <div className="modal-box">
           <div className="title">{title}</div>
           <div className="modal-box-content">

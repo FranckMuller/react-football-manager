@@ -17,12 +17,17 @@
       animation: shake .5s; 
       animation-iteration-count: 1;
     }
+    .notice {
+      animation: noticeAnim .5s; 
+      animation-iteration-count: 1;
+      opacity: 1;
+    }
   }
   .modal-box {
     background-color: #ffffff;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    max-width: 300px;
+    max-width: 320px;
     margin-top: -100px;
     position: relative;
     .title {
@@ -53,6 +58,26 @@
       border: none;
     }
   }
+
+  .notice {
+    color: #f74242;
+    opacity: 0;
+    transition: 1s;
+    font-size: 18px;
+    margin-bottom: 20px;
+    transform: translateY(-100px);
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@keyframes noticeAnim {
+  0% { opacity: 0; transform: translateY(-135px); }
+  20% { opacity: .2; transform: translateY(-125px); }
+  40% { opacity: .4; transform: translateY(-115px); }
+  60% { opacity: .6; transform: translateY(-110px); }
+  80% { opacity: .8; transform: translateY(-105px); }
+  100% { opacity: 1; transform: translateY(-100px); }
 }
 
 @keyframes shake {
