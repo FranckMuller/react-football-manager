@@ -1,73 +1,115 @@
+const updateItemsAfterRequest = (state, items) => {
+  return {
+    ...state.transferMarket,
+    loading: false,
+    allPlayers: [
+      ...state.transferMarket.allPlayers,
+      ...items
+    ],
+    displayedPlayers: [
+      ...state.transferMarket.displayedPlayers,
+      ...items
+    ]
+  };
+};
+
 const sortingItems = (state, criterion, sortValue) => {
   let items = [];
 
   if (state.transferMarket.sortingValue === sortValue) return state.transferMarket;
 
-  if(sortValue === 'my-command') {
-    items = state.transferMarket.allPlayers.filter(({ purchased }) => purchased === true);
-    return {
-      ...state.transferMarket,
-        sortingValue: sortValue,
-        displayedPlayers: items
-    };
-  }
+  switch (criterion) {
+    case 'my-command':
+      items = state.transferMarket.allPlayers.filter(({ purchased }) => purchased === true);
+      break;
 
-  if (criterion === 'position') {
-    items = state.transferMarket.allPlayers.filter(({ position }) => position === sortValue);
-  } else if (criterion === 'cost') {
-    items = state.transferMarket.displayedPlayers.slice().sort((a, b) => {
-      return a.cost - b.cost
-    });
-  } else {
-    items = state.transferMarket.displayedPlayers.slice().sort((a, b) => {
-      return b.rating - a.rating;
-    });
-  }
+    case 'position':
+      items = state.transferMarket.allPlayers.filter(({ position }) => position === sortValue);
+      break;
 
-  if (criterion !== 'position') {
-    return {
-      ...state.transferMarket,
-        sortingValue: sortValue,
-        displayedPlayers: items
-    };
-  }
+    case 'cost':
+      items = state.transferMarket.displayedPlayers.slice().sort((a, b) => {
+        return a.cost - b.cost
+      });
+      break;
 
-  if (sortValue === 'all') {
-    return {
-      ...state.transferMarket,
-      sortingValue: sortValue,
-      displayedPlayers: state.transferMarket.allPlayers
-    };
-  }
+    case 'rating':
+      items = state.transferMarket.displayedPlayers.slice().sort((a, b) => {
+        return b.rating - a.rating
+      });
+    break;
 
-  if (state.transferMarket.sortingValue === criterion) {
-    return {
-      ...state.transferMarket
-    }
+    case 'all':
+      items = state.transferMarket.allPlayers;
+      break
+
+    default:
+      return state.transferMarket;
   }
 
   return {
     ...state.transferMarket,
-      sortingValue: sortValue,
-      displayedPlayers: items
+    displayedPlayers: items,
+    sortingValue: sortValue
+  }
+};
+
+const updateItemAfterSaleOrPurchase = (item) => {
+  if (item.purchased) {
+    return {
+      ...item,
+      purchased: false
+    }
+  } else {
+    return {
+      ...item,
+      purchased: true
+    }
   };
 };
 
+const updateItemsAfterSaleOrPurchase = (state, item, error) => {
+  if (error) {
+    return {
+      ...state.transferMarket,
+      purchaseError: error
+    };
+  };
+
+  const itemIdx = state.transferMarket.allPlayers.findIndex(({ id }) => id === item.id);
+  const displayedItemIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === item.id);
+  let displayedPlayers = []
+
+  if(state.transferMarket.sortingValue === 'my-command') {
+    displayedPlayers = [
+      ...state.transferMarket.displayedPlayers.slice(0, displayedItemIdx),
+      ...state.transferMarket.displayedPlayers.slice(displayedItemIdx + 1),
+    ];
+  } else {
+    displayedPlayers = [
+      ...state.transferMarket.displayedPlayers.slice(0, displayedItemIdx),
+      ...state.transferMarket.displayedPlayers.slice(displayedItemIdx + 1),
+      updateItemAfterSaleOrPurchase(item)
+    ]
+  };
+
+  return {
+    ...state.transferMarket,
+    displayedPlayers: displayedPlayers,
+    allPlayers: [
+      ...state.transferMarket.allPlayers.slice(0, itemIdx),
+      updateItemAfterSaleOrPurchase(item),
+      ...state.transferMarket.allPlayers.slice(itemIdx + 1),
+    ],
+    money: item.purchased ? state.transferMarket.money + item.cost - (item.cost / 5) : state.transferMarket.money - item.cost
+  };
+
+};
+
 const updateTransferMarket = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'FETCH_PLAYERS_REQUEST':
-      return {
-          ...state.transferMarket,
-          loading: false,
-          allPlayers: [
-            ...state.transferMarket.allPlayers,
-            ...action.payload
-          ],
-          displayedPlayers: [
-            ...state.transferMarket.displayedPlayers,
-            ...action.payload
-          ]
-      };
+      return updateItemsAfterRequest(state, action.payload);
 
     case 'SORT_PLAYERS':
       return sortingItems(state, action.payload.criterion, action.payload.sortValue);
@@ -80,54 +122,16 @@ const updateTransferMarket = (state, action) => {
       };
 
     case 'PLAYER_SALE_OR_PURCHASE':
-      let plyer = action.payload.player;
-      let isPurchaseError = action.payload.purchaseError;
-      const oldDisplayedItemIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === plyer.id);
-      const oldItemIdx = state.transferMarket.allPlayers.findIndex(({ id }) => id === plyer.id);
+      return updateItemsAfterSaleOrPurchase(state, action.payload.player, action.payload.purchaseError);
 
-      if(!plyer.purchased) {
-        if(plyer.cost > state.transferMarket.money) {
-          return {
-            ...state.transferMarket,
-            purchaseError: isPurchaseError
-          }
-        }
-        plyer = {
-          ...plyer,
-          purchased: true,
-        }
-      } else {
-        plyer = {
-          ...plyer,
-          purchased: false,
-        }
-      }
-
-      return {
-        ...state.transferMarket,
-        selectedPlayer: null,
-        money: plyer.purchased ? state.transferMarket.money - plyer.cost : state.transferMarket.money + (+plyer.cost - +plyer.cost / 5),
-        purchaseError: isPurchaseError,
-        allPlayers: [
-          ...state.transferMarket.allPlayers.slice(0, oldItemIdx),
-          ...state.transferMarket.allPlayers.slice(oldItemIdx + 1),
-          plyer
-        ],
-        displayedPlayers: [
-          ...state.transferMarket.displayedPlayers.slice(0, oldDisplayedItemIdx),
-          ...state.transferMarket.displayedPlayers.slice(oldDisplayedItemIdx + 1),
-          plyer
-        ]
-      };
-
-    case 'CLEAR_ERROR': 
+    case 'CLEAR_ERROR':
       return {
         ...state.transferMarket,
         purchaseError: false
       }
-    
-     default: 
-      return state.transferMarket 
+
+    default:
+      return state.transferMarket
   };
 };
 

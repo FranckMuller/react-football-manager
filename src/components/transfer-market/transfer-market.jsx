@@ -27,6 +27,7 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
 
     modalWindow = 
       <ModalWindow 
+        closeModalBtnDisable={purchaseError} 
         error={purchaseError}
         isShowModal={isShowModal}
         warningMessage={`You do not have enough money to buy ${selectedPlayer.name}`}

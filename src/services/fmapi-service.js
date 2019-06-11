@@ -11,7 +11,7 @@ class FmpaiService {
   transformData(item) {
     return {
       purchased: false,
-      cost: item.cost,
+      cost: +item.cost,
       goldBalls: item['gold-balls'],
       id: item.id,
       image: `${url}/images/${item.image}`,

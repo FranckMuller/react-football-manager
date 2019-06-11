@@ -49,10 +49,12 @@ const clearError = () => {
 }
 
 const playerSaleOrPurchase = (dispatch, player, money) => {
+
   if(!player.purchased && player.cost > money) {
     setTimeout(() => {
       dispatch(clearError());
     }, 2000)
+
     return {
       type: 'PLAYER_SALE_OR_PURCHASE',
       payload: {

@@ -5,7 +5,7 @@ const initialState = {
   transferMarket: {
     allPlayers: [],
     displayedPlayers: [],
-    money: 100000000,
+    money: 1000000000,
     loading: true,
     selectedPlayer: null,
     sortingValue: 'all',
