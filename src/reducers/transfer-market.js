@@ -98,8 +98,8 @@ const updateItemsAfterSaleOrPurchase = (state, item, error) => {
     displayedPlayers: displayedPlayers,
     allPlayers: [
       ...state.transferMarket.allPlayers.slice(0, itemIdx),
-      updateItemAfterSaleOrPurchase(item),
       ...state.transferMarket.allPlayers.slice(itemIdx + 1),
+      updateItemAfterSaleOrPurchase(item),
     ],
     money: item.purchased ? state.transferMarket.money + item.cost - (item.cost / 5) : state.transferMarket.money - item.cost
   };

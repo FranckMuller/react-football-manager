@@ -73,11 +73,18 @@ const playerSaleOrPurchase = (dispatch, player, money) => {
   };
 };
 
+const myCommandRequest = () => {
+  return {
+    type: 'MY_COMMAND_REQUEST'
+  };
+};
+
 
 export {
   fetchRequest,
   sortPlayers,
   playerSaleOrPurchase,
   showConfirmationModal,
-  toggleModal
+  toggleModal,
+  myCommandRequest
 };

@@ -1,4 +1,5 @@
-import ItemDetails, { DescriptionRecord } from './item-details';
+import ItemDetails from './item-details';
+import DescriptionRecord from './description-record';
 
 export {
   DescriptionRecord

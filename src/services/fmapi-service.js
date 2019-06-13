@@ -18,7 +18,8 @@ class FmpaiService {
       name: item.name,
       position: item.position,
       rating: item.rating,
-      accuratePasses: item['accurate-passes']
+      accuratePasses: item['accurate-passes'],
+      goals: item.goals
     };
   };
 

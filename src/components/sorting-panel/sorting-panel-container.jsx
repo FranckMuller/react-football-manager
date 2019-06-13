@@ -18,8 +18,8 @@ const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
       criterion: 'position'
     },
     {
-      label: 'Half Back',
-      sort: 'half-back',
+      label: 'Halfback',
+      sort: 'halfback',
       criterion: 'position'
     },
     {
@@ -43,7 +43,7 @@ const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
       criterion: 'rating'
     },
     {
-      label: `My Command (${count})`,
+      label: `My command (${count})`,
       sort: 'my-command',
       criterion: 'my-command'
     }

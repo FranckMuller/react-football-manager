@@ -41,17 +41,52 @@
     margin-bottom: 5px;
     padding-bottom: 5px;
     .description-item {
+      span {
+        font-size: 15px;
+        & + span {
+          &.attack {
+            background-color: #d24b4b;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.halfback {
+            background-color: #e08613;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.defender {
+            background-color: #1b79f1;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.goalkeeper {
+            background-color: #ab3fb1;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+        }
+      }
       & + .description-item {
         margin-top: 5px;
       }
-    }
-    .field-label {
-      font-size: 14px;
     }
     .gold-balls {
       .icon {
         span {
           height: 20px;
+          background-color: #fff;
         }
       }
     }
