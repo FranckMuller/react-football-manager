@@ -10,9 +10,16 @@ class FmpaiService {
 
   transformData(item) {
     return {
-      ...item,
+      purchased: false,
+      cost: +item.cost,
+      goldBalls: item['gold-balls'],
+      id: item.id,
       image: `${url}/images/${item.image}`,
-      bought: false
+      name: item.name,
+      position: item.position,
+      rating: item.rating,
+      accuratePasses: item['accurate-passes'],
+      goals: item.goals
     };
   };
 

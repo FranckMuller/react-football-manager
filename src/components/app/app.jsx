@@ -8,6 +8,7 @@ import store from '../../store';
 import TransferMarket from '../transfer-market'
 import AppHeader from '../app-header';
 import HomePage from '../home-page';
+import MyCommand from '../my-command';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './app.scss'
@@ -22,7 +23,8 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route exact path="/transfer-market" component={TransferMarket} />
+            <Route path="/transfer-market" component={TransferMarket} />
+            <Route path="/my-command" component={MyCommand} />
             <Route exact path="/" component={HomePage} />
           </div>
         </Router>

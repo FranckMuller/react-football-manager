@@ -1,25 +1,36 @@
 import React from 'react';
 
-import ItemDetails from '../item-details';
-
 import './item-list.scss';
 
-const ItemList = ({ items, ...props }) => {
+const ItemList = ({ items, renderBtns = null, warningComponent = null, children }) => {
+
+  if(items.length === 0) {
+    return (
+      warningComponent
+    );
+  }; 
+
   return (
     <ul className="item-list d-flex flex-wrap">
       {
         items.map((item) => {
+          let btns = null;
+          if (renderBtns) btns = renderBtns(item)
           return (
             <li key={item.id}>
-              <ItemDetails item={item} {...props} />
+              <div className="d-flex li-content flex-column">
+                {
+                  React.cloneElement(children, { item }) 
+                }
+                {btns}
+              </div>
             </li>
-            );
-          })
+          );
+        })
       }
     </ul>
   );
 };
-
 
 
 export default ItemList;

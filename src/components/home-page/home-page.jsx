@@ -7,12 +7,18 @@ import './home-page.scss';
 
 class HomePage extends Component {
 
+  setTimeIdx = null;
+
   state = {
-    classes: "home-page d-flex flex-column flex-grow-1 flex-shrink-1"
+    classes: "home-page d-flex flex-column flex-grow-1 flex-shrink-1",
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.setTimeIdx);
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    this.setTimeIdx = setTimeout(() => {
       this.setState({
         classes: this.state.classes + ' animate'
       });

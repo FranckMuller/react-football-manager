@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import withFmapiService from '../hoc/with-fmapi-service';
 import { connect } from 'react-redux';
-import { fetchRequest, clearList, toggleModal } from '../../actions';
+import { fetchRequest, showConfirmationModal, playerSaleOrPurchase } from '../../actions';
 
 import TransferMarket from './transfer-market';
 import Spinner from '../spinner';
@@ -14,10 +14,6 @@ class TransferMarketContainer extends Component {
     if(!items.length) {
       getAllPlayers(fmapiService);
     }; 
-  };
-
-  componentWillUnmount() {
-    this.props.onClearedList();
   };
 
   render() {
@@ -34,19 +30,21 @@ class TransferMarketContainer extends Component {
 
 };
 
-const mapStateToProps = ({ transferMarket: { displayedPlayers, loading, selectedPlayer } }) => {
+const mapStateToProps = ({ transferMarket: { displayedPlayers, loading, selectedPlayer, purchaseError, money }}) => {
   return {
     items: displayedPlayers,
     isLoading: loading,
-    selectedPlayer: selectedPlayer
+    selectedPlayer: selectedPlayer,
+    purchaseError: purchaseError,
+    money: money
   };
 };
 
 const mapDispatchToProps = (dispatch, { fmapiService }) => {
   return {
     getAllPlayers: () => fetchRequest(dispatch, fmapiService),
-    onClearedList: () => dispatch(clearList()),
-    onToggleModal: (value, id) => dispatch(toggleModal(value, id))
+    onShowConfirmationModal: (id) => dispatch(showConfirmationModal(dispatch, id)),
+    onPlayerSaleOrPurchase: (player, money) => dispatch(playerSaleOrPurchase(dispatch, player, money)),
   };
 };
 

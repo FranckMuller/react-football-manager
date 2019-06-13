@@ -1,43 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../actions';
-import ItemDetails from '../item-details';
 
 import './modal-window.scss';
 
-const ModalWindow = ({ isShowModal, onToggleModal, selectedPlayer }) => {
+class ModalWindow extends Component {
 
-  let classes = "modal-window d-flex justify-content-center align-items-center"
-  if(isShowModal) classes = classes + ' show'
+  render() {
+    const { isShowModal, title, onToggleModal, error = false, warningMessage = null, closeModalBtnDisable = false } = this.props;
 
-  return (
-    <div className={classes}>
-      <div className="modal-window-content">
-        <div className="title">You are sure that are you want to buy {selectedPlayer.name}?</div>
-        <ItemDetails item={selectedPlayer} />
-        <div className="btn-group d-flex">
-          <button className="btn btn-success flex-grow-1 flex-shrink-1">Buy</button>
+    let classes = "modal-window d-flex flex-column justify-content-center align-items-center";
+    if(isShowModal) classes = classes + ' show';
+    if(error) {
+      classes = classes + ' error';
+    }
+
+    return (
+      <div className={classes}>
+        <div className="notice text-center">
+          {warningMessage}
+        </div>
+        <div className="modal-box">
+          <div className="title">{title}</div>
+          <div className="modal-box-content">
+            {this.props.children}
+          </div>
           <button 
-            className="btn btn-danger flex-grow-1 flex-shrink-1"
-            onClick={() => onToggleModal(false)}>
-              Cancel
-            </button>
+            disabled={closeModalBtnDisable}
+            className="btn-close-modal"
+            onClick={onToggleModal}></button>
         </div>
       </div>
-    </div>
-  );
-};
+    )
+  }
+}
 
-const mapStateToProps = ({ isShowModal }) => {
+const mapStateToProps = ({ modalWindow: { isShowModal } }) => {
   return {
     isShowModal: isShowModal
   };
 };
 
-const dispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onToggleModal: (value) => dispatch(toggleModal(value))
-  }
-}
+    onToggleModal: () => dispatch(toggleModal(false))
+  };
+};
 
-export default connect(mapStateToProps, dispatchToProps)(ModalWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalWindow);

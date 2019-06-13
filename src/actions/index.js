@@ -5,6 +5,9 @@ const fetchRequest = (dispatch, fmapiService) => {
         dispatch(playersRequest(res));
       }, 1);
     })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const playersRequest = (items) => {
@@ -24,34 +27,64 @@ const sortPlayers = (criterion, sortValue) => {
   };
 };
 
-const clearList = () => {
+const toggleModal = (value) => {
   return {
-    type: 'CLEAR_LIST'
+    type: 'TOGGLE_MODAL',
+    payload: value
   };
 };
 
-const buyPlayer = (id) => {
+const showConfirmationModal = (dispatch, id) => {
+  dispatch(toggleModal(true));
   return {
-    type: 'BUY_PLAYER',
+    type: 'SHOW_CONFIRMATION_MODAL',
     payload: id
+  };
+};
+
+const clearError = () => {
+  return {
+    type: 'CLEAR_ERROR'
   }
 }
 
-const toggleModal = (value, id) => {
-  console.log(value, id)
+const playerSaleOrPurchase = (dispatch, player, money) => {
+
+  if(!player.purchased && player.cost > money) {
+    setTimeout(() => {
+      dispatch(clearError());
+    }, 2000)
+
+    return {
+      type: 'PLAYER_SALE_OR_PURCHASE',
+      payload: {
+        player: player,
+        purchaseError: true
+      }
+    };
+  };
+
+  dispatch(toggleModal(false));
   return {
-    type: 'TOGGLE_MODAL',
+    type: 'PLAYER_SALE_OR_PURCHASE',
     payload: {
-      isShowModal: value,
-      id: id
+      player: player,
     }
   };
 };
 
+const myCommandRequest = () => {
+  return {
+    type: 'MY_COMMAND_REQUEST'
+  };
+};
+
+
 export {
   fetchRequest,
   sortPlayers,
-  clearList,
-  buyPlayer,
-  toggleModal
+  playerSaleOrPurchase,
+  showConfirmationModal,
+  toggleModal,
+  myCommandRequest
 };

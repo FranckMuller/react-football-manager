@@ -1,11 +1,19 @@
 .item-details {
-  border: 1px solid #dddddd;
-  padding: 10px;
-  box-shadow: 3px 3px 11px -5px #828080;
-  height: 100%;
-  background-color: rgba(220, 220, 220, .8);
-  border-radius: 3px;
-
+  &.purchased {
+    position: relative;
+    &:before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-image: url('./../../assets/images/check-mark.svg');
+      background-repeat: no-repeat;
+      background-size: 25px 25px;
+      background-position: center center;
+      position: absolute;
+      right: -10px;
+      top: -10px;
+    }
+  }
   .rating {
     margin-bottom: 5px;
     font-size: 13px;
@@ -17,6 +25,7 @@
 
   .photo {
     height: 80px;
+    margin-bottom: 10px;
     img {
       border-radius: 50%;
     }
@@ -30,22 +39,55 @@
 
   .description {
     margin-bottom: 5px;
-    .position {
-      font-size: 14px;
+    padding-bottom: 5px;
+    .description-item {
+      span {
+        font-size: 15px;
+        & + span {
+          &.attack {
+            background-color: #d24b4b;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.halfback {
+            background-color: #e08613;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.defender {
+            background-color: #1b79f1;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+          &.goalkeeper {
+            background-color: #ab3fb1;
+            padding: 5px 10px;
+            line-height: 1;
+            border-radius: 2px;
+            color: #ffffff;
+            display: block;
+          }
+        }
+      }
+      & + .description-item {
+        margin-top: 5px;
+      }
     }
-    .cost {
-      font-size: 13px;
-    }
-  }
-
-  .btn-group {
-    button {
-      flex: 1;
-      height: 35px;
-      padding: 0;
-      font-size: 14px;
-      &:disabled {
-        cursor: not-allowed;
+    .gold-balls {
+      .icon {
+        span {
+          height: 20px;
+          background-color: #fff;
+        }
       }
     }
   }
