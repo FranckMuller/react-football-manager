@@ -1,4 +1,6 @@
 .item-details {
+  overflow: hidden;
+  padding: 10px;
   &.purchased {
     position: relative;
     &:before {
@@ -10,10 +12,24 @@
       background-size: 25px 25px;
       background-position: center center;
       position: absolute;
-      right: -10px;
-      top: -10px;
+      right: 5px;
+      top: 5px;
     }
   }
+  &.captain {
+    position: relative;
+    &:before {
+      content: 'captain';
+      background-color: #0e1fe8;
+      color: #ffffff;
+      padding: 0 20px;
+      transform: rotate(43deg);
+      position: absolute;
+      right: -22px;
+      top: 10px;
+    }
+  }
+    
   .rating {
     margin-bottom: 5px;
     font-size: 13px;
@@ -44,7 +60,7 @@
       span {
         font-size: 15px;
         & + span {
-          &.attack {
+          &.winger {
             background-color: #d24b4b;
             padding: 5px 10px;
             line-height: 1;

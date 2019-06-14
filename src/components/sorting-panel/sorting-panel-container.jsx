@@ -13,8 +13,8 @@ const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
       criterion: 'all'
     },
     {
-      label: 'Attack',
-      sort: 'attack',
+      label: 'Winger',
+      sort: 'winger',
       criterion: 'position'
     },
     {
@@ -43,15 +43,15 @@ const SortingPanelContainer = ({ sortingValue, onSorted, count }) => {
       criterion: 'rating'
     },
     {
-      label: `My command (${count})`,
-      sort: 'my-command',
-      criterion: 'my-command'
+      label: `Purchased (${count})`,
+      sort: 'purchased',
+      criterion: 'purchased'
     }
   ];
     
 
-  const positionBtns = sortingBtns.filter(({ criterion }) => criterion === 'position' || criterion === 'my-command' || criterion === 'all');
-  const otherBtns = sortingBtns.filter(({ criterion }) => criterion !== 'position' && criterion !== 'my-command' && criterion !== 'all');
+  const positionBtns = sortingBtns.filter(({ criterion }) => criterion === 'position' || criterion === 'purchased' || criterion === 'all');
+  const otherBtns = sortingBtns.filter(({ criterion }) => criterion !== 'position' && criterion !== 'purchased' && criterion !== 'all');
   
   return (
     <div className="market-panel">

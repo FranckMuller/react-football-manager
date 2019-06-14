@@ -16,7 +16,7 @@ const AppHeader = ({ money }) => {
         </div>
         <ul className="nav list-unstyled justify-content-end flex-shrink-1 flex-grow-1">
           <li className="d-flex align-items-center">
-            <Link to="/my-command">my command</Link>
+            <Link to="/my-team">my team</Link>
           </li>
           <li className="d-flex align-items-center">
             <Link to="/transfer-market">transfer market</Link>

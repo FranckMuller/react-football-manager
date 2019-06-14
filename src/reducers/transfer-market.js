@@ -19,7 +19,7 @@ const sortingItems = (state, criterion, sortValue) => {
   if (state.transferMarket.sortingValue === sortValue) return state.transferMarket;
 
   switch (criterion) {
-    case 'my-command':
+    case 'purchased':
       items = state.transferMarket.allPlayers.filter(({ purchased }) => purchased === true);
       break;
 

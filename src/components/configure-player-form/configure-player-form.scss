@@ -1,0 +1,18 @@
+.configure-player-form {
+  .input-group {
+    margin-bottom: 15px;
+  }
+  label {
+    margin-bottom: 0;
+  }
+  select {
+    height: 30px;
+    width: 140px;
+    font-size: 14px;
+    border-color: #ddd;
+  }
+  button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}

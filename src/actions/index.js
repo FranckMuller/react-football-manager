@@ -48,7 +48,18 @@ const clearError = () => {
   }
 }
 
+const updateMyTeamAfterSale = (id) => {
+  return {
+    type: 'PLAYER_SALE',
+    payload: id
+  }
+}
+
 const playerSaleOrPurchase = (dispatch, player, money) => {
+
+  if(player.purchased) {
+    dispatch(updateMyTeamAfterSale(player.id))
+  }
 
   if(!player.purchased && player.cost > money) {
     setTimeout(() => {
@@ -73,10 +84,29 @@ const playerSaleOrPurchase = (dispatch, player, money) => {
   };
 };
 
-const myCommandRequest = () => {
+const myTeamRequest = () => {
   return {
-    type: 'MY_COMMAND_REQUEST'
+    type: 'MY_TEAM_REQUEST'
   };
+};
+
+const showConfigureModal = (dispatch, id) => {
+  dispatch(toggleModal(true));
+  return {
+    type: 'SHOW_CONFIGURE_MODAL',
+    payload: id
+  };
+};
+
+const configurePlayer = (data, id, dispatch) => {
+  dispatch(toggleModal(false));
+  return {
+    type: 'CONFIGURE_PLAYER',
+    payload: {
+      id: id,
+      data: data
+    }
+  }
 };
 
 
@@ -86,5 +116,7 @@ export {
   playerSaleOrPurchase,
   showConfirmationModal,
   toggleModal,
-  myCommandRequest
+  myTeamRequest,
+  showConfigureModal,
+  configurePlayer
 };

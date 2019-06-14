@@ -8,12 +8,9 @@ class ModalWindow extends Component {
 
   render() {
     const { isShowModal, title, onToggleModal, error = false, warningMessage = null, closeModalBtnDisable = false } = this.props;
-
     let classes = "modal-window d-flex flex-column justify-content-center align-items-center";
-    if(isShowModal) classes = classes + ' show';
-    if(error) {
-      classes = classes + ' error';
-    }
+    if(!isShowModal) return null;
+    if(error) classes = classes + ' error';
 
     return (
       <div className={classes}>

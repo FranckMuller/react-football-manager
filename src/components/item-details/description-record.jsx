@@ -1,4 +1,5 @@
 import React from 'react';
+import lodash from 'lodash';
 
 import goldBall from './gold-ball.png';
 
@@ -13,8 +14,6 @@ const DescriptionRecord = ({ item, label, field }) => {
     case 'goldBalls':
       let goldBalls = [];
       classes = classes + ' gold-balls';
-
-      console.log(item[field]);
 
       if(item[field] <= 0) {
         return null;
@@ -38,10 +37,12 @@ const DescriptionRecord = ({ item, label, field }) => {
       );
 
     case 'position':
+      let classField = lodash.split(item[field], ' ', 2);
+      classField = classField[classField.length - 1].toLocaleLowerCase();
       return (
         <div className={classes}>
           <span className="field-label">{label}:</span>
-          <span className={item[field]}>{item[field]}</span>
+          <span className={classField}>{item[field]}</span>
         </div>
       );
 

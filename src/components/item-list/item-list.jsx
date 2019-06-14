@@ -18,7 +18,7 @@ const ItemList = ({ items, renderBtns = null, warningComponent = null, children 
           if (renderBtns) btns = renderBtns(item)
           return (
             <li key={item.id}>
-              <div className="d-flex li-content flex-column">
+              <div className="d-flex li-content flex-column justify-content-between">
                 {
                   React.cloneElement(children, { item }) 
                 }

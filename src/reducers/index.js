@@ -1,6 +1,6 @@
 import updateTransferMarket from './transfer-market';
 import updateModalWindow from './modal-window';
-import updateMyCommand from './my-command';
+import updateMyTeam from './my-team';
 
 const initialState = {
   transferMarket: {
@@ -15,8 +15,16 @@ const initialState = {
   modalWindow: {
     isShowModal: false, 
   },
-  myCommand: {
-    players: []
+  myTeam: {
+    players: [
+      {
+        name: "Lionel Messi",
+        id: "1",
+        image: "http://localhost:3000/images/lionel-messi.jpg",
+        rating: "98"
+      }
+    ],
+    selectedPlayer: null
   },
 };
 
@@ -24,7 +32,7 @@ const reducer = (state = initialState, action) => {
   return {
     modalWindow: updateModalWindow(state, action),
     transferMarket: updateTransferMarket(state, action),
-    myCommand: updateMyCommand(state, action)
+    myTeam: updateMyTeam(state, action)
   }
 };
 
