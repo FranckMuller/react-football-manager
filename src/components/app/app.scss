@@ -14,8 +14,22 @@ img {
   margin: 0 auto;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  padding-left: 10px
+}
+
 .container-fluid {
-  padding: 20px 125px;
+  padding: 10px 125px;
   @media screen and (max-width: 1650px) {
     padding: 20px 75px;
   }
@@ -25,6 +39,11 @@ img {
   @media screen and (max-width: 498px) {
     padding: 10px;
   }
+}
+
+.title-page {
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .app {

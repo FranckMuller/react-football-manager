@@ -18,7 +18,7 @@ const WarningComponent = () => {
   );
 };
 
-const MyCommand = ({ items, onShowConfigureModal, seletedPlayer, onPlayerConfigured }) => {
+const MyTeam = ({ items, onShowConfigureModal, seletedItem, onPlayerConfigured, error }) => {
 
   const renderBtns = (item) => {
     return (
@@ -31,30 +31,41 @@ const MyCommand = ({ items, onShowConfigureModal, seletedPlayer, onPlayerConfigu
 
   let itemDetails = null;
   let playerId;
-  if (seletedPlayer) {
-    playerId = seletedPlayer.id;
+  if (seletedItem) {
+    playerId = seletedItem.id;
     itemDetails =
-      <ItemDetails item={seletedPlayer}>
+      <ItemDetails item={seletedItem}>
         <DescriptionRecord label="Position" field="position" />
+        <DescriptionRecord label="Number" field="number" />
       </ItemDetails>
+  };
+
+  if(items.length < 1) {
+    return (
+      <WarningComponent />
+    )
   }
 
   return (
     <div className="my-team container-fluid flex-grow-1 flex-shrink-1">
+      <h3 className="title-page text-center">Here you can configure your players</h3>
       <ItemList
         renderBtns={renderBtns}
-        warningComponent={<WarningComponent />}
         items={items}>
         <ItemDetails>
           <DescriptionRecord label="Position" field="position" />
+          <DescriptionRecord label="Number" field="number" />
         </ItemDetails>
       </ItemList>
-      <ModalWindow title='Configure player'>
+      <ModalWindow 
+        warningMessage='This number is already taken'
+        error={error} 
+        title='Configure player'>
         {itemDetails}
-        <ConfigurePlayerForm itemId={playerId} onPlayerConfigured={onPlayerConfigured} />
+        <ConfigurePlayerForm error={error} items={items} item={seletedItem} itemId={playerId} onPlayerConfigured={onPlayerConfigured} />
       </ModalWindow>
     </div>
   );
 };
 
-export default MyCommand;
+export default MyTeam;

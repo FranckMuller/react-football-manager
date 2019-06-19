@@ -2,13 +2,7 @@ import React from 'react';
 
 import './item-list.scss';
 
-const ItemList = ({ items, renderBtns = null, warningComponent = null, children }) => {
-
-  if(items.length === 0) {
-    return (
-      warningComponent
-    );
-  }; 
+const ItemList = ({ items, renderBtns = null, children }) => {
 
   return (
     <ul className="item-list d-flex flex-wrap">

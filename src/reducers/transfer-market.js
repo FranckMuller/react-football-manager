@@ -37,7 +37,7 @@ const sortingItems = (state, criterion, sortValue) => {
       items = state.transferMarket.displayedPlayers.slice().sort((a, b) => {
         return b.rating - a.rating
       });
-    break;
+      break;
 
     case 'all':
       items = state.transferMarket.allPlayers;
@@ -80,7 +80,7 @@ const updateItemsAfterSaleOrPurchase = (state, item, error) => {
   const displayedItemIdx = state.transferMarket.displayedPlayers.findIndex(({ id }) => id === item.id);
   let displayedPlayers = []
 
-  if(state.transferMarket.sortingValue === 'my-command') {
+  if (state.transferMarket.sortingValue === 'purchased') {
     displayedPlayers = [
       ...state.transferMarket.displayedPlayers.slice(0, displayedItemIdx),
       ...state.transferMarket.displayedPlayers.slice(displayedItemIdx + 1),
@@ -114,15 +114,15 @@ const updateTransferMarket = (state, action) => {
     case 'SORT_PLAYERS':
       return sortingItems(state, action.payload.criterion, action.payload.sortValue);
 
-    case 'SHOW_CONFIRMATION_MODAL':
+    case 'PLAYER_SALE_OR_PURCHASE':
+      return updateItemsAfterSaleOrPurchase(state, action.payload.player, action.payload.purchaseError);
+
+    case 'SELECTED_PLAYER_FOR_SALE_OR_PURCHASE':
       let selectedPlayer = state.transferMarket.allPlayers.find(({ id }) => id === action.payload);
       return {
         ...state.transferMarket,
         selectedPlayer: selectedPlayer
       };
-
-    case 'PLAYER_SALE_OR_PURCHASE':
-      return updateItemsAfterSaleOrPurchase(state, action.payload.player, action.payload.purchaseError);
 
     case 'CLEAR_ERROR':
       return {

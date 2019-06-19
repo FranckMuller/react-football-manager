@@ -8,6 +8,7 @@
       "rating": "98",
       "gold-balls": "5",
       "goals": "650",
+      "club": "barselona",
       "accurate-passes": "92"
     },
     {
@@ -19,6 +20,7 @@
       "rating": "94",
       "gold-balls": "5",
       "goals": "611",
+      "club": "real-madrid",
       "accurate-passes": "88"
     },
     {
@@ -30,6 +32,7 @@
       "rating": "95",
       "gold-balls": "0",
       "goals": "423",
+      "club": "pszh",
       "accurate-passes": "90"
     },
     {
@@ -41,6 +44,7 @@
       "rating": "95",
       "gold-balls": "0",
       "goals": "250",
+      "club": "pszh",
       "accurate-passes": "86"
     },
     {
@@ -52,6 +56,7 @@
       "rating": "92",
       "gold-balls": "0",
       "goals": "355",
+      "club": "manchester-junajted",
       "accurate-passes": "85"
     },
     {
@@ -63,6 +68,7 @@
       "rating": "89",
       "gold-balls": "0",
       "goals": "121",
+      "club": "cska",
       "accurate-passes": "84"
     },
     {
@@ -74,6 +80,7 @@
       "rating": "91",
       "gold-balls": "0",
       "goals": "10",
+      "club": "cska",
       "accurate-passes": "90"
     },
     {
@@ -85,6 +92,7 @@
       "rating": "87",
       "gold-balls": "0",
       "goals": "227",
+      "club": "bavarija-mjunkhen",
       "accurate-passes": "89"
     },
     {
@@ -96,6 +104,7 @@
       "rating": "86",
       "gold-balls": "0",
       "goals": "230",
+      "club": "arsenal",
       "accurate-passes": "91"
     },
     {
@@ -107,6 +116,7 @@
       "rating": "84",
       "gold-balls": "0",
       "goals": "355",
+      "club": "arsenal",
       "accurate-passes": "84"
     },
     {
@@ -118,6 +128,7 @@
       "rating": "92",
       "gold-balls": "0",
       "goals": "342",
+      "club": "liverpul",
       "accurate-passes": "92"
     },
     {
@@ -129,6 +140,7 @@
       "rating": "98",
       "gold-balls": "1",
       "goals": "450",
+      "club": "barselona",
       "accurate-passes": "97"
     },
     {
@@ -140,6 +152,7 @@
       "rating": "90",
       "gold-balls": "0",
       "goals": "390",
+      "club": "chelsi",
       "accurate-passes": "88"
     },
     {
@@ -151,6 +164,7 @@
       "rating": "94",
       "gold-balls": "0",
       "goals": "410",
+      "club": "atletiko-madrid",
       "accurate-passes": "89"
     },
     {
@@ -162,6 +176,7 @@
       "rating": "95",
       "gold-balls": "0",
       "goals": "502",
+      "club": "manchester-junajted",
       "accurate-passes": "93"
     },
     {
@@ -173,6 +188,7 @@
       "rating": "89",
       "gold-balls": "0",
       "goals": "450",
+      "club": "cska",
       "accurate-passes": "89"
     },
     {
@@ -184,6 +200,7 @@
       "rating": "92",
       "gold-balls": "0",
       "goals": "120",
+      "club": "real-madrid",
       "accurate-passes": "85"
     },
     {
@@ -195,6 +212,7 @@
       "rating": "96",
       "gold-balls": "0",
       "goals": "432",
+      "club": "arsenal",
       "accurate-passes": "88"
     },
     {
@@ -206,6 +224,7 @@
       "rating": "94",
       "gold-balls": "0",
       "goals": "329",
+      "club": "manchester-junajted",
       "accurate-passes": "85"
     },
     {
@@ -217,6 +236,7 @@
       "rating": "93",
       "gold-balls": "0",
       "goals": "490",
+      "club": "juventus",
       "accurate-passes": "87"
     },
     {
@@ -228,6 +248,7 @@
       "rating": "88",
       "gold-balls": "0",
       "goals": "290",
+      "club": "valensija",
       "accurate-passes": "89"
     },
     {
@@ -239,6 +260,7 @@
       "rating": "95",
       "gold-balls": "0",
       "goals": "15",
+      "club": "juventus",
       "accurate-passes": "90"
     },
     {
@@ -250,6 +272,7 @@
       "rating": "89",
       "gold-balls": "0",
       "goals": "280",
+      "club": "real-madrid",
       "accurate-passes": "82"
     },
     {
@@ -261,6 +284,7 @@
       "rating": "78",
       "gold-balls": "0",
       "goals": "305",
+      "club": "barselona",
       "accurate-passes": "83"
     },
     {
@@ -272,6 +296,7 @@
       "rating": "75",
       "gold-balls": "0",
       "goals": "295",
+      "club": "borussija-dortmund",
       "accurate-passes": "78"
     },
     {
@@ -283,6 +308,7 @@
       "rating": "82",
       "gold-balls": "1",
       "goals": "279",
+      "club": "real-madrid",
       "accurate-passes": "90"
     },
     {
@@ -294,6 +320,7 @@
       "rating": "65",
       "gold-balls": "0",
       "goals": "120",
+      "club": "cska",
       "accurate-passes": "76"
     },
     {
@@ -305,6 +332,7 @@
       "rating": "93",
       "gold-balls": "0",
       "goals": "12",
+      "club": "manchester-junajted",
       "accurate-passes": "90"
     },
     {
@@ -316,6 +344,7 @@
       "rating": "88",
       "gold-balls": "0",
       "goals": "220",
+      "club": "real-madrid",
       "accurate-passes": "92"
     },
     {
@@ -327,6 +356,7 @@
       "rating": "89",
       "gold-balls": "0",
       "goals": "390",
+      "club": "barselona",
       "accurate-passes": "93"
     },
     {
@@ -338,6 +368,7 @@
       "rating": "88",
       "gold-balls": "0",
       "goals": "210",
+      "club": "manchester-siti",
       "accurate-passes": "91"
     },
     {
@@ -349,6 +380,7 @@
       "rating": "85",
       "gold-balls": "0",
       "goals": "301",
+      "club": "real-madrid",
       "accurate-passes": "86"
     },
     {
@@ -360,6 +392,7 @@
       "rating": "88",
       "gold-balls": "0",
       "goals": "331",
+      "club": "manchester-siti",
       "accurate-passes": "88"
     },
     {
@@ -371,6 +404,7 @@
       "rating": "91",
       "gold-balls": "0",
       "goals": "400",
+      "club": "real-madrid",
       "accurate-passes": "93"
     },
     {
@@ -382,6 +416,7 @@
       "rating": "83",
       "gold-balls": "0",
       "goals": "210",
+      "club": "real-madrid",
       "accurate-passes": "90"
     },
     {
@@ -393,6 +428,7 @@
       "rating": "95",
       "gold-balls": "0",
       "goals": "15",
+      "club": "real-madrid",
       "accurate-passes": "93"
     },
     {
@@ -404,6 +440,7 @@
       "rating": "82",
       "gold-balls": "0",
       "goals": "120",
+      "club": "barselona",
       "accurate-passes": "81"
     },
     {
@@ -415,6 +452,7 @@
       "rating": "78",
       "gold-balls": "0",
       "goals": "320",
+      "club": "cska",
       "accurate-passes": "83"
     },
     {
@@ -426,6 +464,7 @@
       "rating": "85",
       "gold-balls": "0",
       "goals": "450",
+      "club": "tottenkhehm",
       "accurate-passes": "91"
     },
     {
@@ -437,6 +476,7 @@
       "rating": "86",
       "gold-balls": "0",
       "goals": "340",
+      "club": "atletiko-madrid",
       "accurate-passes": "89"
     },
     {
@@ -448,6 +488,7 @@
       "rating": "91",
       "gold-balls": "0",
       "goals": "420",
+      "club": "barselona",
       "accurate-passes": "86"
     }
   ]

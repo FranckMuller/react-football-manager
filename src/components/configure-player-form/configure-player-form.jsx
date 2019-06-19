@@ -1,70 +1,133 @@
 import React, { Component } from 'react';
+import Button from '../button';
 
 import './configure-player-form.scss';
 
 class ConfigurePlayerForm extends Component {
 
   state = {
-    checkBoxValue: false,
-    selectValue: 'right winger'
+    captain: false,
+    position: 'Choose here',
+    number: '',
+    warning: false
   }
+
+  clearInterval;
+
+  componentDidMount() {
+    if (this.props.item) {
+      const { captain = false, position, number = '' } = this.props.item;
+      this.setState({
+        captain,
+        position,
+        number,
+      })
+    };
+  };
+
+  componentWillUnmount() {
+    clearTimeout(this.clearInterval);
+  };
 
   onSubmitFrom = (e) => {
     e.preventDefault();
-    const { onPlayerConfigured, itemId } = this.props;
-    const { checkBoxValue, selectValue } = this.state;
+    const { onPlayerConfigured, itemId, items } = this.props;
+    const { captain = false, position, number } = this.state;
     const data = {
-      captain: checkBoxValue,
-      position: selectValue
+      captain,
+      position,
+      number
     }
-    onPlayerConfigured(data, itemId);
+    onPlayerConfigured(data, itemId, items);
   };
 
   onCheckboxChange = (e) => {
     this.setState({
-      checkBoxValue: e.target.checked
+      captain: e.target.checked
     });
   };
 
   onChangeSelect = (e) => {
     this.setState({
-      selectValue: e.target.value
+      position: e.target.value
     });
-  }
+  };
+
+  onChangeInput = (e) => {
+    if (e.target.value.length > 3) {
+      this.setState({
+        warning: true
+      });
+
+      this.clearInterval = setTimeout(() => {
+        this.setState({
+          warning: false
+        });
+      }, 1000);
+    } else {
+      this.setState({
+        number: e.target.value,
+        warning: false
+      });
+    };
+  };
 
   render() {
 
-    const { checkBoxValue, selectValue } = this.state;
+    const { captain, number, position, warning } = this.state;
+    const { error } = this.props;
+    let classes = "form-group d-flex justify-content-between align-items-center"
+
+    if (warning) classes += ' warning';
 
     return (
       <div className="configure-player-form">
         <form>
-          <div className="form-group d-flex justify-content-between align-items-center">
-            <label htmlFor="">Captain's armband</label>
-            <input 
-              onChange={this.onCheckboxChange}
-              type="checkbox"
-              checked={checkBoxValue} />
+          <div className={classes}>
+            <label htmlFor="numberPlayer">Number</label>
+            <input
+              readOnly={warning}
+              onChange={this.onChangeInput}
+              value={number}
+              id="numberPlayer"
+              className="form-control"
+              type="number"
+              placeholder="Enter a number" />
+            <span className="warning-message">maximum 3 characters</span>
           </div>
+
           <div className="form-group d-flex justify-content-between align-items-center">
-            <label htmlFor="">Position</label>
-            <select value={selectValue} onChange={this.onChangeSelect}>
-              <option value="right winger">Right winger</option>
-              <option value="central winger">Central winger</option>
-              <option value="left winger">Left winger</option>
-              <option value="right halfback">Right halfback</option>
-              <option value="central halfback">Central halfback</option>
-              <option value="left halfback">Left halfback</option>
-              <option value="right defender">Right defender</option>
-              <option value="central defender">Central defender</option>
-              <option value="left defender">Left defender</option>
-              <option value="goalkeeper">Goalkeeper</option>
+            <label htmlFor="positionPlayer">Position</label>
+            <select id="positionPlayer" value={position} onChange={this.onChangeSelect}>
+              <option value="default" hidden>Select position</option>
+              <option value="right winger">right winger</option>
+              <option value="central winger">central winger</option>
+              <option value="left winger">left winger</option>
+              <option value="right halfback">right halfback</option>
+              <option value="central halfback">central halfback</option>
+              <option value="left halfback">left halfback</option>
+              <option value="right defender">right defender</option>
+              <option value="central defender">central defender</option>
+              <option value="left defender">left defender</option>
+              <option value="goalkeeper">goalkeeper</option>
             </select>
           </div>
-          <button 
-            className="btn btn-outline-primary"
-            onClick={this.onSubmitFrom}>
-            Submit</button>
+
+          <div className="form-group d-flex justify-content-between align-items-center armband">
+            <label htmlFor="armband" className="d-flex justify-content-between align-items-center">Captain's armband
+            <input
+                id="armband"
+                onChange={this.onCheckboxChange}
+                type="checkbox"
+                checked={captain} />
+              <div></div>
+            </label>
+          </div>
+          <Button 
+            btnLabel="Submit"
+            disable={error}
+            btnAction={this.onSubmitFrom}
+            classes="btn btn-outline-primary" />
         </form>
       </div>
     );

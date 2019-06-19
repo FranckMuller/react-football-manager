@@ -4,7 +4,7 @@ import lodash from 'lodash';
 import goldBall from './gold-ball.png';
 
 const DescriptionRecord = ({ item, label, field }) => {
-  let classes = `d-flex justify-content-between description-item`;
+  let classes = `d-flex justify-content-between align-items-center description-item`;
 
   if(!item[field]) {
     return null;
@@ -62,7 +62,7 @@ const DescriptionRecord = ({ item, label, field }) => {
       return (
         <div className={classes}>
           <span className="field-label">{label}:</span>
-          <span>{item[field]}</span>
+          <span className={field}>{item[field]}</span>
         </div>
       );
   };

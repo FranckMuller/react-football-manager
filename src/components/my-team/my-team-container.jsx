@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { myTeamRequest, showConfigureModal, configurePlayer } from '../../actions';
+import { myTeamRequest, selectedPlayerForConfiguration, configurePlayer } from '../../actions';
 
 import MyTeam from './my-team';
 
@@ -19,18 +19,19 @@ class MyTeamContainer extends Component {
   };
 };
 
-const mapStateToProps = ({ myTeam: { players, selectedPlayer }}) => {
+const mapStateToProps = ({ myTeam: { players, selectedPlayer, error }}) => {
   return {
     items: players,
-    seletedPlayer: selectedPlayer
+    seletedItem: selectedPlayer,
+    error: error
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetItems: () => dispatch(myTeamRequest()),
-    onShowConfigureModal: (id) => dispatch(showConfigureModal(dispatch, id)),
-    onPlayerConfigured: (data, id) => dispatch(configurePlayer(data, id, dispatch))
+    onShowConfigureModal: (id) => dispatch(selectedPlayerForConfiguration(dispatch, id)),
+    onPlayerConfigured: (data, id, items) => dispatch(configurePlayer(data, id, dispatch, items))
   }
 }
 

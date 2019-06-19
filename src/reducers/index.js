@@ -16,15 +16,9 @@ const initialState = {
     isShowModal: false, 
   },
   myTeam: {
-    players: [
-      {
-        name: "Lionel Messi",
-        id: "1",
-        image: "http://localhost:3000/images/lionel-messi.jpg",
-        rating: "98"
-      }
-    ],
-    selectedPlayer: null
+    players: [],
+    selectedPlayer: null,
+    error: false
   },
 };
 

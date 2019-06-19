@@ -9,6 +9,7 @@ import TransferMarket from '../transfer-market'
 import AppHeader from '../app-header';
 import HomePage from '../home-page';
 import MyTeam from '../my-team';
+import MyClub from '../my-club';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './app.scss'
@@ -23,15 +24,15 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route path="/transfer-market" component={TransferMarket} />
-            <Route path="/my-team" component={MyTeam} />
             <Route exact path="/" component={HomePage} />
+            <Route path="/my-team" component={MyTeam} />
+            <Route path="/my-club" component={MyClub} />
+            <Route path="/transfer-market" component={TransferMarket} />
           </div>
         </Router>
       </FmapiServiceProvider>
     </Provider>
   )
-
 };
 
 export default App;

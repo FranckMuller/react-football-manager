@@ -19,7 +19,8 @@ class FmpaiService {
       position: item.position,
       rating: item.rating,
       accuratePasses: item['accurate-passes'],
-      goals: item.goals
+      goals: item.goals,
+      club: item.club
     };
   };
 
