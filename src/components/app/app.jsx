@@ -26,7 +26,7 @@ const App = () => {
             <AppHeader />
             <Route exact path="/" component={HomePage} />
             <Route path="/my-team" component={MyTeam} />
-            <Route path="/my-club" component={MyClub} />
+            <Route exact path="/my-club" component={MyClub} />
             <Route path="/transfer-market" component={TransferMarket} />
           </div>
         </Router>

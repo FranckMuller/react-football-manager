@@ -1,5 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
+import FormattingMoney from '../hoc/formatting-number';
 
 import goldBall from './gold-ball.png';
 
@@ -54,7 +55,7 @@ const DescriptionRecord = ({ item, label, field }) => {
       return (
         <div className={classes}>
           <span className="field-label">{label}:</span>
-          <span>{costPlayer}$</span>
+          <FormattingMoney money={costPlayer}/>
         </div>
       );
 

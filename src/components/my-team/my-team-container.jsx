@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { myTeamRequest, selectedPlayerForConfiguration, configurePlayer } from '../../actions';
+
+import Placeholder from '../placeholder';
 
 import MyTeam from './my-team';
 
@@ -12,7 +15,12 @@ class MyTeamContainer extends Component {
   };
 
   render() {
-
+    if(this.props.items.length < 1) {
+      return (
+        <Placeholder 
+          title={<span>You do not have any purchased players, go to the <Link to="/transfer-market">transfer market</Link> to buy them</span>} />
+      );
+    };
     return (
       <MyTeam {...this.props} />
     );

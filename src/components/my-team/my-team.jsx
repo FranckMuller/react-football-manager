@@ -1,22 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ItemList from '../item-list';
-import Spinner from '../spinner';
 import ItemDetails, { DescriptionRecord } from '../item-details';
 import Button from '../button';
 import ModalWindow from '../modal-window';
 import ConfigurePlayerForm from '../configure-player-form';
 
 import './my-team.scss';
-
-const WarningComponent = () => {
-  return (
-    <div className="warning-component">
-      <h3 className="title text-center">You do not have any purchased players, go to the <Link to="/transfer-market">transfer market</Link> to buy them</h3>
-      <Spinner />
-    </div>
-  );
-};
 
 const MyTeam = ({ items, onShowConfigureModal, seletedItem, onPlayerConfigured, error }) => {
 
@@ -40,15 +29,9 @@ const MyTeam = ({ items, onShowConfigureModal, seletedItem, onPlayerConfigured, 
       </ItemDetails>
   };
 
-  if(items.length < 1) {
-    return (
-      <WarningComponent />
-    )
-  }
-
   return (
     <div className="my-team container-fluid flex-grow-1 flex-shrink-1">
-      <h3 className="title-page text-center">Here you can configure your players</h3>
+      <h3 className="title-page text-center">Players configuration</h3>
       <ItemList
         renderBtns={renderBtns}
         items={items}>

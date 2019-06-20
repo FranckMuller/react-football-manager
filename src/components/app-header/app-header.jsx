@@ -1,27 +1,12 @@
 import React from 'react';
-import NumberFormat from 'react-number-format';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleModal } from '../../actions';
+import FormattingMoney from '../hoc/formatting-number';
 
 import './app-header.scss';
 import logo from './fm_logo.gif'
-
-const FormattingMoney = ({ money }) => {
-    let text = 'm';
-    let number = String(money);
-
-    if(number.length > 9) {
-      text = 'bln';
-      number = number.slice(0, -9) + text;
-    } else {
-      text = 'm';
-      number = number.slice(0, -6) + text;
-    };
-
-  return <span>{number}</span>
-}
 
 const AppHeader = ({ money, onClearModal, history, isShowModal }) => {
 
@@ -54,8 +39,7 @@ const AppHeader = ({ money, onClearModal, history, isShowModal }) => {
         </ul>
         <div className="your-money d-flex justify-content-end align-items-center">
           <i className="fa fa-money"></i>
-          {/* <FormattingMoney money={money} />  */}
-          <NumberFormat value={money} displayType={'text'} fixedDecimalScale={true} thousandSeparator={','} prefix={'$'} />
+          <FormattingMoney money={money} /> 
         </div>
       </div>
     </header>

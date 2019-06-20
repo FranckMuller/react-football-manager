@@ -6,7 +6,7 @@ const initialState = {
   transferMarket: {
     allPlayers: [],
     displayedPlayers: [],
-    money: 1000000000,
+    money: 1500000000,
     loading: true,
     selectedPlayer: null,
     sortingValue: 'all',
@@ -20,13 +20,15 @@ const initialState = {
     selectedPlayer: null,
     error: false
   },
+  myClub: null
 };
 
 const reducer = (state = initialState, action) => {
   return {
     modalWindow: updateModalWindow(state, action),
     transferMarket: updateTransferMarket(state, action),
-    myTeam: updateMyTeam(state, action)
+    myTeam: updateMyTeam(state, action),
+    myClub: state.myClub
   }
 };
 

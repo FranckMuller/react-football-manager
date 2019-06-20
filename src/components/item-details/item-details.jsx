@@ -11,8 +11,6 @@ class ItemDetails extends Component {
     }
   }
 
-
-
   render() {
 
     const { item } = this.props;
@@ -42,6 +40,7 @@ class ItemDetails extends Component {
 
     return (
       <div className={classes}>
+        <div className="name text-center">{item.name}</div>
         {logo}
         <div className="rating text-center">
           <i className="fa fa-star" /> {item.rating}
