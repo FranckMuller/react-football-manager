@@ -1,7 +1,7 @@
 import React from 'react';
 import { FmapiServiceProvider } from '../fmapi-service-context';
 import FmpaiService from '../../services/fmapi-service';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store';
 
@@ -24,10 +24,12 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route exact path="/" component={HomePage} />
-            <Route path="/my-team" component={MyTeam} />
-            <Route exact path="/my-club" component={MyClub} />
-            <Route path="/transfer-market" component={TransferMarket} />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/my-team" component={MyTeam} />
+              <Route path="/my-club" component={MyClub} />
+              <Route path="/transfer-market" component={TransferMarket} />
+            </Switch>
           </div>
         </Router>
       </FmapiServiceProvider>

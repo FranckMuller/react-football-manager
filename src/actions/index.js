@@ -11,6 +11,10 @@ import {
   configurePlayer
 } from './my-team';
 
+import {
+  updateMyClub
+} from './my-club';
+
 import { toggleModal } from './modal-window';
 
 export {
@@ -21,5 +25,6 @@ export {
   toggleModal,
   myTeamRequest,
   selectedPlayerForConfiguration,
-  configurePlayer
+  configurePlayer,
+  updateMyClub
 };

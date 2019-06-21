@@ -1,6 +1,7 @@
 import updateTransferMarket from './transfer-market';
 import updateModalWindow from './modal-window';
 import updateMyTeam from './my-team';
+import updateMyClub from './my-club';
 
 const initialState = {
   transferMarket: {
@@ -20,7 +21,9 @@ const initialState = {
     selectedPlayer: null,
     error: false
   },
-  myClub: null
+  myClub: {
+    clubInfo: null
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +31,7 @@ const reducer = (state = initialState, action) => {
     modalWindow: updateModalWindow(state, action),
     transferMarket: updateTransferMarket(state, action),
     myTeam: updateMyTeam(state, action),
-    myClub: state.myClub
+    myClub: updateMyClub(state, action)
   }
 };
 

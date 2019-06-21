@@ -5,7 +5,7 @@ import './placeholder.scss';
 
 const Placeholder = ({ title }) => {
   return (
-    <div className="placeholder">
+    <div className="placeholder-component">
       <h3 className="title text-center">{title}</h3>
       <Spinner />
     </div>
