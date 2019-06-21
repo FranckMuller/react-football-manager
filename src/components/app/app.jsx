@@ -1,14 +1,15 @@
 import React from 'react';
 import { FmapiServiceProvider } from '../fmapi-service-context';
 import FmpaiService from '../../services/fmapi-service';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../../store';
 
 import TransferMarket from '../transfer-market'
 import AppHeader from '../app-header';
 import HomePage from '../home-page';
-import MyCommand from '../my-command';
+import MyTeam from '../my-team';
+import MyClub from '../my-club';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './app.scss'
@@ -23,15 +24,17 @@ const App = () => {
         <Router>
           <div className="app d-flex flex-column">
             <AppHeader />
-            <Route path="/transfer-market" component={TransferMarket} />
-            <Route path="/my-command" component={MyCommand} />
-            <Route exact path="/" component={HomePage} />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/my-team" component={MyTeam} />
+              <Route path="/my-club" component={MyClub} />
+              <Route path="/transfer-market" component={TransferMarket} />
+            </Switch>
           </div>
         </Router>
       </FmapiServiceProvider>
     </Provider>
   )
-
 };
 
 export default App;

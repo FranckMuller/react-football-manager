@@ -8,10 +8,10 @@
   z-index: 50;
   transform: scale(0);
   transition: .4s;
-  &.show {
-    transform: scale(1);
-    border-radius: 0;
-  }
+  transform: scale(1);
+  border-radius: 0;
+  animation: animModal .3s; 
+  animation-iteration-count: 1;
   &.error {
     .modal-box {
       animation: shake .5s; 
@@ -28,6 +28,7 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     max-width: 320px;
+    min-width: 320px;
     margin-top: -100px;
     position: relative;
     .title {
@@ -69,6 +70,15 @@
     width: 100%;
     padding: 0 20px;
   }
+}
+
+@keyframes animModal {
+  0% { opacity: 0; transform: scale(0); }
+  20% { opacity: .2; transform: scale(.2); }
+  40% { opacity: .4; transform: scale(.4); }
+  60% { opacity: .6; transform: scale(.6); }
+  80% { opacity: .8; transform: scale(.8); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes noticeAnim {

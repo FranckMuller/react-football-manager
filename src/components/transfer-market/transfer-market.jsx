@@ -27,7 +27,6 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
 
     modalWindow =
       <ModalWindow
-        closeModalBtnDisable={purchaseError}
         error={purchaseError}
         isShowModal={isShowModal}
         warningMessage={`You do not have enough money to buy ${selectedPlayer.name}`}
@@ -48,18 +47,22 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
   };
 
   return (
-    <div className="transfer-market d-flex flex-column">
-      <SortingPanel />
-      <div className="transfer-market-players">
-        <ItemList items={items} renderBtns={renderBtns}>
-          <ItemDetails item={(item) => item}>
-            <DescriptionRecord label={'Position'} field={'position'} />
-            <DescriptionRecord label={'Cost'} field={'cost'} />
-          </ItemDetails>
-        </ItemList>
+    <div className="container-fluid transfer-market-container">
+      <div className="transfer-market d-flex flex-column">
+        <h3 className="title-page text-center">Transfer market is opened</h3>
+        <SortingPanel />
+        <div className="transfer-market-players">
+          <ItemList items={items} renderBtns={renderBtns}>
+            <ItemDetails item={(item) => item}>
+              <DescriptionRecord label={'Position'} field={'position'} />
+              <DescriptionRecord label={'Cost'} field={'cost'} />
+            </ItemDetails>
+          </ItemList>
+        </div>
+        {modalWindow}
       </div>
-      {modalWindow}
     </div>
+
   );
 
 };

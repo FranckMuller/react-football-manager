@@ -1,4 +1,23 @@
 .item-details {
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  .club-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    z-index: -1;
+    opacity: .9;
+    // border-bottom: 2px solid #000;
+    // box-shadow: 0px 3px 5px 0px rgba(0,0,0,1);
+  }
+
   &.purchased {
     position: relative;
     &:before {
@@ -10,10 +29,24 @@
       background-size: 25px 25px;
       background-position: center center;
       position: absolute;
-      right: -10px;
-      top: -10px;
+      right: 5px;
+      top: 5px;
     }
   }
+  &.captain {
+    position: relative;
+    &:before {
+      content: 'captain';
+      background-color: #0e1fe8;
+      color: #ffffff;
+      padding: 0 20px;
+      transform: rotate(43deg);
+      position: absolute;
+      right: -22px;
+      top: 10px;
+    }
+  }
+    
   .rating {
     margin-bottom: 5px;
     font-size: 13px;
@@ -26,6 +59,7 @@
   .photo {
     height: 80px;
     margin-bottom: 10px;
+    opacity: .96;
     img {
       border-radius: 50%;
     }
@@ -44,7 +78,7 @@
       span {
         font-size: 15px;
         & + span {
-          &.attack {
+          &.winger {
             background-color: #d24b4b;
             padding: 5px 10px;
             line-height: 1;
@@ -80,6 +114,13 @@
       }
       & + .description-item {
         margin-top: 5px;
+      }
+
+      .number {
+        font-size: 20px;
+        font-weight: 700;
+        color: #22b9cc;
+        text-shadow: 2px 2px 2px rgb(4, 0, 255);
       }
     }
     .gold-balls {

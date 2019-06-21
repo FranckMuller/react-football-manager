@@ -3,12 +3,15 @@
   margin: 0 -5px;
   list-style: none;
   overflow-y: auto;
+  .btn-group {
+    padding: 10px;
+  }
   li {
     padding: 5px;
     flex: 0 0 16.6666666667%;
     max-width: 16.6666666667%;
     .li-content {
-      padding: 10px;
+      overflow: hidden;
       background-color: rgba(220, 220, 220, .8);
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;

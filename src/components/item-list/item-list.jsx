@@ -2,13 +2,7 @@ import React from 'react';
 
 import './item-list.scss';
 
-const ItemList = ({ items, renderBtns = null, warningComponent = null, children }) => {
-
-  if(items.length === 0) {
-    return (
-      warningComponent
-    );
-  }; 
+const ItemList = ({ items, renderBtns = null, children }) => {
 
   return (
     <ul className="item-list d-flex flex-wrap">
@@ -18,7 +12,7 @@ const ItemList = ({ items, renderBtns = null, warningComponent = null, children 
           if (renderBtns) btns = renderBtns(item)
           return (
             <li key={item.id}>
-              <div className="d-flex li-content flex-column">
+              <div className="d-flex li-content flex-column justify-content-between">
                 {
                   React.cloneElement(children, { item }) 
                 }

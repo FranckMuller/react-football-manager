@@ -7,13 +7,10 @@ import './modal-window.scss';
 class ModalWindow extends Component {
 
   render() {
-    const { isShowModal, title, onToggleModal, error = false, warningMessage = null, closeModalBtnDisable = false } = this.props;
-
+    const { isShowModal, title, onToggleModal, error = false, warningMessage = null } = this.props;
     let classes = "modal-window d-flex flex-column justify-content-center align-items-center";
-    if(isShowModal) classes = classes + ' show';
-    if(error) {
-      classes = classes + ' error';
-    }
+    if(!isShowModal) return null;
+    if(error) classes = classes + ' error';
 
     return (
       <div className={classes}>
@@ -26,7 +23,7 @@ class ModalWindow extends Component {
             {this.props.children}
           </div>
           <button 
-            disabled={closeModalBtnDisable}
+            disabled={error}
             className="btn-close-modal"
             onClick={onToggleModal}></button>
         </div>

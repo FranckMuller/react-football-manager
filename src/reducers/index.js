@@ -1,12 +1,13 @@
 import updateTransferMarket from './transfer-market';
 import updateModalWindow from './modal-window';
-import updateMyCommand from './my-command';
+import updateMyTeam from './my-team';
+import updateMyClub from './my-club';
 
 const initialState = {
   transferMarket: {
     allPlayers: [],
     displayedPlayers: [],
-    money: 1000000000,
+    money: 1500000000,
     loading: true,
     selectedPlayer: null,
     sortingValue: 'all',
@@ -15,16 +16,22 @@ const initialState = {
   modalWindow: {
     isShowModal: false, 
   },
-  myCommand: {
-    players: []
+  myTeam: {
+    players: [],
+    selectedPlayer: null,
+    error: false
   },
+  myClub: {
+    clubInfo: null
+  }
 };
 
 const reducer = (state = initialState, action) => {
   return {
     modalWindow: updateModalWindow(state, action),
     transferMarket: updateTransferMarket(state, action),
-    myCommand: updateMyCommand(state, action)
+    myTeam: updateMyTeam(state, action),
+    myClub: updateMyClub(state, action)
   }
 };
 
