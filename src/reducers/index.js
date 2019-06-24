@@ -22,7 +22,12 @@ const initialState = {
     error: false
   },
   myClub: {
-    clubInfo: null
+    clubInfo: {
+      club: {label: "club", image: "http://localhost:3000/barselona.png", name: "Barselona"},
+      owner: {label: "owner", image: "http://localhost:3000/messi-min.png", name: "Dimasta"},
+      stadium: {label: "stadium", image: null, name: ""},
+      trainer: {label: "trainer", image: null, name: ""}
+    }
   }
 };
 

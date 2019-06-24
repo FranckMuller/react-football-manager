@@ -7,9 +7,41 @@
       font-size: 42px;
       color: #2b4288;
       span {
-        flex: 0 0 70px;
+        flex: 0 0 80px;
         padding: 10px 15px;
         margin-left: 10px;
+      }
+    }
+
+    .employees {
+      .position {
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        background-color: rgba(45, 28, 136, 0.9);
+        padding: 5px 0;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+      .name {
+        margin-top: 15px;
+        border-top: 1px solid #ddd;
+        padding-top: 5px;
+      }
+
+      .employee-box {
+        flex: 0 0 25%;
+        .employee {
+          box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.25);
+        }
+        .description {
+          padding: 20px;
+          border: 1px solid #ddd;
+          font-weight: 700;
+          .label {
+            font-weight: 400;
+          }
+        }
       }
     }
   }

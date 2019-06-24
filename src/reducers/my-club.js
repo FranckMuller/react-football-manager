@@ -5,6 +5,7 @@ const updateMyClub = (state, action) => {
       action.payload.map((el) => {
         updatedClub[el.label] = el;
       });
+      console.log(updatedClub.owner.image)
       return {
         ...state.myClub,
         clubInfo: updatedClub

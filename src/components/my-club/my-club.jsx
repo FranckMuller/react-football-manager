@@ -9,12 +9,22 @@ import './my-club.scss';
 const ViewMyClub = ({ clubInfo }) => {
   return (
     <div className="view-my-club">
-      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {clubInfo.club.name} <span><img src={clubInfo.club.image} alt="logo"/></span></h3>
-      <div className="owner">
-        <div className="photo">
-          <img src={clubInfo.owner.image} alt=""/>
+      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {clubInfo.club.name} <span><img src={clubInfo.club.image} alt="logo" /></span></h3>
+      <div className="employees d-flex">
+        <div className="employee-box">
+          <div className="employee owner">
+            <div className="position text-center">Owner</div>
+            <div className="description">
+              <div className="photo">
+                <img src={clubInfo.owner.image} alt="" />
+              </div>
+              <div className="name d-flex justify-content-between">
+                <span className="label">name:</span>
+                <span>{clubInfo.owner.name}</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="name">{clubInfo.owner.name}</div>
       </div>
     </div>
   );
@@ -24,7 +34,7 @@ class MyClub extends Component {
 
   renderView = () => {
     const { clubInfo } = this.props;
-    if(this.props.clubInfo !== null) {
+    if (this.props.clubInfo !== null) {
       return <ViewMyClub clubInfo={clubInfo} />
     }
     return <Placeholder title={<span><Link to="/my-club/configuration">Start</Link> club configuration</span>} />
