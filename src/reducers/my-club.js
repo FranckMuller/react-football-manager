@@ -1,14 +1,16 @@
 const updateMyClub = (state, action) => {
   switch(action.type) {
     case 'UPDATE_MY_CLUB':
-      const updatedClub = {};
+      let updatedClub = state.myClub.slice();
       action.payload.map((el) => {
-        updatedClub[el.label] = el;
+        updatedClub = [
+          ...updatedClub,
+          el
+        ]
       });
-      console.log(updatedClub.owner.image)
       return {
         ...state.myClub,
-        clubInfo: updatedClub
+        ...updatedClub
       }
 
     default: return state.myClub;  

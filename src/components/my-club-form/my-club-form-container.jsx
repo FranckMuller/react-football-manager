@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import lodash from 'lodash';
 import { updateMyClub } from '../../actions';
 
 import MyClubForm from './my-club-form';
@@ -7,86 +8,72 @@ import MyClubForm from './my-club-form';
 class MyClubFormContainer extends Component {
 
   state = {
-    formFields: [
-      {
-        label: 'owner',
-        image: null,
-        name: ''
-      },
-      {
-        label: 'club',
-        image: null,
-        name: ''
-      },
-      {
-        label: 'trainer',
-        image: null,
-        name: ''
-      },
-      {
-        label: 'stadium',
-        image: null,
-        name: ''
-      }
-    ]
+    clubName: '',
+    clubLogo: null,
+    step: 1,
   };
 
-  onDropImage = (accepted, label) => {
-    this.getBase64(accepted[0], label);
+  onToggleSteps = (value) => {
+    this.setState({
+      step: value
+    });
   };
+
+  transformLabel(label) {
+    const idx = label.indexOf('-');
+    const before = label.slice(0, idx);
+    const after = label.slice(idx + 1);
+    return before + lodash.capitalize(after);
+  }
 
   getBase64(file, label) {
+    const newLabel = this.transformLabel(label);
     var reader = new FileReader();
     reader.onload = () => {
-      const idx = this.state.formFields.findIndex((el) => el.label === label)
-      const item = this.state.formFields.find((el) => el.label === label);
-      const newItem = {
-        ...item,
-        image: reader.result
-      }
       this.setState({
-        formFields: [
-          ...this.state.formFields.slice(0, idx),
-          newItem,
-          ...this.state.formFields.slice(idx + 1)
-        ]
+        [newLabel]: reader.result
       });
     };
     reader.readAsDataURL(file);
   };
 
   onChangeInput = (e, label) => {
-      e.preventDefault();
-      const idx = this.state.formFields.findIndex((el) => el.label === label)
-      const item = this.state.formFields.find((el) => el.label === label);
-      const newItem = {
-        ...item,
-        name: e.target.value
-      }
+      const newLabel = this.transformLabel(label);
       this.setState({
-        formFields: [
-          ...this.state.formFields.slice(0, idx),
-          newItem,
-          ...this.state.formFields.slice(idx + 1)
-        ]
+        [newLabel]: e.target.value,
       });
+  };
+
+  onDropImage = (accepted, label) => {
+    this.getBase64(accepted[0], label);
   };
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.formFields)
     this.props.onUpdateMyClub(this.state.formFields)
   };
 
   render() {
-    const { formFields } = this.state;
+
+    const { clubLogo, clubName, step } = this.state;
+
     return (
       <MyClubForm 
         onFormSubmit={this.onFormSubmit}
         onChangeInput={this.onChangeInput}
         onDropImage={this.onDropImage} 
-        formFields={formFields}  />
+        onChangeBirthYear={this.onChangeBirthYear}
+        clubLogo={clubLogo}
+        clubName={clubName}
+        step={step}
+        onToggleSteps={this.onToggleSteps} />
     )
+  };
+};
+
+const mapStateToProps = ({ myClub }) => {
+  return {
+    myClub: myClub
   };
 };
 
@@ -96,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(MyClubFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MyClubFormContainer);
