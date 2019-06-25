@@ -62,7 +62,7 @@ class FirstStep extends Component {
     if (errorInput) groupClubNameClasses = groupClubNameClasses + ' error'
 
     return (
-      <div className={"step-1" + (isShow ? '' : ' hidden')}>
+      <div className={"step step-1" + (isShow ? '' : ' hidden')}>
         <div className={groupClubNameClasses}>
           {errorNotice}
           <span className="title-form-group">Club name</span>

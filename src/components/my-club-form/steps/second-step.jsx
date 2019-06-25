@@ -19,36 +19,40 @@ class SecondStep extends Component {
 
   render() {
     const { isAnimate } = this.state;
-    const classes = isAnimate ? 'step-2 animate' : 'step-2';
+    const classes = isAnimate ? 'step step-2 animate' : 'step step-2';
+    let groupClubNameClasses = "form-group d-flex flex-column";
     return (
       <div className={classes}>
-          <div className="title text-center">asgsdfg</div>
+        <div className={groupClubNameClasses}>
           <div className="input-group d-flex flex-column">
-            <div className="title-form-group flex-grow-1 flex-shrink-1">Name</div>
+            <span className="title-form-group">Owner name</span>
             <input
-              type="text" />
-          </div>
-          <div className="input-group d-flex flex-column">
-            <div className="title-form-group flex-grow-1 flex-shrink-1">Birth year</div>
-            <DatePicker
-              customInput={<CustomInput />}
-              dateFormat="yyyy-mm-dd"
-              peekNextMonth
-              showMonthDropdown
-              showYearDropdown
-              dropdownMode="select" />
-            <ReactDropzone
-              onDrop={(accepted) => console.log(accepted)}>
-              {({ getRootProps, getInputProps, isDragActive }) => (
-                <div
-                  className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
-                  {...getRootProps()}>
-                  <input {...getInputProps()} />
-                </div>
-              )}
-            </ReactDropzone>
+              type="text"
+              placeholder="Enter your  name"
+              onChange={(e) => console.log(e, 'club-name')} />
           </div>
         </div>
+        <div className={groupClubNameClasses}>
+          <div className="title-form-group">Birth year</div>
+          <DatePicker
+            customInput={<CustomInput />}
+            dateFormat="yyyy-mm-dd"
+            peekNextMonth
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select" />
+          <ReactDropzone
+            onDrop={(accepted) => console.log(accepted)}>
+            {({ getRootProps, getInputProps, isDragActive }) => (
+              <div
+                className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
+                {...getRootProps()}>
+                <input {...getInputProps()} />
+              </div>
+            )}
+          </ReactDropzone>
+        </div>
+      </div>
     );
   };
 };
