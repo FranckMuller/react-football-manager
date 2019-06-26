@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import Moment from 'react-moment';
 import Button from '../../button';
 
-class SecondStep extends Component {
+class ThirdStep extends Component {
 
   state = {
     isAnimate: true,
@@ -13,17 +13,17 @@ class SecondStep extends Component {
     errorInput: false,
   };
 
-  componentWillUpdate({ ownerName, ownerPhoto, ownerBirthYear }) {
+  componentWillUpdate({ trainerName, trainerPhoto, trainerBirthYear }) {
     // validation
-    if(ownerName !== this.props.ownerName || ownerPhoto !== this.props.ownerPhoto || ownerBirthYear !== this.props.ownerBirthYear) {
-      if(!ownerName.match("^[a-zA-Z]+$") && ownerName.length > 0) {
+    if(trainerName !== this.props.trainerName || trainerPhoto !== this.props.trainerPhoto || trainerBirthYear !== this.props.trainerBirthYear) {
+      if(!trainerName.match("^[a-zA-Z]+$") && trainerName.length > 0) {
         this.setState({
           errorInput: true,
           disableBtn: true
         });
         return;
       } else {
-        if(ownerPhoto !== null && ownerName.length > 0 && ownerBirthYear !== null) {
+        if(trainerPhoto !== null && trainerName.length > 0 && trainerBirthYear !== null) {
           this.setState({
             errorInput: false,
             disableBtn: false
@@ -53,22 +53,22 @@ class SecondStep extends Component {
     });
   };
 
-  onChangeStep = (e) => {
+  onChangeStep = (e, step) => {
     e.preventDefault();
     const { onToggleStep } = this.props;
 
     this.toggleAnimateClass();
 
     setTimeout(() => {
-      onToggleStep(3)
+      onToggleStep(step)
     }, 500);
   };
 
   render() {
     const { isAnimate, errorInput, disableBtn, isShow } = this.state;
-    const { ownerPhoto, onDropImage, onChangeInput, onChangeBirthYear, ownerBirthYear } = this.props;
+    const { trainerPhoto, onDropImage, onChangeInput, onChangeBirthYear, trainerBirthYear } = this.props;
     const errorNotice = errorInput ? <div className="error-notice"><span>Only latin characters</span></div> : null;
-    const viewZone = ownerPhoto ? <img src={ownerPhoto} alt="owner" /> : null;
+    const viewZone = trainerPhoto ? <img src={trainerPhoto} alt="logo" /> : null;
     let classes = 'step step-2';
     let groupClubNameClasses = "form-group d-flex flex-column";
     if(isAnimate) classes += ' animate';
@@ -80,17 +80,17 @@ class SecondStep extends Component {
         <div className={groupClubNameClasses}>
           {errorNotice}
           <div className="input-group d-flex flex-column">
-            <span className="title-form-group">Owner name</span>
+            <span className="title-form-group">Trainer name</span>
             <input
               type="text"
-              placeholder="Enter your name"
-              onChange={(e) => onChangeInput(e, 'owner-name')} />
+              placeholder="Enter trainer name"
+              onChange={(e) => onChangeInput(e, 'trainer-name')} />
           </div>
         </div>
         <div className={groupClubNameClasses}>
-          <div className="title-form-group">Owner date of birth</div>
+          <div className="title-form-group">Trainer date of birth</div>
           <DatePicker
-            customInput={<CustomInput dateValue={ownerBirthYear} />}
+            customInput={<CustomInput dateValue={trainerBirthYear} />}
             dateFormat="yyyy-mm-dd"
             peekNextMonth
             showMonthDropdown
@@ -98,16 +98,16 @@ class SecondStep extends Component {
             dropdownMode="select"
             maxDate={new Date()}
             minDate={new Date(1960, 0, 1)}
-            onChange={(date) => onChangeBirthYear(date, 'owner-birth-year')} />
+            onChange={(date) => onChangeBirthYear(date, 'trainer-birth-year')} />
           <ReactDropzone
-            onDrop={(accepted) => onDropImage(accepted, 'owner-photo')}>
+            onDrop={(accepted) => onDropImage(accepted, 'trainer-photo')}>
             {({ getRootProps, getInputProps, isDragActive }) => (
               <div
                 className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
                 {...getRootProps()}>
                 <input {...getInputProps()} />
                 {viewZone}
-                <div className={"placeholder" + (ownerPhoto !== null ? ' hidden' : '')}>Select or drag your photo</div>
+                <div className={"placeholder" + (trainerPhoto !== null ? ' hidden' : '')}>Select or drag trainer photo</div>
               </div>
             )}
           </ReactDropzone>
@@ -115,7 +115,7 @@ class SecondStep extends Component {
         <Button 
             disable={disableBtn}
             classes="btn d-flex align-items-center" 
-            btnLabel="Next" btnAction={this.onChangeStep} />
+            btnLabel="Next" btnAction={(e) => this.onChangeStep(e, 4)} />
       </div>
     );
   };
@@ -124,7 +124,7 @@ class SecondStep extends Component {
 class CustomInput extends Component {
   render() {
     const { dateValue } = this.props;
-    let view = <span className="placeholder">Select your date of birth</span>
+    let view = <span className="placeholder">Select trainer date of birth</span>
     if (dateValue !== null) {
       view = <Moment format="MMMM Do YYYY">{dateValue}</Moment>
     };
@@ -138,4 +138,4 @@ class CustomInput extends Component {
   };
 };
 
-export default SecondStep;
+export default ThirdStep;

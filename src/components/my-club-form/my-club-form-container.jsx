@@ -10,6 +10,14 @@ class MyClubFormContainer extends Component {
   state = {
     clubName: '',
     clubLogo: null,
+    ownerName: '',
+    ownerPhoto: null,
+    ownerBirthYear: null,
+    trainerName: '',
+    trainerPhoto: null,
+    trainerBirthYear: null,
+    staidumName: '',
+    stadiumPhoto: null,
     step: 1,
   };
 
@@ -20,11 +28,18 @@ class MyClubFormContainer extends Component {
   };
 
   transformLabel(label) {
-    const idx = label.indexOf('-');
-    const before = label.slice(0, idx);
-    const after = label.slice(idx + 1);
-    return before + lodash.capitalize(after);
-  }
+    const arr = label.split('-');
+    let newLabel = '';
+    arr.forEach((el, idx) => {
+      if(idx < 1) {
+        newLabel += el;
+      } else {
+        newLabel += lodash.capitalize(el);
+      }
+    });
+
+    return newLabel
+  };
 
   getBase64(file, label) {
     const newLabel = this.transformLabel(label);
@@ -38,10 +53,10 @@ class MyClubFormContainer extends Component {
   };
 
   onChangeInput = (e, label) => {
-      const newLabel = this.transformLabel(label);
-      this.setState({
-        [newLabel]: e.target.value,
-      });
+    const newLabel = this.transformLabel(label);
+    this.setState({
+      [newLabel]: e.target.value,
+    });
   };
 
   onDropImage = (accepted, label) => {
@@ -50,23 +65,56 @@ class MyClubFormContainer extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    this.props.onUpdateMyClub(this.state.formFields)
+    const 
+      { clubName, clubLogo,
+        ownerName, ownerPhoto,
+        ownerBirthYear, trainerName, 
+        trainerPhoto, trainerBirthYear,
+        staidumName, stadiumPhoto } = this.state;
+
+    const data = {
+      club: {
+        clubName,
+        clubLogo
+      },
+      owner: {
+        ownerName,
+        ownerPhoto,
+        ownerBirthYear
+      },
+      trainer: {
+        trainerName,
+        trainerPhoto,
+        trainerBirthYear
+      },
+      stadium: {
+        staidumName,
+        stadiumPhoto
+      }
+    };
+    
+    this.props.onUpdateMyClub(data)
+  };
+
+  onChangeBirthYear = (date, label) => {
+    const newLabel = this.transformLabel(label);
+    this.setState({
+      [newLabel]: date
+    });
   };
 
   render() {
 
-    const { clubLogo, clubName, step } = this.state;
+    const { ...formProps } = this.state;
 
     return (
       <MyClubForm 
         onFormSubmit={this.onFormSubmit}
         onChangeInput={this.onChangeInput}
         onDropImage={this.onDropImage} 
+        onToggleSteps={this.onToggleSteps}
         onChangeBirthYear={this.onChangeBirthYear}
-        clubLogo={clubLogo}
-        clubName={clubName}
-        step={step}
-        onToggleSteps={this.onToggleSteps} />
+        {...formProps} />
     )
   };
 };

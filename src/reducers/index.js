@@ -22,8 +22,10 @@ const initialState = {
     error: false
   },
   myClub: {
-    clubName: '',
-    clubLogo: null,
+    club: null,
+    onwer: null,
+    trainer: null,
+    stadium: null,
     hasData: false
   }
 };
