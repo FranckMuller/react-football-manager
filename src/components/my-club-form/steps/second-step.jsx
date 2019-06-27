@@ -13,9 +13,7 @@ const imageMaxSize = 2000000;
 class SecondStep extends Component {
 
   state = {
-    isAnimate: true,
     disableBtn: true,
-    isShow: true,
     errorInput: false,
     errorDropzone: false,
     crop: {
@@ -49,30 +47,6 @@ class SecondStep extends Component {
         return;
       };
     };
-  };
-
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        isAnimate: false
-      });
-    }, 1000)
-  };
-
-  toggleAnimateClass() {
-    this.setState({
-      isShow: false
-    });
-  };
-
-  onChangeStep = (e) => {
-    e.preventDefault();
-    const { onToggleStep } = this.props;
-    this.toggleAnimateClass();
-
-    setTimeout(() => {
-      onToggleStep(3)
-    }, 500);
   };
 
   verifyFile = (files) => {
@@ -123,18 +97,14 @@ class SecondStep extends Component {
   }
 
   render() {
-    const { isAnimate, errorInput, disableBtn, isShow, errorDropzone } = this.state;
-    const { ownerPhoto, onChangeInput, onChangeBirthYear, ownerBirthYear } = this.props;
-
-    let classes = 'step step-2';
+    const { errorInput, disableBtn, errorDropzone } = this.state;
+    const { ownerPhoto, onChangeInput, onChangeBirthYear, ownerBirthYear, onToggleStep, classes } = this.props;
+    
     let groupNameClasses = 'form-group d-flex flex-column';
     let groupPhotoClasses = 'form-group d-flex flex-column'
     let errorInputNotice = null
     let viewCropImage = null;
     let errorDropImageNotice = null;
-
-    if (isAnimate) classes += ' animate';
-    if (!isShow) classes += ' hidden';
 
     if(errorInput) {
       errorInputNotice = <div className="error-notice"><span>Only latin characters</span></div>;
@@ -203,9 +173,9 @@ class SecondStep extends Component {
         </div>
 
         <Button
-          disable={disableBtn}
+          disable={false}
           classes="btn d-flex align-items-center"
-          btnLabel="Next" btnAction={this.onChangeStep} />
+          btnLabel="Next" btnAction={onToggleStep} />
 
         <ModalWindow title="Crop photo">
           {viewCropImage}

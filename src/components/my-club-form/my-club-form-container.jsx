@@ -5,9 +5,13 @@ import { updateMyClub, toggleModal } from '../../actions';
 
 import MyClubForm from './my-club-form';
 
+const imageMaxSize = 100000000;
+
 class MyClubFormContainer extends Component {
 
   state = {
+    errorDropzone: false,
+    isShow: true,
     clubName: '',
     clubLogo: null,
     ownerName: '',
@@ -18,13 +22,24 @@ class MyClubFormContainer extends Component {
     trainerBirthYear: null,
     staidumName: '',
     stadiumPhoto: null,
-    step: 1,
+    currentDropImage: null,
+    step: 1
   };
 
-  onToggleSteps = (value) => {
+  interval = null;
+
+  onToggleSteps = (e, value) => {
+    e.preventDefault();
     this.setState({
-      step: value
+      isShow: !this.state.isShow
     });
+
+    this.interval = setTimeout(() => {
+      this.setState({
+        step: value,
+        isShow: !this.state.isShow
+      });
+    }, 500);
   };
 
   transformLabel(label) {
@@ -41,17 +56,6 @@ class MyClubFormContainer extends Component {
     return newLabel
   };
 
-  getBase64(file, label) {
-    const newLabel = this.transformLabel(label);
-    var reader = new FileReader();
-    reader.onload = () => {
-      this.setState({
-        [newLabel]: reader.result
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-
   onChangeInput = (e, label) => {
     const newLabel = this.transformLabel(label);
     this.setState({
@@ -59,9 +63,54 @@ class MyClubFormContainer extends Component {
     });
   };
 
-  onDropImage = (accepted, label) => {
+  verifyFile = (files) => {
+    if (files && files.length > 0) {
+      const currentFile = files[0]
+      const currentFileSize = currentFile.size
+      if (currentFileSize > imageMaxSize) {
+        this.setState({
+          errorDropzone: true
+        });
+        return false
+      }
+      return true
+    }
+  };
+
+  completedDropImage = (accepted, label) => {
     this.getBase64(accepted[0], label);
   };
+
+  getBase64(file, label) {
+    const { onShowCropImageModal } = this.props;
+    const newLabel = this.transformLabel(label);
+    var reader = new FileReader();
+    reader.onload = () => {
+      onShowCropImageModal();
+      this.setState({
+        [newLabel]: reader.result,
+        currentDropImage: reader.result,
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  onDropImage = (accepted, rejectedFiles, label) => {
+    const { errorDropzone } = this.state;
+    if (rejectedFiles && rejectedFiles.length > 0) {
+      this.verifyFile(rejectedFiles)
+      return;
+    };
+
+    this.completedDropImage(accepted, label);
+
+    if (errorDropzone) {
+      this.setState({
+        errorDropzone: false
+      });
+    };
+  };
+
 
   onFormSubmit = (e) => {
     e.preventDefault();
@@ -111,10 +160,12 @@ class MyClubFormContainer extends Component {
       <MyClubForm 
         onFormSubmit={this.onFormSubmit}
         onChangeInput={this.onChangeInput}
-        onDropImage={this.onDropImage} 
+        completedDropImage={this.completedDropImage} 
         onToggleSteps={this.onToggleSteps}
         onChangeBirthYear={this.onChangeBirthYear}
         onShowCropImageModal={this.props.onShowCropImageModal}
+        toggleAnimateClass={this.toggleAnimateClass}
+        onDropImage={this.onDropImage}
         {...formProps} />
     )
   };

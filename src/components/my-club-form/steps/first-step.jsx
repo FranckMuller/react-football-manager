@@ -4,16 +4,18 @@ import Button from '../../button';
 import ModalWindow from '../../modal-window';
 import ReactCrop from 'react-image-crop';
 
-const imageMaxSize = 2000000;
-
 class FirstStep extends Component {
 
   state = {
-    isAnimate: true,
     disableBtn: true,
     isShow: true,
     errorInput: false,
     errorDropzone: false,
+    crop: {
+      unit: "px",
+      width: 30,
+      aspect: 1 / 1
+    }
   };
 
   componentWillUpdate({ clubName, clubLogo }) {
@@ -42,78 +44,29 @@ class FirstStep extends Component {
     };
   };
 
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        isAnimate: false
-      });
-    }, 1000)
-  };
-
-  toggleAnimateClass() {
+  onCropImage = (crop) => {
     this.setState({
-      isShow: false
+      crop: crop
     });
   };
 
-  onChangeStep = (e) => {
-    e.preventDefault();
-    const { onToggleStep } = this.props;
+  onImageLoaded = (image) => {
+    console.log(image);
+  };
 
-    this.toggleAnimateClass();
-
-    setTimeout(() => {
-      onToggleStep(2)
-    }, 500);
+  onCropCompleted = (crop, percentCrop) => {
+    console.log(crop, percentCrop)
   }
 
-  verifyFile = (files) => {
-    if (files && files.length > 0) {
-      const currentFile = files[0]
-      const currentFileSize = currentFile.size
-      if (currentFileSize > imageMaxSize) {
-        this.setState({
-          errorDropzone: true
-        });
-        return false
-      }
-      return true
-    }
-  };
-
-  onDropImage = (accepted, rejectedFiles) => {
-    const { errorDropzone } = this.state;
-    const { onDropImage, onShowCropImageModal } = this.props;
-    if (rejectedFiles && rejectedFiles.length > 0) {
-      this.verifyFile(rejectedFiles)
-      return;
-    };
-
-    if (errorDropzone) {
-      this.setState({
-        errorDropzone: false
-      });
-    };
-
-    onShowCropImageModal();
-
-    onDropImage(accepted, 'club-logo');
-  };
-
   render() {
-    const { isAnimate, errorInput, disableBtn, isShow, errorDropzone } = this.state;
-    const { clubLogo, onChangeInput } = this.props;
+    const { errorInput, disableBtn } = this.state;
+    const { clubLogo, onChangeInput, onToggleStep, classes, onDropImage, errorDropzone } = this.props;
 
-    let classes = 'step step-2';
     let groupNameClasses = 'form-group d-flex flex-column';
     let groupPhotoClasses = 'form-group d-flex flex-column'
     let errorInputNotice = null
     let viewCropImage = null;
     let errorDropImageNotice = null;
-
-
-    if (isAnimate) classes += ' animate';
-    if (!isShow) classes += ' hidden';
 
     if (errorInput) {
       errorInputNotice = <div className="error-notice"><span>Only latin characters</span></div>;
@@ -123,16 +76,6 @@ class FirstStep extends Component {
     if (errorDropzone) {
       errorDropImageNotice = <div className="error-notice"><span>file size should not exceed 2mb</span></div>;
       groupPhotoClasses += ' error';
-    };
-
-    if (clubLogo) {
-      viewCropImage =
-        <ReactCrop
-          onComplete={this.onCropCompleted}
-          onImageLoaded={this.onImageLoaded}
-          crop={this.state.crop}
-          onChange={this.onCropImage}
-          src={clubLogo} />
     };
 
     return (
@@ -149,8 +92,8 @@ class FirstStep extends Component {
           {errorDropImageNotice}
           <div className="title-form-group">Club logo</div>
           <ReactDropzone
-            onDrop={this.onDropImage}
-            maxSize={imageMaxSize}
+            onDrop={onDropImage}
+            maxSize={100000000}
             accept='image/jpeg, image/png'>
             {({ getRootProps, getInputProps, isDragActive }) => (
               <div
@@ -166,11 +109,9 @@ class FirstStep extends Component {
         <Button
           disable={false}
           classes="btn d-flex align-items-center"
-          btnLabel="Next" btnAction={this.onChangeStep} />
+          btnLabel="Next" btnAction={onToggleStep} />
 
-        <ModalWindow title="Crop photo">
-          {viewCropImage}
-        </ModalWindow>
+        {this.props.children}
       </div>
     );
   };

@@ -7,9 +7,7 @@ import Button from '../../button';
 class ThirdStep extends Component {
 
   state = {
-    isAnimate: true,
     disableBtn: true,
-    isShow: true,
     errorInput: false,
   };
 
@@ -39,40 +37,13 @@ class ThirdStep extends Component {
     };
   };
 
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        isAnimate: false
-      });
-    }, 1000)
-  };
-
-  toggleAnimateClass() {
-    this.setState({
-      isShow: false
-    });
-  };
-
-  onChangeStep = (e, step) => {
-    e.preventDefault();
-    const { onToggleStep } = this.props;
-
-    this.toggleAnimateClass();
-
-    setTimeout(() => {
-      onToggleStep(step)
-    }, 500);
-  };
-
   render() {
-    const { isAnimate, errorInput, disableBtn, isShow } = this.state;
-    const { trainerPhoto, onDropImage, onChangeInput, onChangeBirthYear, trainerBirthYear } = this.props;
+    const { errorInput, disableBtn } = this.state;
+    const { trainerPhoto, onDropImage, onChangeInput, onChangeBirthYear, trainerBirthYear, onToggleStep, classes } = this.props;
     const errorNotice = errorInput ? <div className="error-notice"><span>Only latin characters</span></div> : null;
     const viewZone = trainerPhoto ? <img src={trainerPhoto} alt="logo" /> : null;
-    let classes = 'step step-2';
     let groupClubNameClasses = "form-group d-flex flex-column";
-    if(isAnimate) classes += ' animate';
-    if(!isShow) classes += ' hidden';
+
     if (errorInput) groupClubNameClasses += ' error'
 
     return (
@@ -113,9 +84,9 @@ class ThirdStep extends Component {
           </ReactDropzone>
         </div>
         <Button 
-            disable={disableBtn}
+            disable={false}
             classes="btn d-flex align-items-center" 
-            btnLabel="Next" btnAction={(e) => this.onChangeStep(e, 4)} />
+            btnLabel="Next" btnAction={onToggleStep} />
       </div>
     );
   };

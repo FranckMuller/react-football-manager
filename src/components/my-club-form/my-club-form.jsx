@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { FirstStep, SecondStep, ThirdStep, FourthStep } from './steps';
 
+import ModalWindow from './../modal-window';
+import ReactCrop from 'react-image-crop';
+
 import 'moment-timezone';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,9 +12,18 @@ import './my-club-form.scss'
 
 class MyClubForm extends Component {
 
+  state = {
+    crop: {
+      unit: "px",
+      width: 30,
+      aspect: 1 / 1
+    }
+  };
+
   render() {
+
     const {
-      onDropImage,
+      completedDropImage,
       clubLogo,
       onChangeInput,
       step,
@@ -27,53 +39,83 @@ class MyClubForm extends Component {
       stadiumName,
       stadiumPhoto,
       onFormSubmit,
-      onShowCropImageModal } = this.props;
+      onShowCropImageModal,
+      isShow,
+      onDropImage,
+      errorDropzone,
+      currentDropImage } = this.props;
+
+    let cropImageModal = null;
+    if (currentDropImage !== null) {
+      cropImageModal =
+        <ModalWindow title="Crop photo">
+          <ReactCrop
+            // onComplete={this.onCropCompleted}
+            // onImageLoaded={this.onImageLoaded}
+            crop={this.state.crop}
+            onChange={() => {}}
+            src={currentDropImage} />
+        </ModalWindow>
+    };
 
     let stepView;
+    let classesStep = 'step';
+    if(isShow) classesStep += ' showed';
+    if(!isShow) classesStep += ' hided';
     switch (step) {
       case 1: 
         stepView =
           <FirstStep
-            onToggleStep={onToggleSteps}
+            classes={classesStep}
+            errorDropzone={errorDropzone}
+            onToggleStep={(e) => onToggleSteps(e, 2)}
             onChangeInput={onChangeInput}
-            onDropImage={onDropImage}
             clubLogo={clubLogo}
-            clubName={clubName} />
-        break;
-      case 2: 
-        stepView =
-          <SecondStep
-            onToggleStep={onToggleSteps}
-            onChangeInput={onChangeInput}
-            onDropImage={onDropImage}
-            ownerPhoto={ownerPhoto}
-            ownerName={ownerName}
-            ownerBirthYear={ownerBirthYear}
-            onChangeBirthYear={onChangeBirthYear}
-            onShowCropImageModal={onShowCropImageModal} />
-        break;
+            clubName={clubName}
+            onShowCropImageModal={onShowCropImageModal}
+            onDropImage={(accepted, rejectedFiles) => onDropImage(accepted, rejectedFiles, 'club-logo')}>
 
-      case 3: 
-        stepView =
-          <ThirdStep
-            onToggleStep={onToggleSteps}
-            onChangeInput={onChangeInput}
-            onDropImage={onDropImage}
-            trainerName={trainerName}
-            trainerPhoto={trainerPhoto}
-            trainerBirthYear={trainerBirthYear}
-            onChangeBirthYear={onChangeBirthYear} />
-        break;
+            {cropImageModal}
 
-      case 4:
-        stepView = 
-          <FourthStep
-            onFormSubmit={onFormSubmit}
-            onChangeInput={onChangeInput}
-            onDropImage={onDropImage}
-            stadiumName={stadiumName}
-            stadiumPhoto={stadiumPhoto} />
+          </FirstStep>
         break;
+      // case 2: 
+      //   stepView =
+      //     <SecondStep
+      //       classes={classesStep}
+      //       onToggleStep={(e) => onToggleSteps(e, 3)}
+      //       onChangeInput={onChangeInput}
+      //       onDropImage={onDropImage}
+      //       ownerPhoto={ownerPhoto}
+      //       ownerName={ownerName}
+      //       ownerBirthYear={ownerBirthYear}
+      //       onChangeBirthYear={onChangeBirthYear}
+      //       onShowCropImageModal={onShowCropImageModal} />
+      //   break;
+
+      // case 3: 
+      //   stepView =
+      //     <ThirdStep
+      //       classes={classesStep}
+      //       onToggleStep={(e) => onToggleSteps(e, 4)}
+      //       onChangeInput={onChangeInput}
+      //       onDropImage={onDropImage}
+      //       trainerName={trainerName}
+      //       trainerPhoto={trainerPhoto}
+      //       trainerBirthYear={trainerBirthYear}
+      //       onChangeBirthYear={onChangeBirthYear} />
+      //   break;
+
+      // case 4:
+      //   stepView = 
+      //     <FourthStep
+      //       classes={classesStep}
+      //       onFormSubmit={onFormSubmit}
+      //       onChangeInput={onChangeInput}
+      //       onDropImage={onDropImage}
+      //       stadiumName={stadiumName}
+      //       stadiumPhoto={stadiumPhoto} />
+      //   break;
 
       default: return;  
     };

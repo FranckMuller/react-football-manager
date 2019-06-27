@@ -5,10 +5,8 @@ import Button from '../../button';
 class FourthStep extends Component {
 
   state = {
-    isAnimate: true,
     errorInput: false,
     disableBtn: true,
-    isShow: true
   };
 
   componentWillUpdate({ stadiumName, stadiumPhoto }) {
@@ -37,20 +35,9 @@ class FourthStep extends Component {
     };
   };
 
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({
-        isAnimate: false
-      });
-    }, 1000)
-  };
-
   render() {
-    const { onDropImage, stadiumPhoto, onChangeInput, onFormSubmit } = this.props;
-    const { errorInput, disableBtn, isShow, isAnimate } = this.state;
-    let classes = 'step step-4';
-    if(isAnimate) classes += ' animate';
-    if(!isShow) classes += ' hidden';
+    const { onDropImage, stadiumPhoto, onChangeInput, onFormSubmit, classes } = this.props;
+    const { errorInput, disableBtn } = this.state;
     const viewZone = stadiumPhoto ? <img src={stadiumPhoto} alt="logo" /> : null;
     const errorNotice = errorInput ? <div className="error-notice"><span>Only latin characters</span></div> : null;
     let groupStadiumNameClasses = "form-group d-flex flex-column";

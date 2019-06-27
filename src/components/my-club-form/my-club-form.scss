@@ -1,6 +1,14 @@
 .my-club-form {
   height: 100%;
   padding-top: 50px;
+  .showed {
+    animation: show-step .8s ease-out;
+  }
+  .hided {
+    transform: translateX(-200%);
+    opacity: 0;
+    transition: .8s ease-out;
+  }
   .title {
     font-size: 22px;
     margin-bottom: 10px;
@@ -12,10 +20,10 @@
     max-width: 600px;
     .step {
       transition: .8s ease-out;
-      &.animate {
+      &.showed {
         animation: show-step .8s ease-out;
       }
-      &.hidden {
+      &.hided {
         transform: translateX(-200%);
         opacity: 0;
       }
