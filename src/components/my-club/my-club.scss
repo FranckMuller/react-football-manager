@@ -6,6 +6,7 @@
     .title {
       font-size: 42px;
       color: #2b4288;
+      margin-bottom: 20px;
       span {
         flex: 0 0 80px;
         padding: 10px 15px;
@@ -14,25 +15,20 @@
     }
 
     .employees {
-      .position {
-        font-size: 18px;
-        font-weight: bold;
-        color: #fff;
-        background-color: rgba(45, 28, 136, 0.9);
-        padding: 5px 0;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
-      .name {
-        margin-top: 15px;
-        border-top: 1px solid #ddd;
-        padding-top: 5px;
-      }
-
       .employee-box {
         flex: 0 0 25%;
+        margin: 0 20px;
         .employee {
           box-shadow: 5px 5px 5px -4px rgba(0,0,0,0.25);
+        }
+        .position {
+          font-size: 18px;
+          font-weight: bold;
+          color: #fff;
+          background-color: rgba(45, 28, 136, 0.9);
+          padding: 5px 0;
+          border-top-left-radius: 3px;
+          border-top-right-radius: 3px;
         }
         .description {
           padding: 20px;
@@ -41,6 +37,13 @@
           .label {
             font-weight: 400;
           }
+        }
+        .photo {
+          margin-bottom: 10px;
+        }
+        .name {
+          padding-top: 5px;
+          margin-bottom: 5px;
         }
       }
     }

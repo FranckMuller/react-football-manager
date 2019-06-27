@@ -22,11 +22,25 @@ const initialState = {
     error: false
   },
   myClub: {
-    club: null,
-    onwer: null,
-    trainer: null,
-    stadium: null,
-    hasData: false
+    club: {
+      clubLogo: "http://localhost:3000/barselona.png",
+      clubName: "Barselona"
+    },
+    owner: {
+      ownerName: "Dima",
+      ownerBirthYear: new Date(1992, 6, 3),
+      ownerPhoto: "http://localhost:3000/owner.jpg",
+    },
+    trainer: {
+      trainerName: "Guardiola",
+      trainerBirthYear: new Date(1989, 6, 3),
+      trainerPhoto: "http://localhost:3000/trainer.jpg",
+    },
+    stadium: {
+      ownerName: "Camp Nou",
+      ownerPhoto: "http://localhost:3000/stadium.jpeg",
+    },
+    hasData: true
   }
 };
 

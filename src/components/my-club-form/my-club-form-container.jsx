@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import lodash from 'lodash';
-import { updateMyClub } from '../../actions';
+import { updateMyClub, toggleModal } from '../../actions';
 
 import MyClubForm from './my-club-form';
 
@@ -114,6 +114,7 @@ class MyClubFormContainer extends Component {
         onDropImage={this.onDropImage} 
         onToggleSteps={this.onToggleSteps}
         onChangeBirthYear={this.onChangeBirthYear}
+        onShowCropImageModal={this.props.onShowCropImageModal}
         {...formProps} />
     )
   };
@@ -127,7 +128,8 @@ const mapStateToProps = ({ myClub }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onUpdateMyClub: (data) => dispatch(updateMyClub(data))
+    onUpdateMyClub: (data) => dispatch(updateMyClub(data)),
+    onShowCropImageModal: () => dispatch(toggleModal(true))
   }
 };
 

@@ -26,7 +26,8 @@ class MyClubForm extends Component {
       trainerBirthYear,
       stadiumName,
       stadiumPhoto,
-      onFormSubmit } = this.props;
+      onFormSubmit,
+      onShowCropImageModal } = this.props;
 
     let stepView;
     switch (step) {
@@ -48,7 +49,8 @@ class MyClubForm extends Component {
             ownerPhoto={ownerPhoto}
             ownerName={ownerName}
             ownerBirthYear={ownerBirthYear}
-            onChangeBirthYear={onChangeBirthYear} />
+            onChangeBirthYear={onChangeBirthYear}
+            onShowCropImageModal={onShowCropImageModal} />
         break;
 
       case 3: 

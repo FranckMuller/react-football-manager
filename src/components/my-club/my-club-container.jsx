@@ -11,9 +11,13 @@ class MyClubContainer extends Component {
   };
 };
 
-const mapStateToProps = ({ myClub: { hasData } }) => {
+const mapStateToProps = ({ myClub: { hasData, club, owner, trainer, stadium } }) => {
   return {
-    hasData: hasData
+    hasData,
+    club,
+    owner,
+    trainer,
+    stadium
   };
 };
 

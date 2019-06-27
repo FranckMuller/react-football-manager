@@ -3,67 +3,58 @@ import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import MyClubForm from '../my-club-form';
 import Placeholder from '../placeholder';
-import Moment from 'react-moment';
 
 import 'moment-timezone';
 
 import './my-club.scss';
 
-const ViewMyClub = ({ myClub }) => {
+const ViewMyClub = ({ club, owner, trainer, stadium }) => {
 
-  const { clubName, clubLogo } = this.props;
+  console.log(owner.ownerBirthYear)
 
   return (
     <div className="view-my-club">
-      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {clubName} <span><img src={clubLogo} alt="logo" /></span></h3>
-      {/* <div className="employees d-flex">
-        <div className="employee-box">
-          <div className="employee owner">
+      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {club.clubName} <span><img src={club.clubLogo} alt="logo" /></span></h3>
+      <div className="employees d-flex">
+        <div className="employee-box d-flex">
+          <div className="employee owner d-flex flex-column">
             <div className="position text-center">Owner</div>
-            <div className="description">
+            <div className="description flex-shrink-1 flex-grow-1">
               <div className="photo">
-                <img src={clubInfo.owner.image} alt="" />
+                <img src={owner.ownerPhoto} alt="owner" />
               </div>
               <div className="name d-flex justify-content-between">
                 <span className="label">name:</span>
-                <span>{clubInfo.owner.name}</span>
+                <span>{owner.ownerName}</span>
               </div>
-              <div className="name d-flex justify-content-between">
-                <span className="label">birth year:</span>
-                <span><Moment format="MMMM Do YYYY">{clubInfo.owner.birthYear}</Moment></span>
+              <div className="age d-flex justify-content-between">
+                <span className="label">age:</span>
+                <span>{new Date().getFullYear() - owner.ownerBirthYear.getFullYear()}</span>
               </div>
             </div>
           </div>
         </div>
-      </div> */}
+        <div className="employee-box d-flex">
+          <div className="employee trainer d-flex flex-column">
+            <div className="position text-center">Trainer</div>
+            <div className="description flex-shrink-1 flex-grow-1">
+              <div className="photo">
+                <img src={trainer.trainerPhoto} alt="trainer" />
+              </div>
+              <div className="name d-flex justify-content-between">
+                <span className="label">name:</span>
+                <span>{trainer.trainerName}</span>
+              </div>
+              <div className="age d-flex justify-content-between">
+                <span className="label">age:</span>
+                <span>{new Date().getFullYear() - trainer.trainerBirthYear.getFullYear()}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
-
-  // return (
-  //   <div className="view-my-club">
-  //     <h3 className="title text-center d-flex align-items-center justify-content-center">FC {clubInfo.club.name} <span><img src={clubInfo.club.image} alt="logo" /></span></h3>
-  //     <div className="employees d-flex">
-  //       <div className="employee-box">
-  //         <div className="employee owner">
-  //           <div className="position text-center">Owner</div>
-  //           <div className="description">
-  //             <div className="photo">
-  //               <img src={clubInfo.owner.image} alt="" />
-  //             </div>
-  //             <div className="name d-flex justify-content-between">
-  //               <span className="label">name:</span>
-  //               <span>{clubInfo.owner.name}</span>
-  //             </div>
-  //             <div className="name d-flex justify-content-between">
-  //               <span className="label">birth year:</span>
-  //               <span><Moment format="MMMM Do YYYY">{clubInfo.owner.birthYear}</Moment></span>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };
 
 class MyClub extends Component {

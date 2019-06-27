@@ -18,7 +18,7 @@ class ModalWindow extends Component {
           {warningMessage}
         </div>
         <div className="modal-box">
-          <div className="title">{title}</div>
+          <div className="title"><span>{title}</span></div>
           <div className="modal-box-content">
             {this.props.children}
           </div>
