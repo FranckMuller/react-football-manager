@@ -48,7 +48,7 @@ const FirstStep = ({ errorInput, selectedImage, onChangeInput, onToggleStep, cla
         </ReactDropzone>
       </div>
       <Button
-        disable={false}
+        disable={disableToggleStep}
         classes="btn d-flex align-items-center"
         btnLabel="Next" btnAction={onToggleStep} />
     </div>

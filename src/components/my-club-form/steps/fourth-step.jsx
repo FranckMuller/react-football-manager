@@ -48,7 +48,7 @@ const FourthStep = ({ errorInput, selectedImage, onChangeInput, classes, onDropI
         </ReactDropzone>
       </div>
       <Button
-        disable={false}
+        disable={disableToggleStep}
         classes="btn d-flex align-items-center"
         btnLabel="Submit"
         btnAction={onFormSubmit} />

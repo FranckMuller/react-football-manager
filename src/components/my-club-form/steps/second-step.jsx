@@ -70,7 +70,7 @@ const SecondStep = ({ errorInput, selectedImage, onChangeInput, onChangeBirthYea
       </div>
 
       <Button
-        disable={false}
+        disable={disableToggleStep}
         classes="btn d-flex align-items-center"
         btnLabel="Next" btnAction={onToggleStep} />
 
