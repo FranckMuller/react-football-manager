@@ -1,32 +1,91 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import lodash from 'lodash';
-import { updateMyClub, toggleModal } from '../../actions';
+import { updateMyClub } from '../../actions';
 
 import MyClubForm from './my-club-form';
-
-const imageMaxSize = 100000000;
 
 class MyClubFormContainer extends Component {
 
   state = {
+    disableToggleStep: false,
     errorDropzone: false,
+    errorInput: false,
     isShow: true,
-    clubName: '',
-    clubLogo: null,
-    ownerName: '',
-    ownerPhoto: null,
-    ownerBirthYear: null,
-    trainerName: '',
-    trainerPhoto: null,
-    trainerBirthYear: null,
-    staidumName: '',
-    stadiumPhoto: null,
-    currentDropImage: null,
-    step: 1
+    selectedImage: null,
+    inputValue: '',
+    birthYear: null,
+    step: 1,
+    imageMaxSize: 100000000,
+    crop: {
+      unit: "%",
+      width: 30,
+      aspect: 1 / 1
+    }
   };
 
   interval = null;
+
+  componentWillUpdate(prevProps, { inputValue, selectedImage, birthYear }) {
+    // validation
+    switch (this.state.step) {
+      case 2:
+      case 3:
+        if (inputValue !== this.state.inputValue || selectedImage !== this.state.selectedImage || birthYear !== this.state.birthYear) {
+          if (!inputValue.match("^[a-zA-Z]+$") && inputValue.length > 0) {
+            this.setState({
+              errorInput: true,
+              disableToggleStep: true
+            });
+            return;
+          } else {
+            if (selectedImage !== null && inputValue.length > 0 && birthYear !== null) {
+              this.setState({
+                errorInput: false,
+                disableToggleStep: false
+              });
+              return;
+            }
+            this.setState({
+              errorInput: false,
+              disableToggleStep: true
+            });
+            return;
+          };
+        };
+        break;
+
+      case 1:
+      case 4:
+        if (inputValue !== this.state.inputValue || selectedImage !== this.state.selectedImage) {
+          if (!inputValue.match("^[a-zA-Z]+$") && inputValue.length > 0) {
+            this.setState({
+              errorInput: true,
+              disableToggleStep: true
+            });
+            return;
+          } else {
+            if (selectedImage !== null && inputValue.length > 0) {
+              this.setState({
+                errorInput: false,
+                disableToggleStep: false
+              });
+              return;
+            }
+            this.setState({
+              errorInput: false,
+              disableToggleStep: true
+            });
+            return;
+          };
+        };
+        break;
+    }
+  };
+
+  componentDidUpdate() {
+    console.log(this.state);
+  };
 
   onToggleSteps = (e, value) => {
     e.preventDefault();
@@ -35,9 +94,14 @@ class MyClubFormContainer extends Component {
     });
 
     this.interval = setTimeout(() => {
+      console.log(value);
       this.setState({
         step: value,
-        isShow: !this.state.isShow
+        isShow: !this.state.isShow,
+        selectedImage: null,
+        inputValue: '',
+        birthYear: null,
+        errorDropzone: false
       });
     }, 500);
   };
@@ -46,7 +110,7 @@ class MyClubFormContainer extends Component {
     const arr = label.split('-');
     let newLabel = '';
     arr.forEach((el, idx) => {
-      if(idx < 1) {
+      if (idx < 1) {
         newLabel += el;
       } else {
         newLabel += lodash.capitalize(el);
@@ -60,6 +124,7 @@ class MyClubFormContainer extends Component {
     const newLabel = this.transformLabel(label);
     this.setState({
       [newLabel]: e.target.value,
+      inputValue: e.target.value,
     });
   };
 
@@ -67,57 +132,46 @@ class MyClubFormContainer extends Component {
     if (files && files.length > 0) {
       const currentFile = files[0]
       const currentFileSize = currentFile.size
-      if (currentFileSize > imageMaxSize) {
+      if (currentFileSize > this.state.imageMaxSize) {
         this.setState({
           errorDropzone: true
         });
-        return false
+        return false;
       }
-      return true
+      return true;
     }
   };
 
-  completedDropImage = (accepted, label) => {
-    this.getBase64(accepted[0], label);
-  };
-
-  getBase64(file, label) {
-    const { onShowCropImageModal } = this.props;
-    const newLabel = this.transformLabel(label);
-    var reader = new FileReader();
-    reader.onload = () => {
-      onShowCropImageModal();
-      this.setState({
-        [newLabel]: reader.result,
-        currentDropImage: reader.result,
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-
   onDropImage = (accepted, rejectedFiles, label) => {
-    const { errorDropzone } = this.state;
     if (rejectedFiles && rejectedFiles.length > 0) {
-      this.verifyFile(rejectedFiles)
-      return;
+      this.verifyFile(rejectedFiles);
     };
 
-    this.completedDropImage(accepted, label);
-
-    if (errorDropzone) {
-      this.setState({
-        errorDropzone: false
-      });
+    if (accepted && accepted.length > 0) {
+      const isVerified = this.verifyFile(accepted)
+      if (isVerified) {
+        const currentFile = accepted[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          const newLabel = this.transformLabel(label);
+          this.setState({
+            [newLabel]: reader.result,
+            selectedImage: reader.result,
+            errorDropzone: false
+          });
+        };
+        reader.readAsDataURL(currentFile);
+      };
     };
   };
 
-
+  // submit form
   onFormSubmit = (e) => {
     e.preventDefault();
-    const 
+    const
       { clubName, clubLogo,
         ownerName, ownerPhoto,
-        ownerBirthYear, trainerName, 
+        ownerBirthYear, trainerName,
         trainerPhoto, trainerBirthYear,
         staidumName, stadiumPhoto } = this.state;
 
@@ -141,14 +195,15 @@ class MyClubFormContainer extends Component {
         stadiumPhoto
       }
     };
-    
+
     this.props.onUpdateMyClub(data)
   };
 
   onChangeBirthYear = (date, label) => {
     const newLabel = this.transformLabel(label);
     this.setState({
-      [newLabel]: date
+      [newLabel]: date,
+      birthYear: date
     });
   };
 
@@ -157,10 +212,10 @@ class MyClubFormContainer extends Component {
     const { ...formProps } = this.state;
 
     return (
-      <MyClubForm 
+      <MyClubForm
         onFormSubmit={this.onFormSubmit}
         onChangeInput={this.onChangeInput}
-        completedDropImage={this.completedDropImage} 
+        completedDropImage={this.completedDropImage}
         onToggleSteps={this.onToggleSteps}
         onChangeBirthYear={this.onChangeBirthYear}
         onShowCropImageModal={this.props.onShowCropImageModal}
@@ -180,8 +235,7 @@ const mapStateToProps = ({ myClub }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onUpdateMyClub: (data) => dispatch(updateMyClub(data)),
-    onShowCropImageModal: () => dispatch(toggleModal(true))
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyClubFormContainer);

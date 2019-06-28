@@ -1,6 +1,22 @@
 .my-club-form {
   height: 100%;
   padding-top: 50px;
+  .crop-container {
+    padding: 50px;
+    // position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: .8s ease-out;
+    animation: show-step .8s ease-out;
+    .anim {
+      animation: show-step .8s ease-out;
+    }
+    .title {
+      color: #fff;
+    }
+  }
   .showed {
     animation: show-step .8s ease-out;
   }
@@ -168,6 +184,18 @@
 
 
 @keyframes show-step {
+  0% {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim {
   0% {
     opacity: 0;
     transform: translateX(200%);
