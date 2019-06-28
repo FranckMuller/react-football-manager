@@ -1,4 +1,4 @@
-const isProdaction = false; 
+const isProdaction = true; 
 let url;
 
 if(isProdaction) {

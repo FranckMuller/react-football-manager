@@ -40,7 +40,7 @@ const initialState = {
       ownerName: "Camp Nou",
       ownerPhoto: "http://localhost:3000/stadium.jpeg",
     },
-    hasData: true
+    hasData: false
   }
 };
 
