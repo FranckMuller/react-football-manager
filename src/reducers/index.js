@@ -21,26 +21,14 @@ const initialState = {
     selectedPlayer: null,
     error: false
   },
+  
   myClub: {
-    club: {
-      clubLogo: "http://localhost:3000/barselona.png",
-      clubName: "Barselona"
+    hasData: false,
+    form: {
+      step: 1,
+      animationStep: ''
     },
-    owner: {
-      ownerName: "Dima",
-      ownerBirthYear: new Date(1992, 6, 3),
-      ownerPhoto: "http://localhost:3000/owner.jpg",
-    },
-    trainer: {
-      trainerName: "Guardiola",
-      trainerBirthYear: new Date(1989, 6, 3),
-      trainerPhoto: "http://localhost:3000/trainer.jpg",
-    },
-    stadium: {
-      ownerName: "Camp Nou",
-      ownerPhoto: "http://localhost:3000/stadium.jpeg",
-    },
-    hasData: false
+    clubInfo: null
   }
 };
 

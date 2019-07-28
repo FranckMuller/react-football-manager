@@ -12,17 +12,19 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
 
   const renderBtns = (item) => {
     return (
-      <Button
-        btnLabel={item.purchased ? 'Sell' : 'Buy'}
-        btnAction={() => onShowConfirmationModal(item.id)}
-        classes={item.purchased ? 'btn-primary' : 'btn-success'} />
+      <div className="btn-group">
+        <Button
+          btnLabel={item.purchased ? 'Sell' : 'Buy'}
+          btnAction={() => onShowConfirmationModal(item.id)}
+          classes={item.purchased ? 'btn-primary' : 'btn-success'} />
+      </div>
     );
   };
 
   let modalWindow = <ModalWindow />;
 
   if (selectedPlayer) {
-
+    const title = selectedPlayer.purchased ? `You are sure that do you want to sell ${selectedPlayer.name}?` : `You are sure that do you want to buy ${selectedPlayer.name}? Sales value will be reduced by 20%`;
     const btnLabel = selectedPlayer.purchased ? `Yes, I want to sell ${selectedPlayer.name}` : `Yes, I want to buy ${selectedPlayer.name}`;
 
     modalWindow =
@@ -30,7 +32,7 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
         error={purchaseError}
         isShowModal={isShowModal}
         warningMessage={`You do not have enough money to buy ${selectedPlayer.name}`}
-        title={`You are sure that do you want to buy ${selectedPlayer.name}? Sales value will be reduced by 20%`}>
+        title={title}>
         <ItemDetails item={selectedPlayer}>
           <DescriptionRecord label={'Position'} field={'position'} />
           <DescriptionRecord label={'Cost'} field={'cost'} />
@@ -38,11 +40,14 @@ const TransferMarket = ({ selectedPlayer, items, onShowConfirmationModal, isShow
           <DescriptionRecord label={'Accurate passes'} field={'accuratePasses'} />
           <DescriptionRecord label={'Gold balls'} field={'goldBalls'} />
         </ItemDetails>
-        <Button
-          disable={purchaseError}
-          btnAction={() => onPlayerSaleOrPurchase(selectedPlayer, money)}
-          btnLabel={btnLabel}
-          classes={selectedPlayer.purchased ? 'btn-outline-primary' : 'btn-outline-success'} />
+        <div className="btn-group">
+          <Button
+            disable={purchaseError}
+            btnAction={() => onPlayerSaleOrPurchase(selectedPlayer, money)}
+            btnLabel={btnLabel}
+            classes={selectedPlayer.purchased ? 'btn-outline-primary' : 'btn-outline-success'} />
+        </div>
+
       </ModalWindow>
   };
 

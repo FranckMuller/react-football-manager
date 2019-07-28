@@ -10,13 +10,10 @@ const Button = (props) => {
     classes } = props;
 
   return (
-    <div className="btn-group">
-      <button
-        onClick={btnAction}
-        disabled={disable}
-        className={`button btn ${classes}`}>{btnLabel}</button>
-    </div>
-
+    <button
+      onClick={btnAction}
+      disabled={disable}
+      className={`button btn ${classes}`}>{btnLabel}</button>
   );
 };
 

@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import ReactDropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
+import ReactDropzone from 'react-dropzone';
 import Moment from 'react-moment';
 import Button from '../../button';
 
-import 'react-image-crop/lib/ReactCrop.scss';
+const OwnerConfiguration = ({ inputValue, errorInput, onChangeInput, animation, onChangeBirthYear, birthYear, onDropImage,
+  errorDropzone, imageMaxSize, disableToggleStep, children, onChangeStep, croppedImageUrl }) => {
 
-const SecondStep = ({ errorInput,
-  croppedImageUrl, onChangeInput,
-  onChangeBirthYear, birthYear,
-  onToggleStep, classes, onDropImage,
-  errorDropzone, imageMaxSize, disableToggleStep, children }) => {
-
+  let classesStep = 'step';
   let groupNameClasses = 'form-group d-flex flex-column';
-  let groupPhotoClasses = 'form-group d-flex flex-column'
+  let groupPhotoClasses = 'form-group d-flex flex-column';
   let errorInputNotice = null
   let errorDropImageNotice = null;
   let cropContainer = null;
 
-  if(children) {
-    cropContainer = 
+  if (animation) classesStep = `step ${animation}`;
+
+  if (children) {
+    cropContainer =
       <div className="crop">
         <div className="title">Crop image</div>
         {children};
@@ -37,12 +35,13 @@ const SecondStep = ({ errorInput,
   };
 
   return (
-    <div className={classes}>
+    <div className={classesStep}>
       <div className={groupNameClasses}>
         {errorInputNotice}
         <div className="input-group d-flex flex-column">
           <div className="title-form-group">Owner name</div>
           <input
+            defaultValue={inputValue}
             type="text"
             placeholder="Enter your name"
             onChange={(e) => onChangeInput(e, 'owner-name')} />
@@ -72,7 +71,7 @@ const SecondStep = ({ errorInput,
           accept='image/jpeg, image/png'>
           {({ getRootProps, getInputProps, isDragActive }) => (
             <div
-              className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
+            className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '') + (errorDropzone ? ' error' : '')}
               {...getRootProps()}>
               <input {...getInputProps()} />
               <div className={"placeholder" + (croppedImageUrl !== null ? ' hidden' : '')}>Select or drag your photo</div>
@@ -83,10 +82,16 @@ const SecondStep = ({ errorInput,
         {cropContainer}
       </div>
 
-      <Button
-        disable={disableToggleStep}
-        classes="btn d-flex align-items-center"
-        btnLabel="Next" btnAction={onToggleStep} />
+      <div className="btn-group justify-content-between">
+        <Button
+          disable={disableToggleStep}
+          classes="d-flex align-items-center prev"
+          btnLabel="Prev" btnAction={(e) => onChangeStep(e, -1)} />
+        <Button
+          disable={disableToggleStep}
+          classes="d-flex align-items-center next"
+          btnLabel="Next" btnAction={(e) => onChangeStep(e, 1)} />
+      </div>
 
     </div>
   );
@@ -109,4 +114,4 @@ class CustomInput extends Component {
   };
 };
 
-export default SecondStep;
+export default OwnerConfiguration;

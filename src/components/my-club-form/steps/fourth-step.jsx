@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDropzone from 'react-dropzone';
 import Button from '../../button';
 
@@ -42,7 +42,7 @@ const FourthStep = ({ errorInput, selectedImage, onChangeInput, classes, onDropI
               {...getRootProps()}>
               <input {...getInputProps()} />
               <div className={"placeholder" + (selectedImage !== null ? ' hidden' : '')}>Select or drag stadium photo</div>
-              {selectedImage !== null ? <img src={selectedImage} /> : null}
+              {selectedImage !== null ? <img src={selectedImage} alt="stadium" /> : null}
             </div>
           )}
         </ReactDropzone>

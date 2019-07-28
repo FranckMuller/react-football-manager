@@ -6,6 +6,14 @@ import './modal-window.scss';
 
 class ModalWindow extends Component {
 
+  componentDidUpdate({ isShowModal }, prevState) {
+    if(isShowModal === true) {
+      document.querySelector('body').classList.remove('fixed');
+    } else {
+      document.querySelector('body').classList.add('fixed');
+    };
+  }
+
   render() {
     const { isShowModal, title, onToggleModal, error = false, warningMessage = null } = this.props;
     let classes = "modal-window d-flex flex-column justify-content-center align-items-center";

@@ -8,49 +8,56 @@ import 'moment-timezone';
 
 import './my-club.scss';
 
-const ViewMyClub = ({ club, owner, trainer, stadium }) => {
-
-  console.log(owner.ownerBirthYear)
+const ViewMyClub = ({ myClub }) => {
 
   return (
     <div className="view-my-club">
-      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {club.clubName} <span><img src={club.clubLogo} alt="logo" /></span></h3>
-      <div className="employees d-flex">
-        <div className="employee-box d-flex">
+      <h3 className="title text-center d-flex align-items-center justify-content-center">FC {myClub.clubName} <span><img src={myClub.clubLogo} alt="logo" /></span></h3>
+      <div className="employees d-flex justify-content-center">
+        <div className="employee-box">
           <div className="employee owner d-flex flex-column">
             <div className="position text-center">Owner</div>
-            <div className="description flex-shrink-1 flex-grow-1">
-              <div className="photo">
-                <img src={owner.ownerPhoto} alt="owner" />
-              </div>
+            <div className="photo flex-shrink-1 flex-grow-1" style={{backgroundImage: "url(" + myClub.ownerPhoto + ")"}}>
+              <img src={myClub.ownerPhoto} alt="owner" />
+            </div>
+            <div className="description">
               <div className="name d-flex justify-content-between">
                 <span className="label">name:</span>
-                <span>{owner.ownerName}</span>
+                <span>{myClub.ownerName}</span>
               </div>
               <div className="age d-flex justify-content-between">
                 <span className="label">age:</span>
-                <span>{new Date().getFullYear() - owner.ownerBirthYear.getFullYear()}</span>
+                {/* <span>{new Date().getFullYear() - myClub.ownerBirthYear.getFullYear()}</span> */}
               </div>
             </div>
           </div>
         </div>
-        <div className="employee-box d-flex">
+        <div className="employee-box">
           <div className="employee trainer d-flex flex-column">
             <div className="position text-center">Trainer</div>
-            <div className="description flex-shrink-1 flex-grow-1">
-              <div className="photo">
-                <img src={trainer.trainerPhoto} alt="trainer" />
-              </div>
+            <div className="photo flex-grow-1 flex-shrink-1" style={{backgroundImage: "url(" + myClub.trainerPhoto + ")"}}>
+              <img src={myClub.trainerPhoto} alt="trainer" />
+            </div>
+            <div className="description">
               <div className="name d-flex justify-content-between">
                 <span className="label">name:</span>
-                <span>{trainer.trainerName}</span>
+                <span>{myClub.trainerName}</span>
               </div>
               <div className="age d-flex justify-content-between">
                 <span className="label">age:</span>
-                <span>{new Date().getFullYear() - trainer.trainerBirthYear.getFullYear()}</span>
+                {/* <span>{new Date().getFullYear() - myClub.trainerBirthYear.getFullYear()}</span> */}
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="title text-center">Stadium</div>
+
+      <div className="stadium d-flex">
+        <div className="name d-flex flex-column"><span>{myClub.stadiumName}</span></div>
+        <div className="photo">
+          <img src={myClub.stadiumPhoto} alt="stadium" />
         </div>
       </div>
     </div>
@@ -60,11 +67,11 @@ const ViewMyClub = ({ club, owner, trainer, stadium }) => {
 class MyClub extends Component {
 
   renderView = () => {
-    const { hasData, ...viewProps } = this.props;
-    if (hasData) {
-      return <ViewMyClub {...viewProps} />
+    if (this.props.myClub.hasData) {
+      return <ViewMyClub myClub={this.props.myClub.info} />
+    } else {
+      return <Placeholder title={<span><Link to="/my-club/configuration">Start</Link> club configuration</span>} />
     }
-    return <Placeholder title={<span><Link to="/my-club/configuration">Start</Link> club configuration</span>} />
   };
 
   render() {

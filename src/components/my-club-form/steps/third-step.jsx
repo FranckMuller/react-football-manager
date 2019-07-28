@@ -4,12 +4,21 @@ import DatePicker from 'react-datepicker';
 import Moment from 'react-moment';
 import Button from '../../button';
 
-const ThirdStep = ({ errorInput, selectedImage, onChangeInput, onChangeBirthYear, birthYear, onToggleStep, classes, onDropImage, errorDropzone, imageMaxSize, disableToggleStep, children }) => {
+const ThirdStep = ({ errorInput, croppedImageUrl, onChangeInput, onChangeBirthYear, birthYear, onToggleStep, classes, onDropImage, errorDropzone, imageMaxSize, disableToggleStep, children }) => {
 
   let groupNameClasses = 'form-group d-flex flex-column';
   let groupPhotoClasses = 'form-group d-flex flex-column'
   let errorInputNotice = null
   let errorDropImageNotice = null;
+  let cropContainer = null;
+
+  if(children) {
+    cropContainer = 
+      <div className="crop">
+        <div className="title">Crop image</div>
+        {children};
+      </div>
+  };
 
   if (errorInput) {
     errorInputNotice = <div className="error-notice"><span>Only latin characters</span></div>;
@@ -55,8 +64,8 @@ const ThirdStep = ({ errorInput, selectedImage, onChangeInput, onChangeBirthYear
               className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
               {...getRootProps()}>
               <input {...getInputProps()} />
-              <div className={"placeholder" + (selectedImage !== null ? ' hidden' : '')}>Select or drag trainer photo</div>
-              {selectedImage !== null ? <img src={selectedImage} /> : null}
+              <div className={"placeholder" + (croppedImageUrl !== null ? ' hidden' : '')}>Select or drag trainer photo</div>
+              {croppedImageUrl !== null ? <img src={croppedImageUrl} alt="trainer" /> : null}
             </div>
           )}
         </ReactDropzone>
@@ -66,7 +75,7 @@ const ThirdStep = ({ errorInput, selectedImage, onChangeInput, onChangeBirthYear
         classes="btn d-flex align-items-center"
         btnLabel="Next" btnAction={onToggleStep} />
 
-      {children}
+      {cropContainer}
     </div>
   );
 };

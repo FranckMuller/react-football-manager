@@ -12,7 +12,7 @@ import {
 } from './my-team';
 
 import {
-  updateMyClub
+  toggleStep
 } from './my-club';
 
 import { toggleModal } from './modal-window';
@@ -26,5 +26,5 @@ export {
   myTeamRequest,
   selectedPlayerForConfiguration,
   configurePlayer,
-  updateMyClub
+  toggleStep
 };

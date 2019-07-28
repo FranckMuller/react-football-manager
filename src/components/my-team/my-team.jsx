@@ -11,10 +11,12 @@ const MyTeam = ({ items, onShowConfigureModal, seletedItem, onPlayerConfigured, 
 
   const renderBtns = (item) => {
     return (
-      <Button
-        btnLabel={'Сonfigure player'}
-        btnAction={() => onShowConfigureModal(item.id)}
-        classes={'btn-primary'} />
+      <div className="btn-group">
+        <Button
+          btnLabel={'Сonfigure player'}
+          btnAction={() => onShowConfigureModal(item.id)}
+          classes={'btn-primary'} />
+      </div>
     );
   };
 
@@ -40,9 +42,9 @@ const MyTeam = ({ items, onShowConfigureModal, seletedItem, onPlayerConfigured, 
           <DescriptionRecord label="Number" field="number" />
         </ItemDetails>
       </ItemList>
-      <ModalWindow 
+      <ModalWindow
         warningMessage='This number is already taken'
-        error={error} 
+        error={error}
         title='Configure player'>
         {itemDetails}
         <ConfigurePlayerForm error={error} items={items} item={seletedItem} itemId={playerId} onPlayerConfigured={onPlayerConfigured} />

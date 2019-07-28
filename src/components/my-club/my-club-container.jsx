@@ -6,18 +6,14 @@ import MyClub from './my-club';
 class MyClubContainer extends Component {
   render() {
     return (
-        <MyClub {...this.props} />
+        <MyClub myClub={this.props.myClub} />
     );
   };
 };
 
-const mapStateToProps = ({ myClub: { hasData, club, owner, trainer, stadium } }) => {
+const mapStateToProps = ({ myClub }) => {
   return {
-    hasData,
-    club,
-    owner,
-    trainer,
-    stadium
+    myClub: myClub
   };
 };
 

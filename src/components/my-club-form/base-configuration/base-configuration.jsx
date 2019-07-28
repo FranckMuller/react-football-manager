@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDropzone from 'react-dropzone';
 import Button from '../../button';
 
-const FirstStep = ({ errorInput, selectedImage, onChangeInput, onToggleStep, classes, onDropImage, errorDropzone, imageMaxSize, disableToggleStep }) => {
+const BaseConfiguration = ({ inputValue, onChangeStep, errorInput, selectedImage, onChangeInput, animation, onDropImage, errorDropzone, imageMaxSize, disableToggleStep }) => {
 
   let groupNameClasses = 'form-group d-flex flex-column';
-  let groupPhotoClasses = 'form-group d-flex flex-column'
+  let groupPhotoClasses = 'form-group d-flex flex-column';
   let errorInputNotice = null
   let errorDropImageNotice = null;
+  let classesStep = 'step';
+
+  if (animation) classesStep = `step ${animation}`;
 
   if (errorInput) {
     errorInputNotice = <div className="error-notice"><span>Only latin characters</span></div>;
@@ -20,14 +23,15 @@ const FirstStep = ({ errorInput, selectedImage, onChangeInput, onToggleStep, cla
   };
 
   return (
-    <div className={classes}>
+    <div className={classesStep}>
       <div className={groupNameClasses}>
         {errorInputNotice}
         <span className="title-form-group">Club name</span>
         <input
+          defaultValue={inputValue}
           type="text"
           placeholder="Enter your club name"
-          onChange={(e) => onChangeInput(e, 'club-name')} />
+          onChange={onChangeInput} />
       </div>
       <div className={groupPhotoClasses}>
         {errorDropImageNotice}
@@ -38,21 +42,23 @@ const FirstStep = ({ errorInput, selectedImage, onChangeInput, onToggleStep, cla
           accept='image/jpeg, image/png'>
           {({ getRootProps, getInputProps, isDragActive }) => (
             <div
-              className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '')}
+              className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '') + (errorDropzone ? ' error' : '')}
               {...getRootProps()}>
               <input {...getInputProps()} />
               <div className={"placeholder" + (selectedImage !== null ? ' hidden' : '')}>Select or drag club logo</div>
-              {selectedImage !== null ? <img src={selectedImage} /> : null}
+              {selectedImage !== null ? <img src={selectedImage} alt="club logo" /> : null}
             </div>
           )}
         </ReactDropzone>
       </div>
-      <Button
-        disable={disableToggleStep}
-        classes="btn d-flex align-items-center"
-        btnLabel="Next" btnAction={onToggleStep} />
+      <div className="btn-group justify-content-end">
+        <Button
+          disable={disableToggleStep}
+          classes="d-flex align-items-center next"
+          btnLabel="Next" btnAction={(e) => onChangeStep(e, 1)} />
+      </div>
     </div>
   );
 };
 
-export default FirstStep;
+export default BaseConfiguration;
