@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import OwnerConfiguration from './owner-configuration';
+import { getCroppedImg } from '../../../utils/crop-image';
+
 class OwnerConfigurationContainer extends Component {
 
   state = {
@@ -8,7 +10,13 @@ class OwnerConfigurationContainer extends Component {
     inputValue: '',
     birthYear: '',
     selectedImage: null,
-    croppedImageUrl: null
+    croppedImageUrl: null,
+    imageMaxSize: 2000000,
+    crop: {
+      unit: "%",
+      width: 100,
+      aspect: 1 / 1
+    }
   };
 
   componentDidMount() {
@@ -90,6 +98,23 @@ class OwnerConfigurationContainer extends Component {
     };
   };
 
+  onCropChange = (crop) => {
+    this.setState({
+      crop: crop
+    });
+  };
+
+  onCropCompleted = (crop) => {
+    this.makeClientCrop(crop);
+  };
+
+  imagePreviewCanvasRef = React.createRef();
+
+  onImageLoaded = (image) => {
+    console.log('load image');
+    this.imageRef = image;
+  };
+
   onChangeStep = (e, stepCounter) => {
     e.preventDefault();
     const { onStepToggle } = this.props;
@@ -111,6 +136,20 @@ class OwnerConfigurationContainer extends Component {
     onStepToggle('next', -1, data);
   };
 
+  async makeClientCrop(crop) {
+    if (this.imageRef && crop.width && crop.height) {
+      const croppedImageUrl = await getCroppedImg(
+        this.imageRef,
+        crop,
+        "newFile.jpeg",
+        this.fileUrl
+      );
+      this.setState({
+        croppedImageUrl: croppedImageUrl
+      });
+    }
+  }
+
 
   render() {
     const { ...formProps } = this.state;
@@ -130,6 +169,7 @@ class OwnerConfigurationContainer extends Component {
         animation={animation}
         onChangeStep={this.onChangeStep}
         imageMaxSize={imageMaxSize} 
+        onCropChange={this.onCropChange}
         {...formProps} />
     );
   };

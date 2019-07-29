@@ -2,27 +2,50 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import ReactDropzone from 'react-dropzone';
 import Moment from 'react-moment';
+import ReactCrop from 'react-image-crop';
+
 import Button from '../../button';
 
+class CropContainer extends Component {
+
+  render() {
+    const { onCropCompleted, onImageLoaded, crop, onChange, src } = this.props;
+
+    let classesCropContainer = 'crop-container d-flex flex-column justify-content-center align-items-center';
+
+    if (!src) return null;
+
+    return (
+      <div className={classesCropContainer}>
+        <ReactCrop
+          onComplete={onCropCompleted}
+          onImageLoaded={onImageLoaded}
+          crop={crop}
+          onChange={onChange}
+          src={src} />
+      </div>
+    );
+  };
+};
+
 const OwnerConfiguration = ({ inputValue, errorInput, onChangeInput, animation, onChangeBirthYear, birthYear, onDropImage,
-  errorDropzone, imageMaxSize, disableToggleStep, children, onChangeStep, croppedImageUrl }) => {
+  errorDropzone, imageMaxSize, disableToggleStep, onChangeStep, selectedImage, crop, onCropChange, onCropCompleted, onImageLoaded }) => {
 
   let classesStep = 'step';
   let groupNameClasses = 'form-group d-flex flex-column';
   let groupPhotoClasses = 'form-group d-flex flex-column';
   let errorInputNotice = null
   let errorDropImageNotice = null;
-  let cropContainer = null;
 
   if (animation) classesStep = `step ${animation}`;
 
-  if (children) {
-    cropContainer =
-      <div className="crop">
-        <div className="title">Crop image</div>
-        {children};
-      </div>
-  };
+  // if (children) {
+  //   cropContainer =
+  //     <div className="crop">
+  //       <div className="title">Crop image</div>
+  //       {children};
+  //     </div>
+  // };
 
   if (errorInput) {
     errorInputNotice = <div className="error-notice"><span>Only latin characters</span></div>;
@@ -74,12 +97,17 @@ const OwnerConfiguration = ({ inputValue, errorInput, onChangeInput, animation, 
             className={"dropzone d-flex align-items-end justify-content-center" + (isDragActive ? ' active' : '') + (errorDropzone ? ' error' : '')}
               {...getRootProps()}>
               <input {...getInputProps()} />
-              <div className={"placeholder" + (croppedImageUrl !== null ? ' hidden' : '')}>Select or drag your photo</div>
-              <div>{croppedImageUrl ? <img src={croppedImageUrl} alt="" /> : null}</div>
+              <div className={"placeholder" + (selectedImage !== null ? ' hidden' : '')}>Select or drag your photo</div>
+              <div>{selectedImage ? <img src={selectedImage} alt="" /> : null}</div>
             </div>
           )}
         </ReactDropzone>
-        {cropContainer}
+        <CropContainer
+            onComplete={onCropCompleted}
+            onImageLoaded={onImageLoaded}
+            crop={crop}
+            onChange={onCropChange}
+            src={selectedImage} /> 
       </div>
 
       <div className="btn-group justify-content-between">

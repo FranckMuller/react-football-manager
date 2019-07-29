@@ -10,13 +10,7 @@ import MyClubForm from './my-club-form';
 class MyClubFormContainer extends Component {
 
   state = {
-    imageMaxSize: 2000000,
-    croppedImageUrl: null,
-    crop: {
-      unit: "%",
-      width: 100,
-      aspect: 1 / 1
-    }
+    imageMaxSize: 2000000
   };
 
   validateInput(value) {
@@ -85,26 +79,17 @@ class MyClubFormContainer extends Component {
           validateInput={this.validateInput}
           verifyFile={this.verifyFile}
           animation={animation}
-          imageMaxSize={imageMaxSize} >
-        </BaseConfigurationContainer>
+          imageMaxSize={imageMaxSize} />
       break;
 
     case 2:
       stepView =
         <OwnerConfigurationContainer
-          // onDropImage={(accepted, rejectedFiles) => onDropImage(accepted, rejectedFiles, 'owner-photo')}
           onStepToggle={onStepToggle}
           validateInput={this.validateInput}
           verifyFile={this.verifyFile}
           animation={animation}
-          imageMaxSize={imageMaxSize}
-          // croppedImageUrl={croppedImageUrl}
-          >
-            
-
-          {/* {cropView} */}
-
-        </OwnerConfigurationContainer>
+          imageMaxSize={imageMaxSize} />
       break;
 
     // case 3:

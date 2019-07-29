@@ -33,6 +33,7 @@ class BaseConfigurationContainer extends Component {
 
   onChangeInput = (e) => {
     e.preventDefault();
+    console.log(1);
     const { validateInput } = this.props;
 
     localStorage.setItem('club-name', e.target.value);
